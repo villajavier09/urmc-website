@@ -1,0 +1,6 @@
+.levelSeparator {
+  min-height: 2px;
+  width: 100%;
+  margin: auto;
+  background-color: rgba(224, 224, 224, 0.5);
+}

@@ -1,0 +1,394 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; 
+  width: 100%;
+}
+
+@font-face {
+  font-family: Novecento;
+  src: url(./fonts/Novecentowide-DemiBold.otf);
+}
+
+@font-face {
+  font-family: RalewayBold;
+  src: url(./fonts/Raleway-Bold.ttf);
+}
+
+@font-face {
+  font-family: Raleway;
+  src: url(./fonts/Raleway-Regular.ttf);
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+/* COLORS AND BACKGROUNDS */
+
+.colorLightGrey {
+  color: rgb(156, 156, 156);
+}
+
+.colorBlack {
+  color: #000000;
+}
+
+.colorCharcoal {
+  color: #36383B;
+}
+
+.colorWhite {
+  color: #ffffff;
+}
+
+.bgGrey1 {
+  background-color: #eeeeee;
+}
+
+.bgGreen {
+  background-color: green;
+}
+
+.bgGreyTransparent {
+  background-color: rgba(128, 128, 128, 0.5)
+}
+
+.bgWhite {
+  background-color: white;
+}
+
+.bgGradient {
+  background-image: linear-gradient(to bottom, white, #E3E3E3);
+}
+
+/* TEXT AND FONTS */
+
+.fontFamilyNovecento {
+  font-family: Novecento;
+}
+
+.fontFamilyRalewayB {
+  font-family: RalewayBold;
+}
+
+.fontFamilyRaleway {
+  font-family: Raleway;
+}
+
+.fontSize12px {
+  font-size: 12px;
+}
+
+.fontSize14px {
+  font-size: 14px;
+}
+
+.fontSize20px {
+  font-size: 20px;
+}
+
+.fontSize30px {
+  font-size: 30px;
+}
+
+.textAlignCenter {
+  text-align: center;
+}
+
+.textAlignRight {
+  text-align: right;
+}
+
+.noDecoration {
+  text-decoration: none;
+}
+
+/* DISPLAYS AND POSITIONS */
+
+.displayInline {
+  display: inline;
+}
+
+.displayNone {
+  display: none;
+}
+
+.displayFlex {
+  display: flex;
+}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.flexWrap {
+  flex-wrap: wrap;
+}
+
+.flexAlignCenter {
+  align-items: center;
+}
+
+.flexSpaceBetween {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.flexContentEnd {
+  justify-content: flex-end;
+}
+
+.flexColumn {
+  flex-direction: column;
+}
+
+.positionAbsolute {
+  position: absolute;
+}
+
+.zIndex1000 {
+  z-index: 1000;
+}
+
+.topLeft {
+  top: 0;
+  left: 0;
+}
+
+/* PADDING AND MARGINS */
+
+.noMargin {
+  margin: 0;
+}
+
+.noMarginBottom {
+  margin-bottom: 0;
+}
+
+.noMarginTop {
+  margin-top: 0;
+}
+
+.marginAuto {
+  margin: auto;
+}
+
+.noVerticalMargin {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.verticalMargin3px {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.verticalMargin15px {
+  margin: 15px 0px;
+}
+
+.verticalMargin25px {
+  margin: 25px 0px;
+}
+
+.marginBottom10px {
+  margin-bottom: 10px;
+}
+
+.marginBottom25px {
+  margin-bottom: 25px;
+}
+
+.marginTop10px {
+  margin-top: 10px;
+}
+
+.marginTop15px {
+  margin-top: 15px;
+}
+
+.marginTop25px {
+  margin-top: 25px;
+}
+
+.marginTop35px {
+  margin-top: 35px;
+}
+
+.marginTop100px {
+  margin-top: 100px;
+}
+
+.horizontalMargin2px {
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.horizontalMargin5px {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.horizontalMargin10px {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.horizontalMargin15px {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.horizontalMargin25px {
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+.horizontalMargin50px {
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.padding15px {
+  padding: 15px;
+}
+
+.noVerticalPadding {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.verticalPadding5px {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.verticalPadding15px {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.horizontalPadding15px {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* HEIGHTS AND WIDTHS */
+
+.minWidth {
+  width: min-content;
+}
+
+.fitWidth {
+  width: fit-content;
+}
+
+.width25P {
+  width: 25%;
+}
+
+.width50P {
+  width: 50%;
+}
+
+.width60P {
+  width: 60%;
+}
+
+.width75P {
+  width: 75%;
+}
+
+.width90P {
+  width: 90%;
+}
+
+.width95P {
+  width: 95%;
+}
+
+.width50px {
+  width: 50px;
+}
+
+.width75px {
+  width: 75px;
+}
+
+.widthMaxContent {
+  width: max-content;
+}
+
+.minHeight {
+  height: min-content;
+}
+
+.heightMaxContent {
+  height: max-content;
+}
+
+.fullHeight {
+  height: 100%;
+}
+
+.fullWidthAndHeight {
+  width: 100%;
+  height: 100%;
+}
+
+/* BORDERS */
+
+.borderGrey1px {
+  border: 1px solid #808080;
+}
+
+.borderDarkOrange1px {
+  border: 1px solid var(--blu-dark-orange);
+}
+
+.borderMedOrange1px {
+  border: 1px solid var(--blu-med-orange);
+}
+
+.borderTopGrey1px {
+  border-top: 1px solid #808080;
+}
+
+.borderBottomGrey1px {
+  border-bottom: 1px solid #808080;
+}
+
+.borderWhite1px {
+  border: 1px solid #ffffff;
+}
+
+.borderRadius5px {
+  border-radius: 5px;
+}
+
+.borderRadius10px {
+  border-radius: 10px;
+}
+
+.borderTest {
+  border: 2px black solid;
+}
+
+/* OVERFLOWS */
+
+.overflowScroll {
+  overflow: scroll;
+}
+
+/* MISCELLANEOUS */
+
+.circle {
+  border-radius: 50%;
+}
+
+.pointer {
+  cursor: pointer;
+}

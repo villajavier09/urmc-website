@@ -1,0 +1,18 @@
+.homeButton {
+  padding: 10px 20px;
+  border-radius: 25px;
+}
+
+.listservButton {
+  background-color: #E3AB10;
+  color: white;
+}
+
+.aboutButton {
+  color: #E3AB10;
+  border: 2px #E3AB10 solid;
+}
+
+.girlHeight {
+  height: 500px
+}
