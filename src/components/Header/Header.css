@@ -1,4 +1,12 @@
-.socialMediaIcon {
-  width: 28px;
-  height: 28px;
+#mailModal {
+  /* border: 1px solid #36383B; */
+  padding: 40px 70px;
+  width: fit-content;
+  text-align: center;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 0 3px #36383B;
+  border-radius: 10px;
+  margin-top: 35px;
+  font-family: RalewayBold;
 }
