@@ -164,6 +164,10 @@ body {
   align-items: flex-end;
 }
 
+.flexAlignStart {
+  align-items: flex-start;
+}
+
 .flexSpaceBetween {
   display: flex !important;
   justify-content: space-between;

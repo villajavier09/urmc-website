@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Transition } from "react-transition-group";
+// import { CSSTransition } from "react-transition-group";
 
 import './main.css';
 import './App.css';
@@ -28,9 +28,7 @@ class App extends React.Component {
   }
 
   openSidebar() {
-    this.setState({ sidebarOpen: true }, () => {
-      console.log("OPENED");
-    });
+    this.setState({ sidebarOpen: true });
   }
 
   closeSidebar(event, isLink = false) {
@@ -56,50 +54,26 @@ class App extends React.Component {
 
 
   render() {
-    const defaultStyle = {
-      transition: `opacity 5000ms ease-in-out`,
-      opacity: 0
-    }
-
-    const transitionStyles = {
-      entering: {
-        opacity: 0
-      },
-      entered: {
-        opacity: 1
-      },
-      exiting: {
-        opacity: 1
-      },
-      exited: {
-        opacity: 0
-      }
-    }
 
     return (
-      <Router>
-        <div id="bgOverlay"></div>
-        {
-          this.state.sidebarOpen ?
-            <Transition
-              in={this.state.sidebarOpen}
-              timeout={5000}>
-              {status => (
-                <Sidebar closeSidebar={this.closeSidebar}
-                  style={{ ...defaultStyle, ...transitionStyles[status] }} />
-              )}
-            </Transition>
-            :
-            null
-        }
-        <Header openSidebar={this.openSidebar} {...this.props} />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/leadership" exact component={Leadership} />
-          <Route path="/events" exact component={Events} />
-          <Route path="/sponsors" exact component={Sponsors} />
-        </Switch>
-      </Router>
+      <div onClick={this.closeSidebar}>
+        <Router>
+          <div id="bgOverlay"></div>
+          {
+            this.state.sidebarOpen ?
+              <Sidebar closeSidebar={this.closeSidebar} />
+              :
+              null
+          }
+          <Header openSidebar={this.openSidebar} {...this.props} />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/leadership" exact component={Leadership} />
+            <Route path="/events" exact component={Events} />
+            <Route path="/sponsors" exact component={Sponsors} />
+          </Switch>
+        </Router>
+      </div>
     )
   }
 }
