@@ -10,3 +10,7 @@
   margin-top: 35px;
   font-family: RalewayBold;
 }
+
+.hamburgerIcon {
+  min-width: 50px;
+}

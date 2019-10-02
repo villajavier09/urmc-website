@@ -14,8 +14,11 @@ class BoardMember extends React.Component {
     var facebookURL = person.socials.get('F');
     var linkedInURL = person.socials.get('L');
 
+    let marginBottom = this.props.marginBottom;
+
     return (
-      <div className="eboardMember displayFlex marginBottom25px">
+      <div className="eboardMember displayFlex marginBottom25px"
+        style={{ marginBottom: marginBottom !== undefined ? marginBottom : '25px' }}>
         <div className="displayFlex flexColumn flexAlignCenter horizontalMargin15px">
           <img src={headshot} alt="Profile Picture" className="profilePic verticalMargin5px" />
           <div className="fontSize20px">{person.name}</div>
@@ -23,7 +26,7 @@ class BoardMember extends React.Component {
           <div className="displayFlex flexAlignCenter verticalMargin5px">
             {
               instaURL ?
-                <a href={instaURL}>
+                <a href={instaURL} target="_blank">
                   <img src={instagramIcon} className="socialMediaIcon horizontalMargin5px pointer" alt="Instagram Icon" />
                 </a>
                 :

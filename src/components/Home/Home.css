@@ -13,6 +13,10 @@
   border: 2px #E3AB10 solid;
 }
 
-.girlHeight {
-  height: 500px
+.girlHeight-lg {
+  height: 500px;
+}
+
+.girlHeight-sm {
+  height: 300px;
 }

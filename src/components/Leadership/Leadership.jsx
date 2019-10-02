@@ -11,7 +11,8 @@ class Leadership extends React.Component {
 
     this.boardMembersRef = React.createRef();
 
-    this.handleScrollOrResize = this.handleScrollOrResize.bind(this);
+    this.handleSizeChange = this.handleSizeChange.bind(this);
+    // this.handleResize = this.handleResize.bind(this);
 
     this.subteams = ['Presidents', 'Events', 'Outreach', 'Design', 'Professional',
       'Corporate', 'Operations', 'Secretary', 'Mentorship', 'Academic'];
@@ -30,11 +31,12 @@ class Leadership extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.handleScrollOrResize);
+    window.addEventListener('resize', this.handleResize);
+
+    // this.handleResize();
 
     this.setState({
-      divHeight: window.innerHeight - this.boardMembersRef.current.offsetTop,
-      heightArray: this.buildHeightArray()
+      divHeight: window.innerHeight - this.boardMembersRef.current.offsetTop
     });
   }
 
@@ -49,8 +51,9 @@ class Leadership extends React.Component {
     return arr;
   }
 
-  handleScrollOrResize() {
+  handleSizeChange() {
     let arr = this.buildHeightArray();
+
     let closestIndex = this.getClosestIndex(arr, this.boardMembersRef.current.scrollTop);
     let child = this.boardMembersRef.current.children[closestIndex];
     let position = child.children[1].children[0].innerHTML;
@@ -115,7 +118,7 @@ class Leadership extends React.Component {
           <LeadershipBar selectedSubteam={this.state.selectedSubteam} subteams={this.subteams} />
 
           <div ref={this.boardMembersRef} className="displayFlex flexColumn
-            horizontalMargin50px overflowScroll" onScroll={this.handleScrollOrResize}
+            horizontalMargin50px overflowScroll" onScroll={this.handleSizeChange}
             style={{ height: this.state.divHeight }}>
             <BoardMember person={Rami} />
             <BoardMember person={Rami} />
@@ -123,7 +126,7 @@ class Leadership extends React.Component {
             <BoardMember person={Rami2} />
             <BoardMember person={Rami2} />
             <BoardMember person={Rami} />
-            <BoardMember person={Rami} />
+            <BoardMember person={Rami} marginBottom={this.state.divMarginBottom} />
           </div>
         </div>
       </div>

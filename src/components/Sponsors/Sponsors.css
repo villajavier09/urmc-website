@@ -4,3 +4,11 @@
   margin: auto;
   background-color: rgba(224, 224, 224, 0.5);
 }
+
+.rotateText {
+  transform: rotate(-45deg)
+}
+
+.transparentText {
+  color: rgba(54, 56, 59, 0.07)
+}

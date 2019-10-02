@@ -23,17 +23,17 @@ class Home extends React.Component {
 
             <div className="fontFamilyNovecento fontSize14px displayFlex marginTop35px">
               <div className="homeButton listservButton fitWidth
-                horizontalMargin15px pointer">Join the Listserv</div>
+                marginRight15px pointer textAlignCenter">Join the Listserv</div>
 
               <Link to='/about' className="noDecoration colorCharcoal">
                 <div className="homeButton aboutButton fitWidth
-                  horizontalMargin15px pointer">Learn More</div>
+                  pointer textAlignCenter">Learn More</div>
               </Link>
             </div>
           </div>
         </div>
 
-        <img src={girl} alt="URMC Girl" className="girlHeight"/>
+        <img src={girl} alt="URMC Girl" className="girlHeight-lg"/>
 
       </div>
     )
