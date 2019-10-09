@@ -7,7 +7,8 @@ export default function withScreenSize(ScreenComponent) {
 
       this.state = {
         windowWidth: 0,
-        windowHeight: 0
+        windowHeight: 0,
+        breakpoint: 'desktop'
       };
 
       this.updateDimensions = this.updateDimensions.bind(this);
@@ -22,25 +23,29 @@ export default function withScreenSize(ScreenComponent) {
       window.removeEventListener("resize", this.updateDimensions);
     }
 
-    componentDidUpdate() {
-      console.log("YER")
-    }
-
     updateDimensions() {
       let windowWidth = typeof window !== "undefined" ? window.innerWidth : 0;
       let windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
 
+      let breakpoint;
+
+      if (windowWidth > 1025) breakpoint = 'desktop';
+      else if (windowWidth <= 1024 && windowWidth >= 576) breakpoint = 'tablet';
+      else if (windowWidth <= 575) breakpoint = 'mobile';
+
       this.setState({
         windowWidth: windowWidth,
-        windowHeight: windowHeight
+        windowHeight: windowHeight,
+        breakpoint: breakpoint
       });
     }
 
     render() {
       return (
-        <div>
-          <ScreenComponent windowWidth={this.state.windowWidth} windowHeight={this.state.windowHeight}></ScreenComponent>
-        </div>
+        <ScreenComponent
+          windowWidth={this.state.windowWidth}
+          windowHeight={this.state.windowHeight}
+          breakpoint={this.state.breakpoint} />
       )
     }
   }

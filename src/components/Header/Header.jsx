@@ -2,10 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 
+import { Desktop, Tablet, Mobile, TabletAndMobile }
+  from '../util/Breakpoints';
 import MailModal from './MailModal';
+import SocialMedia from './SocialMedia';
+import HeaderLink from './HeaderLink';
+import { ReactComponent as HamburgerIcon } from '../../assets/hamburger.svg';
+
 import '../../main.css';
 import './Header.css';
-import { ReactComponent as HamburgerIcon } from '../../assets/hamburger.svg';
 
 const fingerprint = require('../../assets/fingerprint.png');
 const instagramIcon = require('../../assets/instagram.png');
@@ -33,63 +38,39 @@ class Header extends React.Component {
 
   render() {
 
-    let windowWidth = this.props.windowWidth;
-
-    let linkMarginStyle = {
-      marginRight: '25px',
-      marginLeft: '25px'
-    }
-
-    if (windowWidth < 1000) {
-      linkMarginStyle = {
-        marginRight: '10px',
-        marginLeft: '10px'
-      }
-    }
-
     return (
       <div className="flexSpaceBetween flexAlignCenter width90P marginAuto marginTop15px">
         <Link to='/'>
           <img src={fingerprint} className="width50px" alt="URMC Fingerprint Logo" />
         </Link>
 
-        <MediaQuery minWidth={800}>
-          <div className="fontFamilyNovecento displayFlex fontSize14px colorCharcoal">
-            <Link to='/about' className="noDecoration colorCharcoal">
-              <div className="pointer"
-                style={linkMarginStyle}>About Us</div>
-            </Link>
+        <Desktop>
+          <div className="fontFamilyNovecento displayFlex flexAlignCenter fontSize14px">
+            <HeaderLink to='/about' title='About Us' />
+            <HeaderLink to='/leadership' title='Leadership' />
+            <HeaderLink to='/events' title='Events' />
+            <HeaderLink to='/sponsors' title='Sponsors' />
 
-            <Link to='/leadership' className="noDecoration colorCharcoal">
-              <div className="pointer" style={linkMarginStyle}>Leadership</div>
-            </Link>
-
-            <Link to='/events' className="noDecoration colorCharcoal">
-              <div className="pointer" style={linkMarginStyle}>Events</div>
-            </Link>
-
-            <Link to='/sponsors' className="noDecoration colorCharcoal">
-              <div className="pointer" style={linkMarginStyle}>Sponsors</div>
-            </Link>
           </div>
 
-          <div className="displayFlex flexColumn flexAlignEnd">
-            <div>
-              <a href="https://www.instagram.com/urmc_cornell" target="_blank">
-                <img src={instagramIcon} className="socialMediaIcon horizontalMargin5px pointer" alt="Instagram Logo" />
-              </a>
+          <div className="displayFlex flexAlignCenter">
+            <SocialMedia
+              icon={instagramIcon}
+              href="https://www.instagram.com/urmc_cornell"
+              alt="Instagram Logo" />
 
-              <a href="https://www.facebook.com/pg/cornellurmc/about" target="_blank">
-                <img src={facebookIcon} className="socialMediaIcon horizontalMargin5px pointer" alt="Facebook Logo" />
-              </a>
+            <SocialMedia
+              icon={facebookIcon}
+              href="https://www.facebook.com/pg/cornellurmc/about"
+              alt="Facebook Logo" />
 
-              <a href="https://www.linkedin.com/company/19012674" target="_blank">
-                <img src={linkedinIcon} className="socialMediaIcon horizontalMargin5px pointer" alt="LinkedIn Logo" />
-              </a>
+            <SocialMedia
+              icon={linkedinIcon}
+              href="https://www.linkedin.com/company/19012674"
+              alt="LinkedIn Logo" />
 
-              <img src={mailIcon} className="socialMediaIcon horizontalMargin5px pointer" alt="Mail Logo"
-                onClick={this.handleMailClick} />
-            </div>
+            <img src={mailIcon} className="socialMediaIcon horizontalMargin5px pointer" alt="Mail Logo"
+              onClick={this.handleMailClick} />
 
             {this.state.clicked ?
               <MailModal />
@@ -97,11 +78,11 @@ class Header extends React.Component {
               null
             }
           </div>
-        </MediaQuery>
+        </Desktop>
 
-        <MediaQuery maxWidth={799}>
+        <TabletAndMobile>
           <HamburgerIcon onClick={this.props.openSidebar} className="hamburgerIcon pointer" />
-        </MediaQuery>
+        </TabletAndMobile>
       </div >
     )
   };
