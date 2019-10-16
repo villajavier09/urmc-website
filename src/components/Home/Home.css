@@ -24,3 +24,26 @@
 .girlHeight-sm {
   height: 300px;
 }
+
+.listservModal {
+  border-radius: 5px;
+  border: 1px #9f9f9f solid;
+  width: 35%;
+  min-width: 400px;
+  min-height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 101;
+}
+
+.submitButtonCurve {
+  border-radius: 0 0 5px 5px;
+}
+
+.xIcon {
+  width: 25px !important;
+  height: 25px !important;
+}

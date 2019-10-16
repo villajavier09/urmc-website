@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 
-import { DesktopAndTablet, Mobile } from '../util/Breakpoints';
+import { DesktopAndTablet, Mobile } from '../Util/Breakpoints';
+import ListservModal from './ListservModal';
 
 import '../../main.css';
 import './Home.css';
@@ -12,24 +13,68 @@ import withScreenSize from '../HOC/ScreenSize';
 const girl = require('../../assets/girl.png');
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      listservModalOpen: false
+    }
+
+    this.openListservModal = this.openListservModal.bind(this);
+    this.closeListservModal = this.closeListservModal.bind(this);
+  }
+
+  openListservModal() {
+    console.log("OPEN")
+    this.setState({ listservModalOpen: true });
+  }
+
+  closeListservModal(event = null) {
+    if (event && this.outsideListservModal(event)) return;
+
+    this.setState({ listservModalOpen: false });
+  }
+
+  outsideListservModal(event) {
+
+    let listservModal = document.getElementById('listservModal');
+    if (listservModal === null) return false;
+
+    // Retrieve the left-most pixel of the sidebar.
+    let leftPixel = listservModal.offsetLeft;
+    let rightPixel = leftPixel + listservModal.offsetWidth;
+    let topPixel = listservModal.offsetTop;
+    let bottomPixel = topPixel + listservModal.offsetHeight;
+
+    console.log(leftPixel)
+    console.log(rightPixel)
+    console.log(topPixel)
+    console.log(bottomPixel)
+
+    if (event.clientX < leftPixel || event.clientX > rightPixel) return true;
+    if (event.clientY < topPixel || event.clientY > bottomPixel) return true;
+
+    return false;
+  }
+
   render() {
 
     let girlClasses = {
-      desktop: 'girlHeight-lg',
-      tablet: 'girlHeight-med',
-      mobile: 'girlHeight-sm marginTop15px'
+      D: 'girlHeight-lg',
+      T: 'girlHeight-med',
+      M: 'girlHeight-sm marginTop15px'
     }[this.props.breakpoint]
 
     let titleClasses = {
-      desktop: 'fontSize30px fontFamilyRalewayB colorCharcoal',
-      tablet: 'fontSize30px fontFamilyRalewayB colorCharcoal',
-      mobile: 'fontSize20px fontFamilyRalewayB colorCharcoal'
+      D: 'fontSize30px fontFamilyRalewayB colorCharcoal',
+      T: 'fontSize30px fontFamilyRalewayB colorCharcoal',
+      M: 'fontSize20px fontFamilyRalewayB colorCharcoal'
     }[this.props.breakpoint]
 
     let purposeClasses = {
-      desktop: '',
-      tablet: '',
-      mobile: 'fontSize12px'
+      D: '',
+      T: '',
+      M: 'fontSize12px'
     }[this.props.breakpoint]
 
     return (
@@ -48,7 +93,10 @@ class Home extends React.Component {
 
                 <div className="fontFamilyNovecento fontSize14px displayFlex marginTop35px">
                   <div className="homeButton listservButton fitWidth
-                    marginRight15px pointer textAlignCenter">Join the Listserv</div>
+                    marginRight15px pointer textAlignCenter"
+                    onClick={() => this.openListservModal()}>
+                      Join the Listserv
+                  </div>
 
                   <Link to='/about' className="noDecoration colorCharcoal">
                     <div className="homeButton aboutButton fitWidth
@@ -79,7 +127,9 @@ class Home extends React.Component {
 
             <div className="fontFamilyNovecento fontSize12px displayFlex marginTop35px">
                 <div className="homeButton listservButton fitWidth
-                  marginRight15px pointer textAlignCenter">Join the Listserv</div>
+                  marginRight15px pointer textAlignCenter"
+                  onClick={() => this.openListservModal()}
+                  >Join the Listserv</div>
 
                 <Link to='/about' className="noDecoration colorCharcoal">
                   <div className="homeButton aboutButton fitWidth
@@ -88,8 +138,19 @@ class Home extends React.Component {
             </div>
           </div>
         </Mobile>
-      </div>
 
+        {
+          this.state.listservModalOpen ?
+            <div>
+              <div className="overlayBlur"></div>
+              <ListservModal closeListservModal={this.closeListservModal} />
+            </div>
+          :
+            null
+        }
+
+        
+      </div>
       
     )
   };

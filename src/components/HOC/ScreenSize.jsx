@@ -8,7 +8,7 @@ export default function withScreenSize(ScreenComponent) {
       this.state = {
         windowWidth: 0,
         windowHeight: 0,
-        breakpoint: 'desktop'
+        breakpoint: 'D'
       };
 
       this.updateDimensions = this.updateDimensions.bind(this);
@@ -29,9 +29,9 @@ export default function withScreenSize(ScreenComponent) {
 
       let breakpoint;
 
-      if (windowWidth > 1025) breakpoint = 'desktop';
-      else if (windowWidth <= 1024 && windowWidth >= 576) breakpoint = 'tablet';
-      else if (windowWidth <= 575) breakpoint = 'mobile';
+      if (windowWidth > 1025) breakpoint = 'D';
+      else if (windowWidth <= 1024 && windowWidth >= 576) breakpoint = 'T';
+      else if (windowWidth <= 575) breakpoint = 'M';
 
       this.setState({
         windowWidth: windowWidth,
@@ -42,7 +42,7 @@ export default function withScreenSize(ScreenComponent) {
 
     render() {
       return (
-        <ScreenComponent
+        <ScreenComponent {...this.props}
           windowWidth={this.state.windowWidth}
           windowHeight={this.state.windowHeight}
           breakpoint={this.state.breakpoint} />

@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MediaQuery from 'react-responsive';
 
 import { Desktop, Tablet, Mobile, TabletAndMobile }
-  from '../util/Breakpoints';
+  from '../Util/Breakpoints';
 import MailModal from './MailModal';
 import SocialMedia from './SocialMedia';
 import HeaderLink from './HeaderLink';
