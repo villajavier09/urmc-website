@@ -14,6 +14,8 @@ class Leadership extends React.Component {
     this.boardMembersRef = React.createRef();
 
     this.getMemberInFocus = this.getMemberInFocus.bind(this);
+    this.buildHeightArray = this.buildHeightArray.bind(this);
+    this.goToMember = this.goToMember.bind(this);
 
     this.subteams = ['Presidents', 'Events', 'Outreach', 'Design', 'Professional',
       'Corporate', 'Operations', 'Secretary', 'Mentorship', 'Academic'];
@@ -24,98 +26,111 @@ class Leadership extends React.Component {
     ['Operations Chair', 'Operations'], ['Secretary', 'Secretary'], ['Co-Mentorship Chair', 'Mentorship'],
     ['CS Academic Chair', 'Academic'], ['IS Academic Chair', 'Academic']])
 
-
     this.state = {
       divHeight: 0,
       selectedSubteam: 'Presidents',
-      heightArray: []
+      heightArray: [],
+      lastChildMarginBottom: 0
     }
   }
 
   componentDidMount() {
+    window.addEventListener("resize", this.buildHeightArray);
+    setTimeout(() => { this.buildHeightArray() }, 0);
+  }
 
-    console.log(this.boardMembersRef.current.offsetTop)
-    console.log(this.boardMembersRef)
-
-    let heightArray = this.buildHeightArray();
-    console.log(heightArray)
-
-    this.setState({
-      divHeight: window.innerHeight - this.boardMembersRef.current.offsetTop,
-      heightArray: heightArray
-    });
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.buildHeightArray);
   }
 
   buildHeightArray() {
-    const OFFSET_TOP = this.boardMembersRef.current.offsetTop;
     const MARGIN_BOTTOM = 25;
 
+    let divHeight = window.innerHeight - this.boardMembersRef.current.offsetTop;
+
     let arr = [];
-    let i = 0
+    let arrLength = this.boardMembersRef.current.children.length;
+
+    let i = 0;
 
     for (let child of this.boardMembersRef.current.children) {
-      let offsetTop = i > 0 ? arr[i - 1] + child.offsetHeight + MARGIN_BOTTOM :
-        child.offsetHeight + MARGIN_BOTTOM;
+      let offsetTop;
 
-      console.log(child.offsetHeight)
+      if (i === 0) offsetTop = child.offsetHeight + MARGIN_BOTTOM;
 
-      arr.push(offsetTop);
+      else if (i === arrLength - 1) {
+        offsetTop = child.offsetHeight + this.state.lastChildMarginBottom;
+
+        if (child.offsetHeight < this.state.divHeight) {
+          let marginBottom = this.state.divHeight - child.offsetHeight;
+          offsetTop += marginBottom;
+
+          this.setState({ lastChildMarginBottom: marginBottom }, () => {
+            console.log(this.state)
+          });
+        } else {
+          offsetTop += MARGIN_BOTTOM;
+        }
+      }
+
+      else offsetTop = arr[i - 1][0] + child.offsetHeight + MARGIN_BOTTOM;
+
+      let member = this.findReactElement(child).props.person;
+      arr.push([offsetTop, member]);
 
       i++;
     }
 
-    return arr;
+    this.setState({
+      heightArray: arr,
+      divHeight: divHeight
+    });
   }
 
   getMemberInFocus() {
-    let scrollTop = this.boardMembersRef.current.scrollTop;
+    let scrollPosition = this.boardMembersRef.current.scrollTop;
     let heightArray = this.state.heightArray;
 
     let i = 0;
 
-    let arrLength = heightArray.length;
+    while (i < heightArray.length) {
+      if (scrollPosition < heightArray[i][0]) break;
 
-    while (i < arrLength) {
-      if (scrollTop <= heightArray[i]) break;
       i++;
     }
 
-    console.log(scrollTop);
-    console.log(heightArray)
+    let member = heightArray[i][1];
 
-    console.log("YER")
-    console.log(i)
-    // console.log(this.boardMembersRef.current.children[i])
-
-
-    // [500, 1000, 1500, 2000], 300
-    // return arr_length - 1
+    this.setState({ selectedSubteam: this.subteamMap.get(member.position) });
   }
 
-  // handleSizeChange() {
-  //   let arr = this.buildHeightArray();
+  findReactElement(node) {
+    for (var key in node) {
+      if (key.startsWith("__reactInternalInstance$")) {
+        return node[key]._debugOwner.stateNode;
+      }
+    }
 
-  //   let closestIndex = this.getClosestIndex(arr, this.boardMembersRef.current.scrollTop);
-  //   let child = this.boardMembersRef.current.children[closestIndex];
-  //   let position = child.children[1].children[0].innerHTML;
+    return null;
+  }
 
-  //   this.setState({
-  //     selectedSubteam: this.subteamMap.get(position)
-  //   });
-  // }
+  goToMember(subteam) {
+    let heightArray = this.state.heightArray;
 
-  // getClosestIndex(arr, num) {
-  //   let i = 0;
+    let i = 0;
 
-  //   let arr_length = arr.length;
+    while (i < heightArray.length) {
+      if (this.subteamMap.get(heightArray[i][1].position) === subteam) {
+        if (i === 0) this.boardMembersRef.current.scrollTop = 0;
+        else this.boardMembersRef.current.scrollTop = heightArray[i - 1][0];
 
-  //   while (i < arr_length - 1) {
-  //     if (num >= arr[i] && num <= arr[i + 1]) return i;
-  //     i++;
-  //   }
+        this.setState({ selectedSubteam: subteam });
+        break;
+      }
 
-  //   return arr_length - 1
-  // }
+      i++;
+    }
+  }
 
   render() {
 
@@ -139,6 +154,21 @@ class Leadership extends React.Component {
       major: 'Computer Science',
       year: '20',
       socials: new Map([['I', null], ['F', 'https://www.linkedin.com/in/rami-abdou/'], ['L', 'https://www.linkedin.com/in/rami-abdou/']]),
+      position: 'Co-Events Chair',
+      bio: `My major is Computer Science, and I am currently serving as one of URMC’s Co-Presidents. I
+      want to merge my passion for coding and product development with my love for the URM
+      community, especially at Cornell. I hope that I can take what I’ve learned in my CIS courses
+      and use it to inspire others to create community impact. If you at all related to my interests
+      and goals, please reach out to me because I have a dope side project in the works right now!`,
+      askMe: ['Machine Learning', 'Basketball', 'My Story', 'Being Egyptian',
+        'Entrepreneurship', "Being Jehron's BFF"]
+    }
+
+    var Rami3 = {
+      name: 'Rami Abdou',
+      major: 'Computer Science',
+      year: '20',
+      socials: new Map([['I', null], ['F', 'https://www.linkedin.com/in/rami-abdou/'], ['L', 'https://www.linkedin.com/in/rami-abdou/']]),
       position: 'Co-Outreach Chair',
       bio: `My major is Computer Science, and I am currently serving as one of URMC’s Co-Presidents. I
       want to merge my passion for coding and product development with my love for the URM
@@ -149,7 +179,38 @@ class Leadership extends React.Component {
         'Entrepreneurship', "Being Jehron's BFF"]
     }
 
+    var Rami4 = {
+      name: 'Rami Abdou',
+      major: 'Computer Science',
+      year: '20',
+      socials: new Map([['I', null], ['F', 'https://www.linkedin.com/in/rami-abdou/'], ['L', 'https://www.linkedin.com/in/rami-abdou/']]),
+      position: 'Co-Design Chair',
+      bio: `My major is Computer Science, and I am currently serving as one of URMC’s Co-Presidents. I
+      want to merge my passion for coding and product development with my love for the URM
+      community, especially at Cornell. I hope that I can take what I’ve learned in my CIS courses
+      and use it to inspire others to create community impact. If you at all related to my interests
+      and goals, please reach out to me because I have a dope side project in the works right now!`,
+      askMe: ['Machine Learning', 'Basketball', 'My Story', 'Being Egyptian',
+        'Entrepreneurship', "Being Jehron's BFF"]
+    }
+
+    var Rami5 = {
+      name: 'Rami Abdou',
+      major: 'Computer Science',
+      year: '20',
+      socials: new Map([['I', null], ['F', 'https://www.linkedin.com/in/rami-abdou/'], ['L', 'https://www.linkedin.com/in/rami-abdou/']]),
+      position: 'Professional Development Chair',
+      bio: `My major is Computer Science, and I am currently serving as one of URMC’s Co-Presidents. I
+      want to merge my passion for coding and product development with my love for the URM
+      community, especially at Cornell. I hope that I can take what I’ve learned in my CIS courses
+      and use it to inspire others to create community impact. If you at all related to my interests
+      and goals, please reach out to me because I have a dope side project in the works right now!`,
+      askMe: ['Machine Learning', 'Basketball', 'My Story', 'Being Egyptian',
+        'Entrepreneurship', "Being Jehron's BFF"]
+    }
+
     let boardMembersClasses = this.props.breakpoint !== 'M' ? 'horizontalMargin50px overflowScroll' : '';
+    let boardMembersPosition = this.props.breakpoint !== 'D' ? 'positionAbsolute overflowScroll' : '';
     let bodyClasses = this.props.breakpoint === 'D' ? 'maxWidth75P' : '';
 
     return (
@@ -161,21 +222,21 @@ class Leadership extends React.Component {
 
           {
             this.props.breakpoint === 'D' ?
-              <LeadershipBar selectedSubteam={this.state.selectedSubteam} subteams={this.subteams} />
+              <LeadershipBar goToMember={this.goToMember} selectedSubteam={this.state.selectedSubteam} subteams={this.subteams} />
               :
               null
           }
 
           <div ref={this.boardMembersRef} className={`displayFlex flexColumn
-            ${boardMembersClasses}`} onScroll={this.getMemberInFocus}
+            ${boardMembersClasses} ${boardMembersPosition}`} onScroll={this.getMemberInFocus}
             style={{ height: this.state.divHeight }}>
             <BoardMember person={Rami} />
+            <BoardMember person={Rami2} />
+            <BoardMember person={Rami3} />
+            <BoardMember person={Rami4} />
+            <BoardMember person={Rami5} />
             <BoardMember person={Rami} />
-            <BoardMember person={Rami2} />
-            <BoardMember person={Rami2} />
-            <BoardMember person={Rami2} />
             <BoardMember person={Rami} />
-            <BoardMember person={Rami} marginBottom={this.state.divMarginBottom} />
           </div>
         </div>
       </div>

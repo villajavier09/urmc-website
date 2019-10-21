@@ -5,7 +5,6 @@ import { Desktop, Tablet, Mobile, TabletAndMobile }
   from '../Util/Breakpoints';
 import MailModal from './MailModal';
 import SocialMedia from './SocialMedia';
-import HeaderLink from './HeaderLink';
 import { ReactComponent as HamburgerIcon } from '../../assets/hamburger.svg';
 
 import '../../main.css';
@@ -23,10 +22,24 @@ class Header extends React.Component {
     super(props);
 
     this.handleMailClick = this.handleMailClick.bind(this);
+    this.updateCurrentPage = this.updateCurrentPage.bind(this);
+
+    this.pathnameMap = {
+      '/': 'Home',
+      '/about': 'About Us',
+      '/leadership': 'Leadership',
+      '/events': 'Events',
+      '/sponsors': 'Sponsors'
+    }
 
     this.state = {
-      clicked: false
+      clicked: false,
+      currentPage: ''
     }
+  }
+
+  componentWillMount() {
+    this.setState({ currentPage: this.pathnameMap[window.location.pathname] })
   }
 
   handleMailClick() {
@@ -35,20 +48,33 @@ class Header extends React.Component {
     });
   }
 
+  updateCurrentPage(page) {
+    this.setState({ currentPage: page });
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.currentPage)
+  }
+
   render() {
 
     return (
       <div className="flexSpaceBetween flexAlignCenter width90P marginAuto marginTop15px">
         <Link to='/'>
-          <img src={fingerprint} className="width50px" alt="URMC Fingerprint Logo" />
+          <img src={fingerprint} className="width50px" alt="URMC Fingerprint Logo"
+            onClick={() => this.updateCurrentPage('Home')} />
         </Link>
 
         <Desktop>
-          <div className="fontFamilyNovecento displayFlex flexAlignCenter fontSize14px">
-            <HeaderLink to='/about' title='About Us' />
-            <HeaderLink to='/leadership' title='Leadership' />
-            <HeaderLink to='/events' title='Events' />
-            <HeaderLink to='/sponsors' title='Sponsors' />
+          <div className="fontFamilyNovecento displayFlex fontSize14px">
+            <HeaderLink to='/about' title='About Us' updateCurrentPage={this.updateCurrentPage}
+              currentPage={this.state.currentPage} />
+            <HeaderLink to='/leadership' title='Leadership' updateCurrentPage={this.updateCurrentPage}
+              currentPage={this.state.currentPage} />
+            <HeaderLink to='/events' title='Events' updateCurrentPage={this.updateCurrentPage}
+              currentPage={this.state.currentPage} />
+            <HeaderLink to='/sponsors' title='Sponsors' updateCurrentPage={this.updateCurrentPage}
+              currentPage={this.state.currentPage} />
 
           </div>
 
@@ -70,12 +96,12 @@ class Header extends React.Component {
 
             <img src={mailIcon} className="socialMediaIcon horizontalMargin5px pointer" alt="Mail Logo"
               onClick={this.handleMailClick} />
-
+            {/* 
             {this.state.clicked ?
               <MailModal />
               :
               null
-            }
+            } */}
           </div>
         </Desktop>
 
@@ -86,5 +112,16 @@ class Header extends React.Component {
     )
   };
 };
+
+const HeaderLink = (props) => {
+  let underlineClass = props.title === props.currentPage ? 'headerUnderline' : '';
+
+  return (
+    <Link to={props.to} className="noDecoration colorCharcoal"
+      onClick={() => props.updateCurrentPage(props.title)}>
+      <div className={`${underlineClass} pointer horizontalMargin25px`}>{props.title}</div>
+    </Link>
+  )
+}
 
 export default Header;

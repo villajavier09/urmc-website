@@ -9,6 +9,21 @@ const instagramIcon = require('../../assets/instagram.png');
 const facebookIcon = require('../../assets/facebook.png');
 const linkedInIcon = require('../../assets/linkedin.png');
 
+const SocialMediaIcon = (props) => {
+  return (
+    <div>
+      {
+        props.URL ?
+          <a href={props.URL} target="_blank" rel="noopener noreferrer">
+            <img src={props.icon} className="socialMediaIcon horizontalMargin5px pointer" alt="Social Media Icon" />
+          </a>
+          :
+          null
+      }
+    </div>
+  )
+}
+
 class BoardMember extends React.Component {
   render() {
     var person = this.props.person;
@@ -30,32 +45,9 @@ class BoardMember extends React.Component {
           <div className={`fontSize20px textAlignCenter ${nameClasses}`}>{person.name}</div>
           <div className={`fontSize14px verticalMargin5px textAlignCenter ${majorClasses}`}>{person.major} '{person.year}</div>
           <div className="displayFlex flexAlignCenter verticalMargin5px">
-            {
-              instaURL ?
-                <a href={instaURL} target="_blank">
-                  <img src={instagramIcon} className="socialMediaIcon horizontalMargin5px pointer" alt="Instagram Icon" />
-                </a>
-                :
-                null
-            }
-
-            {
-              facebookURL ?
-                <a href={facebookURL} target="_blank">
-                  <img src={facebookIcon} className="socialMediaIcon horizontalMargin5px pointer" alt="Facebook Icon" />
-                </a>
-                :
-                null
-            }
-
-            {
-              linkedInURL ?
-                <a href={linkedInURL} target="_blank">
-                  <img src={linkedInIcon} className="socialMediaIcon horizontalMargin5px pointer" alt="LinkedIn Icon" />
-                </a>
-                :
-                null
-            }
+            <SocialMediaIcon URL={instaURL} icon={instagramIcon} />
+            <SocialMediaIcon URL={facebookURL} icon={facebookIcon} />
+            <SocialMediaIcon URL={linkedInURL} icon={linkedInIcon} />
           </div>
         </div>
 

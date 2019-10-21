@@ -20,7 +20,7 @@ export default function withScreenSize(ScreenComponent) {
     }
 
     componentWillUnmount() {
-      window.removeEventListener("resize", this.updateDimensions);
+      window.removeEventListener("resize", this.updateDimensions, false);
     }
 
     updateDimensions() {

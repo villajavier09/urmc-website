@@ -137,10 +137,18 @@ body {
   text-decoration: none;
 }
 
+.textUnderline {
+  text-decoration: underline;
+}
+
 /* DISPLAYS AND POSITIONS */
 
 .displayInline {
   display: inline;
+}
+
+.displayBlock {
+  display: block;
 }
 
 .displayNone {
@@ -231,6 +239,10 @@ body {
 
 .noMarginTop {
   margin-top: 0;
+}
+
+.marginTop-15px {
+  margin-top: -15px;
 }
 
 .marginAuto {
@@ -360,6 +372,10 @@ body {
 .horizontalMargin50px {
   margin-right: 50px;
   margin-left: 50px;
+}
+
+.margin15px {
+  margin: 15px;
 }
 
 .noPaddingRight {
