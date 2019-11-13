@@ -26,7 +26,7 @@ class LeadershipBar extends React.Component {
 
               <div className={(this.props.selectedSubteam === subteam
                 ? 'colorCharcoal' : 'colorDisabled') + " textUppercase  fontSize14px horizontalMargin10px pointer"}
-                onClick={() => this.props.goToMember(subteam)}
+                onClick={() => this.props.goToSubteam(subteam)}
               >{subteam}</div>
             </div>
           )

@@ -20,6 +20,10 @@
   height: 28px;
 }
 
+.mailIcon {
+  height: 28px;
+}
+
 .headerUnderline {
   border-bottom: 1px #36383B solid;
   padding-bottom: 3px;

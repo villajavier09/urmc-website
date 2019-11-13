@@ -17,7 +17,8 @@ class SponsorLevel extends React.Component {
     
     this.state = {
       logoDivHeight: 0,
-      backgroundRows: []
+      backgroundRows: [],
+      bgReady: false
     }
   }
 
@@ -25,6 +26,7 @@ class SponsorLevel extends React.Component {
     window.addEventListener("resize", this.updateBackgroundRows);
     
     setTimeout(() => {
+      this.setState( { bgReady: true } );
       this.updateBackgroundRows();
     }, this.LOAD_TIMEOUT);
   }
@@ -67,11 +69,11 @@ class SponsorLevel extends React.Component {
       i++;
     }
 
-    console.log(this.props.breakpoint)
+    let hiddenClass = !this.state.bgReady ? 'hidden' : null;
 
     return (
-      <div className="width75P maxWidth75P marginAuto displayFlex flexColumn
-        flexAlignCenter overflowHidden">
+      <div className={`width75P maxWidth75P marginAuto displayFlex flexColumn
+        flexAlignCenter overflowHidden ${hiddenClass}`}>
         <div className="levelSeparator"></div>
         <div className="displayFlex flexColumn flexAlignCenter">{backgroundRows}</div>
         <div ref={this.imageDiv} className="flexCenter flexAlignCenter flexWrap positionAbsolute

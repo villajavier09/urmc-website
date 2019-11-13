@@ -4,7 +4,7 @@ import './Sponsors.css';
 
 class SponsorBackground extends React.Component {
   render() {
-    const BACKGROUND_WORDS = 25;
+    const BACKGROUND_WORDS = 50;
 
     let words = [];
     let i = 0;

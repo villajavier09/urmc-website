@@ -1,10 +1,12 @@
+// React Library
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import { CSSTransition } from "react-transition-group";
 
+// CSS Files
 import './main.css';
 import './App.css';
 
+// Components
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Leadership from './components/Leadership/Leadership';
@@ -19,9 +21,7 @@ class App extends React.Component {
 
     this.sidebarRef = React.createRef();
 
-    this.state = {
-      sidebarOpen: false
-    }
+    this.state = { sidebarOpen: false }
 
     this.openSidebar = this.openSidebar.bind(this);
     this.closeSidebar = this.closeSidebar.bind(this);
@@ -31,22 +31,37 @@ class App extends React.Component {
     this.setState({ sidebarOpen: true });
   }
 
-  closeSidebar(event, isLink = false) {
-    // If click is within the sidebar but not on a link, don't close the sidebar.
-    if (!this.checkIfOutsideSidebar(event, isLink)) return;
+  /**
+   * Closes the sidebar.
+   * 
+   * @param event - The JS event associated with a click.
+   * @param isLinkOrX - (Optional) True if the click event's target is either
+   * a link to another page or the X Icon.
+   */
+  closeSidebar(event, isLinkOrX = false) {
+    if (!this.isOutsideSidebar(event, isLinkOrX)) return; // Don't close sidebar.
 
     this.setState({ sidebarOpen: false });
   }
 
-  checkIfOutsideSidebar(event, isLink) {
-    if (isLink) return true;
+  /**
+   * Returns whether or not the click event's target is outside the sidebar's
+   * dimensions or is a link or X Icon.
+   * 
+   * @returns {Boolean}
+   * 
+   * @param event - The JS event associated with a click.
+   * @param isLinkOrX - True if the click event's target is either a link to
+   * another page or the X Icon.
+   */
+  isOutsideSidebar(event, isLinkOrX) {
+    if (isLinkOrX) return true;
 
+    // Sanity check to ensure that sidebar is actually present.
     let sidebarElement = document.getElementById('sidebar');
     if (sidebarElement === null) return false;
 
-    // Retrieve the left-most pixel of the sidebar.
-    let leftPixel = sidebarElement.offsetLeft;
-
+    let leftPixel = sidebarElement.offsetLeft; // Left-most pixel of sidebar.
     if (event.clientX < leftPixel) return true;
 
     return false;
@@ -55,16 +70,19 @@ class App extends React.Component {
 
   render() {
 
+    let bgClass = this.state.sidebarOpen ? 'bgNormalOverlay' : 'bgNormalOverlay';
+
     return (
       <div onClick={this.closeSidebar}>
         <Router>
-          <div id="bgOverlay"></div>
+          <div id={bgClass}></div>
           {
             this.state.sidebarOpen ?
               <Sidebar closeSidebar={this.closeSidebar} />
               :
               null
           }
+
           <Header openSidebar={this.openSidebar} {...this.props} />
           <Switch>
             <Route path="/" exact component={Home} />

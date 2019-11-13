@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MediaQuery from 'react-responsive';
 
 import { DesktopAndTablet, Mobile } from '../Util/Breakpoints';
 import ListservModal from './ListservModal';
@@ -45,11 +44,6 @@ class Home extends React.Component {
     let rightPixel = leftPixel + listservModal.offsetWidth;
     let topPixel = listservModal.offsetTop;
     let bottomPixel = topPixel + listservModal.offsetHeight;
-
-    console.log(leftPixel)
-    console.log(rightPixel)
-    console.log(topPixel)
-    console.log(bottomPixel)
 
     if (event.clientX < leftPixel || event.clientX > rightPixel) return true;
     if (event.clientY < topPixel || event.clientY > bottomPixel) return true;
@@ -146,7 +140,7 @@ class Home extends React.Component {
               <ListservModal closeListservModal={this.closeListservModal} />
             </div>
           :
-            null
+          null
         }
 
         

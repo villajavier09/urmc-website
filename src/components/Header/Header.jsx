@@ -16,6 +16,17 @@ const facebookIcon = require('../../assets/facebook.png');
 const linkedinIcon = require('../../assets/linkedin.png');
 const mailIcon = require('../../assets/mail.png');
 
+const HeaderLink = (props) => {
+  let underlineClass = props.title === props.currentPage ? 'headerUnderline' : '';
+
+  return (
+    <Link to={props.to} className="noDecoration colorCharcoal"
+      onClick={() => props.updateCurrentPage(props.title)}>
+      <div className={`${underlineClass} pointer horizontalMargin25px`}>{props.title}</div>
+    </Link>
+  )
+}
+
 class Header extends React.Component {
 
   constructor(props) {
@@ -96,12 +107,6 @@ class Header extends React.Component {
 
             <img src={mailIcon} className="socialMediaIcon horizontalMargin5px pointer" alt="Mail Logo"
               onClick={this.handleMailClick} />
-            {/* 
-            {this.state.clicked ?
-              <MailModal />
-              :
-              null
-            } */}
           </div>
         </Desktop>
 
@@ -112,16 +117,5 @@ class Header extends React.Component {
     )
   };
 };
-
-const HeaderLink = (props) => {
-  let underlineClass = props.title === props.currentPage ? 'headerUnderline' : '';
-
-  return (
-    <Link to={props.to} className="noDecoration colorCharcoal"
-      onClick={() => props.updateCurrentPage(props.title)}>
-      <div className={`${underlineClass} pointer horizontalMargin25px`}>{props.title}</div>
-    </Link>
-  )
-}
 
 export default Header;

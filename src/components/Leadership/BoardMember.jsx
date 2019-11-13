@@ -27,9 +27,9 @@ const SocialMediaIcon = (props) => {
 class BoardMember extends React.Component {
   render() {
     var person = this.props.person;
-    var instaURL = person.socials.get('I');
-    var facebookURL = person.socials.get('F');
-    var linkedInURL = person.socials.get('L');
+    var instaURL = person.socials['I'];
+    var facebookURL = person.socials['F'];
+    var linkedInURL = person.socials['L'];
 
     let marginBottom = this.props.marginBottom;
 
@@ -37,7 +37,8 @@ class BoardMember extends React.Component {
     let majorClasses = this.props.breakpoint === 'M' ? 'fontSize12px' : 'fontSize14px';
 
     return (
-      <div className="displayFlex minWidth400px"
+      <div className={`displayFlex minWidth400px padding15px borderRadius10px
+        ${this.props.highlightBg}`}
         style={{ marginBottom: marginBottom !== undefined ? marginBottom : '25px' }}>
 
         <div className="displayFlex flexColumn flexAlignCenter horizontalMargin15px width25P">
