@@ -50,4 +50,33 @@
   height: 100%;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.705);
+  transition-duration: 250ms;
 }
+
+.sidebar-appear {
+  right: -50%;
+}
+
+.sidebar-appear.sidebar-appear-active {
+  right: 0;
+  transition: right .5s ease-in;
+}
+
+/* .sidebar-enter-active {
+  right: -50%;
+  transition: all 500ms linear;
+}
+
+.sidebar-appear-done {
+  right: 0;
+}
+
+.sidebar-exit {
+  opacity: 1;
+  right: 0;
+}
+
+.sidebar-exit.sidebar-exit-active {
+  opacity: 0;
+  transition: all 500ms linear;
+} */

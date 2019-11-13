@@ -1,6 +1,7 @@
 // React Library
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group'
 
 // CSS Files
 import './main.css';
@@ -13,7 +14,6 @@ import Leadership from './components/Leadership/Leadership';
 import Sponsors from './components/Sponsors/Sponsors';
 import Events from './components/Events/Events';
 import Sidebar from './components/Sidebar/Sidebar';
-import ScreenSize from './components/HOC/ScreenSize';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,10 +36,12 @@ class App extends React.Component {
    * 
    * @param event - The JS event associated with a click.
    * @param isLinkOrX - (Optional) True if the click event's target is either
-   * a link to another page or the X Icon.
+   * a link to another page or the X Icon in the sidebar.
    */
   closeSidebar(event, isLinkOrX = false) {
     if (!this.isOutsideSidebar(event, isLinkOrX)) return; // Don't close sidebar.
+
+    document.getElementById('sidebar').classList.remove('active');
 
     this.setState({ sidebarOpen: false });
   }
@@ -70,7 +72,7 @@ class App extends React.Component {
 
   render() {
 
-    let bgClass = this.state.sidebarOpen ? 'bgNormalOverlay' : 'bgNormalOverlay';
+    let bgClass = this.state.sidebarOpen ? 'bgSidebarOverlay' : 'bgNormalOverlay';
 
     return (
       <div onClick={this.closeSidebar}>
@@ -78,7 +80,14 @@ class App extends React.Component {
           <div id={bgClass}></div>
           {
             this.state.sidebarOpen ?
-              <Sidebar closeSidebar={this.closeSidebar} />
+              <CSSTransition
+                in={this.state.sidebarOpen}
+                appear={true}
+                timeout={500}
+                classNames="sidebar"
+              >
+                <Sidebar closeSidebar={this.closeSidebar} />
+              </CSSTransition>
               :
               null
           }
@@ -96,4 +105,4 @@ class App extends React.Component {
   }
 }
 
-export default ScreenSize(App);
+export default App;

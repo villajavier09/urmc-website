@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 import { Desktop, Tablet, Mobile, TabletAndMobile }
   from '../Util/Breakpoints';
-import MailModal from './MailModal';
-import SocialMedia from './SocialMedia';
 import { ReactComponent as HamburgerIcon } from '../../assets/hamburger.svg';
 
 import '../../main.css';
@@ -24,6 +22,14 @@ const HeaderLink = (props) => {
       onClick={() => props.updateCurrentPage(props.title)}>
       <div className={`${underlineClass} pointer horizontalMargin25px`}>{props.title}</div>
     </Link>
+  )
+}
+
+const SocialMedia = (props) => {
+  return (
+    <a href={props.href} target="_blank">
+      <img src={props.icon} className="socialMediaIcon horizontalMargin5px pointer" alt={props.alt} />
+    </a>
   )
 }
 
@@ -104,9 +110,6 @@ class Header extends React.Component {
               icon={linkedinIcon}
               href="https://www.linkedin.com/company/19012674"
               alt="LinkedIn Logo" />
-
-            <img src={mailIcon} className="socialMediaIcon horizontalMargin5px pointer" alt="Mail Logo"
-              onClick={this.handleMailClick} />
           </div>
         </Desktop>
 
