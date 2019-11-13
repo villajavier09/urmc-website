@@ -92,6 +92,8 @@ class Header extends React.Component {
               currentPage={this.state.currentPage} />
             <HeaderLink to='/sponsors' title='Sponsors' updateCurrentPage={this.updateCurrentPage}
               currentPage={this.state.currentPage} />
+            <HeaderLink to='/join' title='Join' updateCurrentPage={this.updateCurrentPage}
+              currentPage={this.state.currentPage} />
 
           </div>
 

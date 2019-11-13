@@ -14,6 +14,7 @@ import Leadership from './components/Leadership/Leadership';
 import Sponsors from './components/Sponsors/Sponsors';
 import Events from './components/Events/Events';
 import Sidebar from './components/Sidebar/Sidebar';
+import Join from './components/Join/Join';
 
 class App extends React.Component {
   constructor(props) {
@@ -98,6 +99,7 @@ class App extends React.Component {
             <Route path="/leadership" exact component={Leadership} />
             <Route path="/events" exact component={Events} />
             <Route path="/sponsors" exact component={Sponsors} />
+            <Route path="/join" exact component={Join} />
           </Switch>
         </Router>
       </div>
