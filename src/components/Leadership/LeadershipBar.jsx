@@ -15,7 +15,7 @@ class LeadershipBar extends React.Component {
             <div className="displayFlex" key={subteam}>
               <div className="displayFlex flexColumn flexAlignCenter">
                 <div className={`${this.props.selectedSubteam === subteam ? 'bgCharcoal' : null}
-                  leadershipCircle horizontalMargin10px pointer`} onClick={() => this.props.goToMember(subteam)}></div>
+                  leadershipCircle horizontalMargin10px pointer`} onClick={() => this.props.goToSubteam(subteam)}></div>
                 {
                   (i !== subteams.length - 1) ?
                     <div className="leadershipLine"></div>

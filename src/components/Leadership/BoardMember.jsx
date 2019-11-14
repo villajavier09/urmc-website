@@ -37,8 +37,8 @@ class BoardMember extends React.Component {
     let majorClasses = this.props.breakpoint === 'M' ? 'fontSize12px' : 'fontSize14px';
 
     return (
-      <div className={`displayFlex minWidth400px padding15px borderRadius10px
-        ${this.props.highlightBg}`}
+      <div id={this.props.person.id} className={`displayFlex minWidth400px padding15px borderRadius10px
+        `}
         style={{ marginBottom: marginBottom !== undefined ? marginBottom : '25px' }}>
 
         <div className="displayFlex flexColumn flexAlignCenter horizontalMargin15px width25P">

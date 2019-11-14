@@ -15,21 +15,15 @@ class Sidebar extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.sidebarRef = React.createRef();
-
-    this.state = {
-      active: false
-    }
   }
 
-  componentDidMount () {
-    this.sidebarRef.current.classList.add('active');
+  componentDidMount() {
+    console.log("BRO")
   }
 
   render () {
     return (
-        <div id='sidebar' ref={this.sidebarRef} onClick={(e) => this.props.closeSidebar(e)}>
+        <div className='fullHeight' onClick={(e) => this.props.closeSidebar(e)}>
           <div className="flexSpaceBetween marginAuto width75P maxWidth75P marginTop25px">
               <WhiteXIcon className="whiteXIcon pointer hidden" />
               <WhiteXIcon className="whiteXIcon pointer" onClick={(e) => this.props.closeSidebar(e, true)} />
@@ -102,8 +96,6 @@ class Sidebar extends React.Component {
               <a href="https://www.linkedin.com/company/19012674" target="_blank">
                 <img src={linkedinIcon} className="socialMediaIcon horizontalMargin10px pointer" alt="LinkedIn Logo" />
               </a>
-
-              <img src={mailIcon} className="socialMediaIcon horizontalMargin10px pointer" alt="Mail Logo" />
             </div>
           </div>        
         </div >

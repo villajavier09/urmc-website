@@ -42,8 +42,6 @@ class App extends React.Component {
   closeSidebar(event, isLinkOrX = false) {
     if (!this.isOutsideSidebar(event, isLinkOrX)) return; // Don't close sidebar.
 
-    document.getElementById('sidebar').classList.remove('active');
-
     this.setState({ sidebarOpen: false });
   }
 
@@ -61,7 +59,7 @@ class App extends React.Component {
     if (isLinkOrX) return true;
 
     // Sanity check to ensure that sidebar is actually present.
-    let sidebarElement = document.getElementById('sidebar');
+    let sidebarElement = document.getElementById('sidebarDiv');
     if (sidebarElement === null) return false;
 
     let leftPixel = sidebarElement.offsetLeft; // Left-most pixel of sidebar.
@@ -73,25 +71,21 @@ class App extends React.Component {
 
   render() {
 
-    let bgClass = this.state.sidebarOpen ? 'bgSidebarOverlay' : 'bgNormalOverlay';
+    let bgId = this.state.sidebarOpen ? 'bgSidebarOverlay' : 'bgNormalOverlay';
+    let sidebarClass = this.state.sidebarOpen ? 'open' : null;
 
     return (
       <div onClick={this.closeSidebar}>
         <Router>
-          <div id={bgClass}></div>
-          {
-            this.state.sidebarOpen ?
-              <CSSTransition
-                in={this.state.sidebarOpen}
-                appear={true}
-                timeout={500}
-                classNames="sidebar"
-              >
+          <div id={bgId}></div>
+          <div id='sidebarDiv' className={sidebarClass}>
+            {
+              this.state.sidebarOpen ?
                 <Sidebar closeSidebar={this.closeSidebar} />
-              </CSSTransition>
-              :
-              null
-          }
+                :
+                null
+            }
+          </div>
 
           <Header openSidebar={this.openSidebar} {...this.props} />
           <Switch>

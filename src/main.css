@@ -390,6 +390,10 @@ body {
   padding: 15px;
 }
 
+.paddingTop15px {
+  padding-top: 15px;
+}
+
 .noVerticalPadding {
   padding-top: 0px;
   padding-bottom: 0px;

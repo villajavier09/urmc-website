@@ -10,7 +10,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,33 +50,26 @@
   height: 100%;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.705);
-  transition-duration: 250ms;
+  -webkit-transition: background-color 400ms ease-out;;
+  transition: background-color 400ms ease-out;
 }
 
-.sidebar-appear {
-  right: -50%;
-}
-
-.sidebar-appear.sidebar-appear-active {
+#sidebarDiv {
+  background-color: #e3ab10;
+  position: fixed;
+  top: 0;
   right: 0;
-  transition: right .5s ease-in;
+  width: 50em;
+  max-width: 50%;
+  height: 100%;
+  z-index: 1000;
+  transform: translateX(50em);
+  -webkit-transform: translateX(50em);
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
 }
 
-/* .sidebar-enter-active {
-  right: -50%;
-  transition: all 500ms linear;
+.open {
+  transform: translateX(0) !important;
+  -webkit-transform: translateX(0) !important;
 }
-
-.sidebar-appear-done {
-  right: 0;
-}
-
-.sidebar-exit {
-  opacity: 1;
-  right: 0;
-}
-
-.sidebar-exit.sidebar-exit-active {
-  opacity: 0;
-  transition: all 500ms linear;
-} */

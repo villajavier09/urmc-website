@@ -33,15 +33,13 @@ class Leadership extends React.Component {
       selectedSubteam: 'Presidents',
       memberInFocus: 1,
       heightArray: [], // Stores offsetTop position of member as well member object.
-      lastChildMarginBottom: 0
+      lastChildMarginBottom: 0,
+      automaticScroll: false
     }
   }
 
   componentDidMount() {
     window.addEventListener("resize", this.buildHeightArray);
-
-    console.log(this.props);
-
     this.buildHeightArray();
   }
 
@@ -96,6 +94,8 @@ class Leadership extends React.Component {
   }
 
   getMemberInFocus() {
+    if (this.state.automaticScroll) return;
+
     let scrollPosition = this.boardMembersRef.current.scrollTop;
     let heightArray = this.state.heightArray;
 
@@ -132,12 +132,16 @@ class Leadership extends React.Component {
 
     while (i < heightArray.length) {
       if (this.subteamMap.get(heightArray[i][1].position) === subteam) {
-        if (i === 0) this.boardMembersRef.current.scrollTop = 0;
-        else this.boardMembersRef.current.scrollTop = heightArray[i - 1][0];
+        let element = document.getElementById(heightArray[i][1].id);
 
         this.setState({
           selectedSubteam: subteam,
-          memberInFocus: heightArray[i][1].id
+          memberInFocus: heightArray[i][1].id,
+          automaticScroll: true
+        }, () => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' }, () => {
+            this.setState({ automaticScroll: false });
+          });
         });
         break;
       }
@@ -145,6 +149,8 @@ class Leadership extends React.Component {
       i++;
     }
   }
+
+
 
   // goToMemberByID(memberID) {
   //   let heightArray = this.state.heightArray;
@@ -172,10 +178,10 @@ class Leadership extends React.Component {
     let i = 0;
 
     for (let member of boardMemberData.data.members) {
-      let highlightBg = this.state.memberInFocus === member.id ? 'selectedBg' : null;
+      // let highlightBg = this.state.memberInFocus === member.id ? 'selectedBg' : null;
 
       boardMembers.push(
-        <BoardMember person={member} highlightBg={highlightBg} key={i} />
+        <BoardMember person={member} key={i} />
       )
       i += 1;
     }
@@ -199,8 +205,8 @@ class Leadership extends React.Component {
           }
 
           <div ref={this.boardMembersRef} className={`displayFlex flexColumn
-            ${boardMembersClasses} ${boardMembersPosition}`} onScroll={this.getMemberInFocus}
-            style={{ height: this.state.divHeight }}>
+            ${boardMembersClasses} ${boardMembersPosition}`}
+            style={{ height: this.state.divHeight }} onScroll={this.getMemberInFocus}>
             {boardMembers}
           </div>
         </div>

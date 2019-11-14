@@ -46,7 +46,8 @@ class Header extends React.Component {
       '/about': 'About Us',
       '/leadership': 'Leadership',
       '/events': 'Events',
-      '/sponsors': 'Sponsors'
+      '/sponsors': 'Sponsors',
+      '/join': 'Getting Involved'
     }
 
     this.state = {
@@ -76,7 +77,7 @@ class Header extends React.Component {
   render() {
 
     return (
-      <div className="flexSpaceBetween flexAlignCenter width90P marginAuto marginTop15px">
+      <div className="flexSpaceBetween flexAlignCenter width90P marginAuto paddingTop15px">
         <Link to='/'>
           <img src={fingerprint} className="width50px" alt="URMC Fingerprint Logo"
             onClick={() => this.updateCurrentPage('Home')} />
@@ -92,7 +93,7 @@ class Header extends React.Component {
               currentPage={this.state.currentPage} />
             <HeaderLink to='/sponsors' title='Sponsors' updateCurrentPage={this.updateCurrentPage}
               currentPage={this.state.currentPage} />
-            <HeaderLink to='/join' title='Join' updateCurrentPage={this.updateCurrentPage}
+            <HeaderLink to='/join' title='Getting Involved' updateCurrentPage={this.updateCurrentPage}
               currentPage={this.state.currentPage} />
 
           </div>
