@@ -28,7 +28,7 @@ body {
 /* COLORS AND BACKGROUNDS */
 
 .colorLightGrey {
-  color: rgb(156, 156, 156);
+  color: #9c9c9c;
 }
 
 .colorBlack {
@@ -107,6 +107,10 @@ body {
 
 .fontSize16px {
   font-size: 16px;
+}
+
+.fontSize18px {
+  font-size: 18px;
 }
 
 .fontSize20px {
@@ -200,6 +204,7 @@ body {
 }
 
 .flexColumn {
+  display: flex;
   flex-direction: column;
 }
 
@@ -274,16 +279,27 @@ body {
   margin-bottom: 5px;
 }
 
+.verticalMargin10px {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .verticalMargin15px {
-  margin: 15px 0px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .verticalMargin25px {
-  margin: 25px 0px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .verticalMargin40px {
   margin: 40px 0px;
+}
+
+.marginBottom3px {
+  margin-bottom: 3px;
 }
 
 .marginBottom5px {
@@ -410,6 +426,11 @@ body {
   padding-bottom: 5px;
 }
 
+.verticalPadding8px {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
 .verticalPadding10px {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -453,6 +474,10 @@ body {
   width: 33.3%;
 }
 
+.width40P {
+  width: 40%;
+}
+
 .width50P {
   width: 50%;
 }
@@ -463,6 +488,10 @@ body {
 
 .width75P {
   width: 75%;
+}
+
+.width80P {
+  width: 80%;
 }
 
 .width90P {
@@ -489,6 +518,10 @@ body {
   max-width: 75%;
 }
 
+.maxWidth200px {
+  max-width: 125px;
+}
+
 .widthMaxContent {
   width: max-content;
 }
@@ -511,6 +544,10 @@ body {
 
 .fullHeight {
   height: 100%;
+}
+
+.fullWidth {
+  width: 100%;
 }
 
 .fitHeight {

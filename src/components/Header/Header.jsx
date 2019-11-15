@@ -12,7 +12,6 @@ const fingerprint = require('../../assets/fingerprint.png');
 const instagramIcon = require('../../assets/instagram.png');
 const facebookIcon = require('../../assets/facebook.png');
 const linkedinIcon = require('../../assets/linkedin.png');
-const mailIcon = require('../../assets/mail.png');
 
 const HeaderLink = (props) => {
   let underlineClass = props.title === props.currentPage ? 'headerUnderline' : '';
@@ -20,7 +19,7 @@ const HeaderLink = (props) => {
   return (
     <Link to={props.to} className="noDecoration colorCharcoal"
       onClick={() => props.updateCurrentPage(props.title)}>
-      <div className={`${underlineClass} pointer horizontalMargin25px`}>{props.title}</div>
+      <div className={`${underlineClass} pointer horizontalMargin25px fontSize13px`}>{props.title}</div>
     </Link>
   )
 }

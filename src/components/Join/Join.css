@@ -1,0 +1,65 @@
+@font-face {
+  font-family: Raleway;
+  src: url(../../fonts/Raleway-Regular.ttf);
+}
+
+.bigSocialMediaIcon {
+  width: 40px;
+}
+
+.smallSocialMediaIcon {
+  width: 30px;
+}
+
+.verticalFormDivider {
+  height: 100%;
+  border: 1px lightgray solid;
+}
+
+.horizontalFormDivider {
+  width: 75%;
+  border: 1px lightgray solid;
+}
+
+.contactDiv {
+  border: 1px lightgray solid;
+  box-shadow: 0 0 3px lightgray;
+  padding: 15px 25px;
+  border-radius: 15px;
+}
+
+label {
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+input {
+  height: 23px;
+  /* width: 150px;
+  min */
+  width: 50%;
+  border-radius: 5px;
+  border: 1px lightgray solid;
+  box-shadow: 0 0 3px lightgray;
+  outline: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: Raleway;
+}
+
+input:focus {
+  border: 1px #e3ab10 solid;
+  transition: ease-in, border, 250ms;
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 3px lightgray;
+  background-color: #e3ab10cb;
+}
+
+button:hover {
+  background-color: #e3ab10;
+}

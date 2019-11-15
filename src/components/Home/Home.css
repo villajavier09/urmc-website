@@ -4,13 +4,22 @@
 }
 
 .listservButton {
-  background-color: #E3AB10;
+  background-color: rgba(227, 171, 16, 0.8);
   color: white;
 }
 
+.listservButton:hover {
+  background-color: #E3AB10;
+}
+
 .aboutButton {
-  color: #E3AB10;
-  border: 2px #E3AB10 solid;
+  color: rgba(227, 171, 16, 0.8);
+  border: 2px rgba(227, 171, 16, 0.8) solid;
+}
+
+.aboutButton:hover {
+  color: rgba(227, 171, 16);
+  border: 2px rgba(227, 171, 16) solid;
 }
 
 .girlHeight-lg {
