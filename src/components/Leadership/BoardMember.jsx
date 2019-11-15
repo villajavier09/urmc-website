@@ -4,7 +4,8 @@ import './Leadership.css';
 
 import withScreenSize from '../HOC/ScreenSize';
 
-const headshot = require('../../assets/headshot.JPG');
+const headshot = require('../../assets/headshots/headshot.JPG');
+const tedi = require('../../assets/headshots/tedi.jpg');
 const instagramIcon = require('../../assets/instagram.png');
 const facebookIcon = require('../../assets/facebook.png');
 const linkedInIcon = require('../../assets/linkedin.png');

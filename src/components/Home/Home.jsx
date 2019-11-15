@@ -13,79 +13,57 @@ import withScreenSize from '../HOC/ScreenSize';
 // Images
 const girl = require('../../assets/girl.png');
 
+const HomeButton = (props) => {
+
+  return (
+    <Link to={props.link} className="noDecoration colorCharcoal">
+      <div className={`homeButton marginRight15px fitWidth pointer textAlignCenter
+        ${props.link === '/about' ? 'aboutButton' : 'listservButton'}
+        ${props.breakpoint === 'D' ? 'fontSize14px' : 'fontSize12px'}`}>
+        {props.title}
+      </div>
+    </Link>
+  )
+}
+
 const Home = (props) => {
+  let breakpoint = props.breakpoint;
+
   let girlClasses = {
     D: 'girlHeight-lg',
     T: 'girlHeight-med',
     M: 'girlHeight-sm marginTop15px'
-  }[props.breakpoint]
-
-  let purposeClasses = {
-    D: '',
-    T: '',
-    M: 'fontSize12px'
-  }[props.breakpoint]
-
-  let titleSize = props.breakpoint === 'M' ? 'fontSize20px' : 'fontSize30px';
+  }[breakpoint]
 
   return (
     <div className="marginTop25px displayFlex flexAlignCenter">
-        <div className="width60P">
-            <div className="width75P marginAuto">
-              <div className={`${titleSize} fontFamilyRalewayB colorCharcoal`}>Underrepresented Minorities in Computing</div>
+      <div className={`${breakpoint === 'M' ? 'marginAuto' : 'width60P'}`}>
+        <div className={`width75P marginAuto
+          ${breakpoint === 'M' ? 'flexColumnAlignCenter' : null}`}>
+          <div className={`fontFamilyRalewayB colorCharcoal
+            ${breakpoint === 'M' ? 'fontSize20px' : 'fontSize30px'}`}>Underrepresented Minorities in Computing</div>
 
-              <div className="marginTop25px fontFamilyRaleway colorCharcoal">
-                The purpose of Underrepresented Minorities in Computing is to promote
-                diversity within the computing fields and foster an environment that
-                empowers underrepresented minorities with technological aspirations
-                through career development, community building and academic support.
-              </div>
-
-              <div className="fontFamilyNovecento fontSize14px displayFlex marginTop35px">
-                <div className="homeButton listservButton fitWidth
-                  marginRight15px pointer textAlignCenter">
-                    Join the Listserv
-                </div>
-
-                <Link to='/about' className="noDecoration colorCharcoal">
-                  <div className="homeButton aboutButton fitWidth
-                    pointer textAlignCenter">Learn More</div>
-                </Link>
-              </div>
-            </div>
+          <div className="marginTop25px fontFamilyRaleway colorCharcoal">
+            The purpose of Underrepresented Minorities in Computing is to promote
+            diversity within the computing fields and foster an environment that
+            empowers underrepresented minorities with technological aspirations
+            through career development, community building and academic support.
           </div>
 
-          <img src={girl} alt="URMC Girl" className={girlClasses}/>
-        
+          <Mobile>
+            <img src={girl} alt="URMC Girl" className={girlClasses} />
+          </Mobile>
 
-      {/* <Mobile>
-        <div className="width90P displayFlex flexColumn flexAlignCenter marginAuto">
-          <div>
-            <div className="fontSize20px fontFamilyRalewayB colorCharcoal">Underrepresented Minorities in Computing</div>
-
-            <div className="marginTop25px fontFamilyRaleway colorCharcoal fontSize12px">
-              The purpose of Underrepresented Minorities in Computing is to promote
-              diversity within the computing fields and foster an environment that
-              empowers underrepresented minorities with technological aspirations
-              through career development, community building and academic support.
-            </div>
-          </div>
-
-          <img src={girl} alt="URMC Girl" className={girlClasses}/>
-
-          <div className="fontFamilyNovecento fontSize12px displayFlex marginTop35px">
-              <div className="homeButton listservButton fitWidth
-                marginRight15px pointer textAlignCenter"
-                onClick={() => this.openListservModal()}
-                >Join the Listserv</div>
-
-              <Link to='/about' className="noDecoration colorCharcoal">
-                <div className="homeButton aboutButton fitWidth
-                  pointer textAlignCenter">Learn More</div>
-              </Link>
+          <div className="fontFamilyNovecento fontSize14px displayFlex marginTop35px">
+            <HomeButton title='Join the Listserv' link='/join' {...props} />
+            <HomeButton title='Learn More' link='/about' {...props} />
           </div>
         </div>
-      </Mobile> */}
+      </div>
+
+      <DesktopAndTablet>
+        <img src={girl} alt="URMC Girl" className={girlClasses} />
+      </DesktopAndTablet>
     </div>
   )
 }
