@@ -14,10 +14,10 @@ const facebookIcon = require('../../assets/facebook.png');
 const linkedinIcon = require('../../assets/linkedin.png');
 
 const HeaderLink = (props) => {
-  let underlineClass = props.title === props.currentPage ? 'headerUnderline' : '';
+  let underlineClass = props.title === props.currentPage ? 'headerUnderline colorCharcoal' : '';
 
   return (
-    <Link to={props.to} className="noDecoration colorCharcoal"
+    <Link to={props.to} className="noDecoration headerLink"
       onClick={() => props.updateCurrentPage(props.title)}>
       <div className={`${underlineClass} pointer horizontalMargin25px fontSize13px`}>{props.title}</div>
     </Link>
@@ -32,95 +32,51 @@ const SocialMedia = (props) => {
   )
 }
 
-class Header extends React.Component {
+const Header = (props) => {
+  return (
+    <div className="flexSpaceBetween flexAlignCenter width90P marginAuto paddingTop15px">
+      <Link to='/'>
+        <img src={fingerprint} className="width50px" alt="URMC Fingerprint Logo"
+          onClick={() => props.updateCurrentPage('Home')} />
+      </Link>
 
-  constructor(props) {
-    super(props);
+      <Desktop>
+        <div className="fontFamilyNovecento displayFlex fontSize14px">
+          <HeaderLink to='/about' title='About Us' updateCurrentPage={props.updateCurrentPage}
+            currentPage={props.currentPage} />
+          <HeaderLink to='/leadership' title='Leadership' updateCurrentPage={props.updateCurrentPage}
+            currentPage={props.currentPage} />
+          <HeaderLink to='/events' title='Events' updateCurrentPage={props.updateCurrentPage}
+            currentPage={props.currentPage} />
+          <HeaderLink to='/sponsors' title='Sponsors' updateCurrentPage={props.updateCurrentPage}
+            currentPage={props.currentPage} />
+          <HeaderLink to='/join' title='Getting Involved' updateCurrentPage={props.updateCurrentPage}
+            currentPage={props.currentPage} />
+        </div>
 
-    this.handleMailClick = this.handleMailClick.bind(this);
-    this.updateCurrentPage = this.updateCurrentPage.bind(this);
+        <div className="displayFlex flexAlignCenter">
+          <SocialMedia
+            icon={instagramIcon}
+            href="https://www.instagram.com/urmc_cornell"
+            alt="Instagram Logo" />
 
-    this.pathnameMap = {
-      '/': 'Home',
-      '/about': 'About Us',
-      '/leadership': 'Leadership',
-      '/events': 'Events',
-      '/sponsors': 'Sponsors',
-      '/join': 'Getting Involved'
-    }
+          <SocialMedia
+            icon={facebookIcon}
+            href="https://www.facebook.com/pg/cornellurmc/about"
+            alt="Facebook Logo" />
 
-    this.state = {
-      clicked: false,
-      currentPage: ''
-    }
-  }
+          <SocialMedia
+            icon={linkedinIcon}
+            href="https://www.linkedin.com/company/19012674"
+            alt="LinkedIn Logo" />
+        </div>
+      </Desktop>
 
-  componentWillMount() {
-    this.setState({ currentPage: this.pathnameMap[window.location.pathname] })
-  }
-
-  handleMailClick() {
-    this.setState({
-      clicked: !this.state.clicked
-    });
-  }
-
-  updateCurrentPage(page) {
-    this.setState({ currentPage: page });
-  }
-
-  componentDidUpdate() {
-    console.log(this.state.currentPage)
-  }
-
-  render() {
-
-    return (
-      <div className="flexSpaceBetween flexAlignCenter width90P marginAuto paddingTop15px">
-        <Link to='/'>
-          <img src={fingerprint} className="width50px" alt="URMC Fingerprint Logo"
-            onClick={() => this.updateCurrentPage('Home')} />
-        </Link>
-
-        <Desktop>
-          <div className="fontFamilyNovecento displayFlex fontSize14px">
-            <HeaderLink to='/about' title='About Us' updateCurrentPage={this.updateCurrentPage}
-              currentPage={this.state.currentPage} />
-            <HeaderLink to='/leadership' title='Leadership' updateCurrentPage={this.updateCurrentPage}
-              currentPage={this.state.currentPage} />
-            <HeaderLink to='/events' title='Events' updateCurrentPage={this.updateCurrentPage}
-              currentPage={this.state.currentPage} />
-            <HeaderLink to='/sponsors' title='Sponsors' updateCurrentPage={this.updateCurrentPage}
-              currentPage={this.state.currentPage} />
-            <HeaderLink to='/join' title='Getting Involved' updateCurrentPage={this.updateCurrentPage}
-              currentPage={this.state.currentPage} />
-
-          </div>
-
-          <div className="displayFlex flexAlignCenter">
-            <SocialMedia
-              icon={instagramIcon}
-              href="https://www.instagram.com/urmc_cornell"
-              alt="Instagram Logo" />
-
-            <SocialMedia
-              icon={facebookIcon}
-              href="https://www.facebook.com/pg/cornellurmc/about"
-              alt="Facebook Logo" />
-
-            <SocialMedia
-              icon={linkedinIcon}
-              href="https://www.linkedin.com/company/19012674"
-              alt="LinkedIn Logo" />
-          </div>
-        </Desktop>
-
-        <TabletAndMobile>
-          <HamburgerIcon onClick={this.props.openSidebar} className="hamburgerIcon pointer" />
-        </TabletAndMobile>
-      </div >
-    )
-  };
-};
+      <TabletAndMobile>
+        <HamburgerIcon onClick={props.openSidebar} className="hamburgerIcon pointer" />
+      </TabletAndMobile>
+    </div >
+  )
+}
 
 export default Header;

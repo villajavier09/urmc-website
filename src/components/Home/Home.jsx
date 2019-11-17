@@ -14,13 +14,13 @@ import withScreenSize from '../HOC/ScreenSize';
 const girl = require('../../assets/girl.png');
 
 const HomeButton = (props) => {
-
   return (
-    <Link to={props.link} className="noDecoration colorCharcoal">
+    <Link to={props.link} className="noDecoration colorCharcoal"
+      onClick={() => props.updateCurrentPage(props.pageTitle)}>
       <div className={`homeButton marginRight15px fitWidth pointer textAlignCenter
         ${props.link === '/about' ? 'aboutButton' : 'listservButton'}
         ${props.breakpoint === 'D' ? 'fontSize14px' : 'fontSize12px'}`}>
-        {props.title}
+        {props.buttonTitle}
       </div>
     </Link>
   )
@@ -55,8 +55,8 @@ const Home = (props) => {
           </Mobile>
 
           <div className="fontFamilyNovecento fontSize14px displayFlex marginTop35px">
-            <HomeButton title='Join the Listserv' link='/join' {...props} />
-            <HomeButton title='Learn More' link='/about' {...props} />
+            <HomeButton buttonTitle='Join the Listserv' link='/join' pageTitle='Getting Involved' {...props} />
+            <HomeButton buttonTitle='Learn More' link='/about' pageTitle='About Us' {...props} />
           </div>
         </div>
       </div>

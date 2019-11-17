@@ -16,11 +16,7 @@ class Sidebar extends React.Component {
   constructor(props) {
     super(props);
   }
-
-  componentDidMount() {
-    console.log("BRO")
-  }
-
+  
   render () {
     return (
         <div className='fullHeight' onClick={(e) => this.props.closeSidebar(e)}>

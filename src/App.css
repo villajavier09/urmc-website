@@ -59,14 +59,22 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 50em;
-  max-width: 50%;
   height: 100%;
   z-index: 1000;
   transform: translateX(50em);
   -webkit-transform: translateX(50em);
   -webkit-transition: -webkit-transform 500ms ease;
   transition: transform 500ms ease;
+}
+
+.bigSidebarDiv {
+  width: 50em;
+  max-width: 50%;
+}
+
+.smallSidebarDiv {
+  width: 80%;
+  min-width: 80%;
 }
 
 .open {

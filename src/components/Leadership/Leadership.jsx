@@ -6,13 +6,15 @@ import withScreenSize from '../HOC/ScreenSize';
 import PageTitle from '../Util/PageTitle';
 import LeadershipBar from './LeadershipBar';
 import BoardMember from './BoardMember';
-import boardMemberData from './BoardMembers.json';
+const boardMemberMap = require('./BoardMembers.js');
+
+console.log(boardMemberMap);
 
 class Leadership extends React.Component {
   constructor(props) {
     super(props);
 
-    // Parent div of all the board members (children).
+    // Parent div of all the board members.
     this.boardMembersRef = React.createRef();
 
     this.getMemberInFocus = this.getMemberInFocus.bind(this);
@@ -36,6 +38,8 @@ class Leadership extends React.Component {
       lastChildMarginBottom: 0,
       automaticScroll: false
     }
+
+    this.NUM_BOARD_MEMBERS = 6;
   }
 
   componentDidMount() {
@@ -150,38 +154,20 @@ class Leadership extends React.Component {
     }
   }
 
-
-
-  // goToMemberByID(memberID) {
-  //   let heightArray = this.state.heightArray;
-
-  //   let i = 0;
-
-  //   while (i < heightArray.length) {
-  //     if (this.subteamMap.get(heightArray[i][1].id) === memberID) {
-  //       if (i === 0) this.boardMembersRef.current.scrollTop = 0;
-  //       else this.boardMembersRef.current.scrollTop = heightArray[i - 1][0];
-
-  //       this.setState({ selectedSubteam: subteam });
-  //       break;
-  //     }
-
-  //     i++;
-  //   }
-  // }
-
   render() {
 
     let breakpoint = this.props.breakpoint;
 
     let boardMembers = [];
-    let i = 0;
+    let i = 1;
 
-    for (let member of boardMemberData.data.members) {
-      // let highlightBg = this.state.memberInFocus === member.id ? 'selectedBg' : null;
+    console.log(boardMembers)
+
+    while (i <= this.NUM_BOARD_MEMBERS) {
+      console.log(boardMemberMap[i]);
 
       boardMembers.push(
-        <BoardMember person={member} key={i} />
+        <BoardMember person={boardMemberMap[i]} key={i} />
       )
       i += 1;
     }

@@ -28,3 +28,11 @@
   border-bottom: 1px #36383B solid;
   padding-bottom: 3px;
 }
+
+.headerLink {
+  color: rgba(54, 56, 59, 0.7);
+}
+
+.headerLink:hover {
+  color: #36383B;
+}

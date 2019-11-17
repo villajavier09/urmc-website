@@ -1,7 +1,6 @@
 // React Library
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group'
 
 // CSS Files
 import './main.css';
@@ -20,12 +19,33 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.pathnameMap = {
+      '/': 'Home',
+      '/about': 'About Us',
+      '/leadership': 'Leadership',
+      '/events': 'Events',
+      '/sponsors': 'Sponsors',
+      '/join': 'Getting Involved'
+    }
+
     this.sidebarRef = React.createRef();
 
-    this.state = { sidebarOpen: false }
+    this.state = {
+      currentPage: '',
+      sidebarOpen: false
+    }
 
     this.openSidebar = this.openSidebar.bind(this);
     this.closeSidebar = this.closeSidebar.bind(this);
+    this.updateCurrentPage = this.updateCurrentPage.bind(this);
+  }
+
+  componentWillMount() {
+    console.log("IN COMPONENT WILL MOUNT")
+    this.setState({ currentPage: this.pathnameMap[window.location.pathname] }, () => {
+      console.log("THE STATE");
+      console.log(this.state);
+    });
   }
 
   openSidebar() {
@@ -68,6 +88,9 @@ class App extends React.Component {
     return false;
   }
 
+  updateCurrentPage(page) {
+    this.setState({ currentPage: page });
+  }
 
   render() {
 
@@ -78,7 +101,8 @@ class App extends React.Component {
       <div onClick={this.closeSidebar}>
         <Router>
           <div id={bgId}></div>
-          <div id='sidebarDiv' className={sidebarClass}>
+          <div id='sidebarDiv' className={`${sidebarClass}
+          ${this.props.breakpoint !== 'M' ? 'bigSidebarDiv' : 'smallSidebarDiv'}`}>
             {
               this.state.sidebarOpen ?
                 <Sidebar closeSidebar={this.closeSidebar} />
@@ -87,12 +111,16 @@ class App extends React.Component {
             }
           </div>
 
-          <Header openSidebar={this.openSidebar} {...this.props} />
+          <Header openSidebar={this.openSidebar} updateCurrentPage={this.updateCurrentPage}
+            currentPage={this.state.currentPage} {...this.props} />
+
           <Switch>
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact render={(props) => <Home {...props}
+              updateCurrentPage={this.updateCurrentPage} />} />
             <Route path="/leadership" exact component={Leadership} />
             <Route path="/events" exact component={Events} />
-            <Route path="/sponsors" exact component={Sponsors} />
+            <Route path="/sponsors" exact render={(props) => <Sponsors {...props}
+              updateCurrentPage={this.updateCurrentPage} />} />
             <Route path="/join" exact component={Join} />
           </Switch>
         </Router>

@@ -10,5 +10,13 @@
 }
 
 .transparentText {
-  color: rgba(54, 56, 59, 0.07)
+  color: rgba(54, 56, 59, 0.07);
+}
+
+.linkColor {
+  color: rgba(227, 171, 16, 0.8);
+}
+
+.linkColor:hover {
+  color: rgba(227, 171, 16);
 }

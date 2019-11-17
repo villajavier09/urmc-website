@@ -4,8 +4,6 @@ import './Leadership.css';
 
 import withScreenSize from '../HOC/ScreenSize';
 
-const headshot = require('../../assets/headshots/headshot.JPG');
-const tedi = require('../../assets/headshots/tedi.jpg');
 const instagramIcon = require('../../assets/instagram.png');
 const facebookIcon = require('../../assets/facebook.png');
 const linkedInIcon = require('../../assets/linkedin.png');
@@ -28,9 +26,14 @@ const SocialMediaIcon = (props) => {
 class BoardMember extends React.Component {
   render() {
     var person = this.props.person;
-    var instaURL = person.socials['I'];
-    var facebookURL = person.socials['F'];
-    var linkedInURL = person.socials['L'];
+
+    const instaURL = person.socials['I'];
+    const facebookURL = person.socials['F'];
+    const linkedInURL = person.socials['L'];
+
+    let name = person.name;
+    let firstName = name.substr(0, name.indexOf(' ')).toLowerCase();
+    const headshot = require(`../../assets/headshots/${firstName}.jpg`);
 
     let marginBottom = this.props.marginBottom;
 
@@ -38,8 +41,7 @@ class BoardMember extends React.Component {
     let majorClasses = this.props.breakpoint === 'M' ? 'fontSize12px' : 'fontSize14px';
 
     return (
-      <div id={this.props.person.id} className={`displayFlex minWidth400px padding15px borderRadius10px
-        `}
+      <div id={this.props.person.id} className='displayFlex minWidth400px padding15px borderRadius10px'
         style={{ marginBottom: marginBottom !== undefined ? marginBottom : '25px' }}>
 
         <div className="displayFlex flexColumn flexAlignCenter horizontalMargin15px width25P">
