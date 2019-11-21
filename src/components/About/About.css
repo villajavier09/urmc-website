@@ -1,0 +1,23 @@
+.aboutIcon {
+  height: 125px;
+}
+
+.aboutPictureDiv {
+  width: 400px;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+.aboutPicture {
+  width: 400px;
+  border-radius: 15px;
+  margin: 10px 10px 0px 10px;
+  opacity: 1;
+  transition: opacity 500ms ease;
+  box-shadow: 0 0 2px #36383B;
+}
+
+.aboutPictureHover {
+  opacity: 0.1;
+  background-color: #36383B;
+}

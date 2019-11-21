@@ -25,7 +25,7 @@ class Sidebar extends React.Component {
               <WhiteXIcon className="whiteXIcon pointer" onClick={(e) => this.props.closeSidebar(e, true)} />
           </div>
 
-          <div className="fullHeight">
+          <div className="fullHeight flexSpaceBetween flexColumn">
             <div className="displayFlex flexColumn">
               <div className="displayFlex flexColumn marginAuto width75P maxWidth75P">
                 <Link to='/' className="noDecoration colorWhite fontFamilyRalewayB textUppercase
@@ -68,17 +68,17 @@ class Sidebar extends React.Component {
                 verticalMargin15px" onClick={(e) => this.props.closeSidebar(e, true)}>
                   <div>Sponsors</div>
                 </Link>
-              </div>
-            </div>
 
-            <div className="flexCenter flexColumn height50P">
-              <div className="marginAuto width75P maxWidth75P bgWhite borderRadius10px
-              fontFamilyRalewayB textUppercase colorGold textAlignCenter
-              verticalPadding10px">
-                Join Listserv
+                <div className="lineDivisor"></div>
+              </div>
+
+              <div className="displayFlex flexColumn marginAuto width75P maxWidth75P">
+                <Link to='/join' className="noDecoration colorWhite fontFamilyRalewayB textUppercase
+                verticalMargin15px" onClick={(e) => this.props.closeSidebar(e, true)}>
+                  <div>Getting Involved</div>
+                </Link>
               </div>
             </div>
-            
 
             <div className="width75P maxWidth75P marginAuto flexCenter">
               <a href="https://www.instagram.com/urmc_cornell" target="_blank">

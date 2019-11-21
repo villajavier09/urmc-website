@@ -39,7 +39,7 @@ class Leadership extends React.Component {
       automaticScroll: false
     }
 
-    this.NUM_BOARD_MEMBERS = 6;
+    this.NUM_BOARD_MEMBERS = 7;
   }
 
   componentDidMount() {
@@ -98,7 +98,7 @@ class Leadership extends React.Component {
   }
 
   getMemberInFocus() {
-    if (this.state.automaticScroll) return;
+    if (this.state.automaticScroll) return; // Don't scroll if already using JS scrollIntoView function.
 
     let scrollPosition = this.boardMembersRef.current.scrollTop;
     let heightArray = this.state.heightArray;
@@ -137,15 +137,18 @@ class Leadership extends React.Component {
     while (i < heightArray.length) {
       if (this.subteamMap.get(heightArray[i][1].position) === subteam) {
         let element = document.getElementById(heightArray[i][1].id);
+        element.classList.add('selectedBg');
 
         this.setState({
           selectedSubteam: subteam,
           memberInFocus: heightArray[i][1].id,
           automaticScroll: true
-        }, () => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' }, () => {
+        }, async () => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setTimeout(() => {
+            element.classList.remove('selectedBg');
             this.setState({ automaticScroll: false });
-          });
+          }, 1000);
         });
         break;
       }
@@ -160,8 +163,6 @@ class Leadership extends React.Component {
 
     let boardMembers = [];
     let i = 1;
-
-    console.log(boardMembers)
 
     while (i <= this.NUM_BOARD_MEMBERS) {
       console.log(boardMemberMap[i]);

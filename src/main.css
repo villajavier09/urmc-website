@@ -105,6 +105,10 @@ body {
   font-size: 14px;
 }
 
+.fontSize15px {
+  font-size: 15px;
+}
+
 .fontSize16px {
   font-size: 16px;
 }
@@ -123,6 +127,10 @@ body {
 
 .fontSize30px {
   font-size: 30px;
+}
+
+.fontSize40px {
+  font-size: 40px;
 }
 
 .textAlignCenter {
@@ -322,6 +330,10 @@ body {
   margin-bottom: 50px;
 }
 
+.marginBottom100px {
+  margin-bottom: 100px;
+}
+
 .marginTop10px {
   margin-top: 10px;
 }
@@ -340,6 +352,10 @@ body {
 
 .marginTop35px {
   margin-top: 35px;
+}
+
+.marginTop50px {
+  margin-top: 50px;
 }
 
 .marginTop100px {
@@ -510,6 +526,18 @@ body {
   width: 75px;
 }
 
+.minWidth150px {
+  min-width: 150px;
+}
+
+.minWidth200px {
+  min-width: 200px;
+}
+
+.minWidth250px {
+  min-width: 250px;
+}
+
 .minWidth400px {
   min-width: 400px;
 }
@@ -595,6 +623,10 @@ body {
 
 .borderRadius10px {
   border-radius: 10px;
+}
+
+.borderRadius25px {
+  border-radius: 25px;
 }
 
 .borderTest {

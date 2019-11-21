@@ -179,7 +179,75 @@ const boardMembers = {
       "Resume Critiques",
       "Cornell AppDev"
     ]
-  }
+  },
+
+  7: {
+    id: 7,
+    name: "Marcella Imoisili",
+    major: "Information Science",
+    year: 21,
+    socials: {
+      I: "https://www.instagram.com/marzzzella/",
+      F: "https://www.facebook.com/marcella.imoisili",
+      L: "https://www.linkedin.com/in/imarcella/"
+    },
+    position: "Co-Design Chair",
+    bio: `Hi, I'm Marcella :) I'm a Junior, IS major from FL. When I got into
+    Cornell, I really wanted to be an animator and intended to graduate as a
+    Digital Communications major. A year later, I realized that the major was
+    too restrictive and didn't challenge me as much as I had hoped. At the time,
+    I was also taking my first CS course. And let me tell you... it was quite
+    the challenge. Although I was really struggling, I found myself captivated
+    by the intersection of logic, innovation, and creativity that CIS
+    incorporated. There were times where I felt really alone and extremely
+    discouraged but I was lucky to find a safe haven in URMC. With every g-body,
+    office hour, and workshop I attended, I felt my confidence begin to increase.
+    With the support of my peers and advisors, I was able to successfully switch
+    my major to Information Science, which allowed me the flexibility to be as
+    technical and artistic as I desired. I'm so happy to be a part of URMC and
+    contribute to this great support system that first supported me!`,
+    askMe: [
+      "Snapchat",
+      "WICC",
+      "CS 1110",
+      "INFO 1300",
+      "INFO 2300",
+      "INFO 2040"
+    ]
+  },
+
+  8: {
+    id: 8,
+    name: "Cynthia Enofe",
+    major: "Undecided",
+    year: 23,
+    socials: {
+      I: null,
+      F: null,
+      L: null
+    },
+    position: "Underclassmen Floater",
+    bio: `My name is Cynthia and my parents are from Nigeria (aye). I'm from
+    Harlem, NY and I have lived in the NYC my entire life. I've always been
+    intrigued by computers as my Dad decided to pick up software development as
+    I grew into my adolescence. I would hear words such as Java and Python
+    around the house, but my father was constantly discouraged at the fact that
+    he desired a career in an industry that did not welcome people like him. I
+    immediately became interested in Computer Science in college as I sought out
+    a career in the field in order to shift the demographics of the individuals
+    in the industry and also aid other minority students who would like to pursue
+    a career in computing, but do not believe in themselves enough. I started
+    out in computing by writing silly code in my TI-84 Plus graphing calculator
+    during class, but I became more serious about coding when I joined URMC and
+    saw how much the industry had to offer.`,
+    askMe: [
+      "Nigerian vs. Ghanian Jollof",
+      "Horoscopes",
+      "Traveling",
+      "Cool Jokes",
+      "Anything Really!"
+    ]
+  },
 }
 
 module.exports = boardMembers;

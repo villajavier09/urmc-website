@@ -35,7 +35,9 @@
 }
 
 .selectedBg {
-  background-color: rgba(150, 150, 150, 0.08);
+  background-color: rgba(150, 150, 150, 0.2);
+  transition: background-color 1000ms ease;
+  -webkit-transition: background-color 1000ms ease;
 }
 
 .lineDivisor {

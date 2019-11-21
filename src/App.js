@@ -9,11 +9,13 @@ import './App.css';
 // Components
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import About from './components/About/About';
 import Leadership from './components/Leadership/Leadership';
 import Sponsors from './components/Sponsors/Sponsors';
 import Events from './components/Events/Events';
 import Sidebar from './components/Sidebar/Sidebar';
 import Join from './components/Join/Join';
+import withScreenSize from './components/HOC/ScreenSize';
 
 class App extends React.Component {
   constructor(props) {
@@ -41,11 +43,7 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    console.log("IN COMPONENT WILL MOUNT")
-    this.setState({ currentPage: this.pathnameMap[window.location.pathname] }, () => {
-      console.log("THE STATE");
-      console.log(this.state);
-    });
+    this.setState({ currentPage: this.pathnameMap[window.location.pathname] });
   }
 
   openSidebar() {
@@ -117,6 +115,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/" exact render={(props) => <Home {...props}
               updateCurrentPage={this.updateCurrentPage} />} />
+            <Route path="/about" exact component={About} />
             <Route path="/leadership" exact component={Leadership} />
             <Route path="/events" exact component={Events} />
             <Route path="/sponsors" exact render={(props) => <Sponsors {...props}
@@ -129,4 +128,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withScreenSize(App);
