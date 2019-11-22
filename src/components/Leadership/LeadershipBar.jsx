@@ -6,8 +6,6 @@ class LeadershipBar extends React.Component {
   render() {
     let subteams = this.props.subteams;
 
-    console.log(this.props);
-
     return (
       <div>
         {

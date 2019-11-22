@@ -35,15 +35,17 @@ const Home = (props) => {
     M: 'girlHeight-sm marginTop15px'
   }[breakpoint]
 
+  let purposeTextClass = props.breakpoint === 'M' ? 'fontSize14px textAlignCenter' : 'fontSize16px';
+
   return (
     <div className="marginTop25px displayFlex flexAlignCenter">
       <div className={`${breakpoint === 'M' ? 'marginAuto' : 'width60P'}`}>
         <div className={`width75P marginAuto
           ${breakpoint === 'M' ? 'flexColumnAlignCenter' : null}`}>
           <div className={`fontFamilyRalewayB colorCharcoal
-            ${breakpoint === 'M' ? 'fontSize20px' : 'fontSize30px'}`}>Underrepresented Minorities in Computing</div>
+            ${breakpoint === 'M' ? 'fontSize20px textAlignCenter' : 'fontSize30px'}`}>Underrepresented Minorities in Computing</div>
 
-          <div className="marginTop25px fontFamilyRaleway colorCharcoal">
+          <div className={`${purposeTextClass} marginTop25px fontFamilyRaleway colorCharcoal`}>
             The purpose of Underrepresented Minorities in Computing is to promote
             diversity within the computing fields and foster an environment that
             empowers underrepresented minorities with technological aspirations

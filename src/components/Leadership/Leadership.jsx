@@ -6,9 +6,7 @@ import withScreenSize from '../HOC/ScreenSize';
 import PageTitle from '../Util/PageTitle';
 import LeadershipBar from './LeadershipBar';
 import BoardMember from './BoardMember';
-const boardMemberMap = require('./BoardMembers.js');
-
-console.log(boardMemberMap);
+const boardMemberArray = require('./BoardMembers.js');
 
 class Leadership extends React.Component {
   constructor(props) {
@@ -21,14 +19,12 @@ class Leadership extends React.Component {
     this.buildHeightArray = this.buildHeightArray.bind(this);
     this.goToSubteam = this.goToSubteam.bind(this);
 
-    this.subteams = ['Presidents', 'Events', 'Outreach', 'Design', 'Professional',
-      'Corporate', 'Operations', 'Secretary', 'Mentorship', 'Academic'];
-
     this.subteamMap = new Map([['Co-President', 'Presidents'], ['Co-Events Chair', 'Events'],
     ['Co-Outreach Chair', 'Outreach'], ['Co-Design Chair', 'Design'],
     ['Professional Development Chair', 'Professional'], ['Co-Corporate Chair', 'Corporate'],
     ['Operations Chair', 'Operations'], ['Secretary', 'Secretary'], ['Co-Mentorship Chair', 'Mentorship'],
-    ['CS Academic Chair', 'Academic'], ['IS Academic Chair', 'Academic']])
+    ['CS Academic Chair', 'Academic'], ['IS Academic Chair', 'Academic'],
+    ['Co-PR and Alumni Chair', 'PR & Alumni'], ['Floater', 'Floater']])
 
     this.state = {
       divHeight: 0,
@@ -38,8 +34,6 @@ class Leadership extends React.Component {
       lastChildMarginBottom: 0,
       automaticScroll: false
     }
-
-    this.NUM_BOARD_MEMBERS = 7;
   }
 
   componentDidMount() {
@@ -161,14 +155,22 @@ class Leadership extends React.Component {
 
     let breakpoint = this.props.breakpoint;
 
-    let boardMembers = [];
-    let i = 1;
+    let subteams = [];
+    let subteamSet = new Set();
 
-    while (i <= this.NUM_BOARD_MEMBERS) {
-      console.log(boardMemberMap[i]);
+    let boardMembers = [];
+    let i = 0;
+
+    for (let boardMember of boardMemberArray) {
+      let subteam = this.subteamMap.get(boardMember.position);
+
+      if (!subteamSet.has(subteam)) {
+        subteams.push(subteam);
+        subteamSet.add(subteam);
+      }
 
       boardMembers.push(
-        <BoardMember person={boardMemberMap[i]} key={i} />
+        <BoardMember person={boardMember} key={i} />
       )
       i += 1;
     }
@@ -186,7 +188,9 @@ class Leadership extends React.Component {
 
           {
             breakpoint === 'D' ?
-              <LeadershipBar goToSubteam={this.goToSubteam} selectedSubteam={this.state.selectedSubteam} subteams={this.subteams} />
+              <LeadershipBar goToSubteam={this.goToSubteam}
+                selectedSubteam={this.state.selectedSubteam}
+                subteams={subteams} />
               :
               null
           }

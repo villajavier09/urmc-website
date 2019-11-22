@@ -7,6 +7,7 @@ import './Sponsors.css';
 
 import PageTitle from '../Util/PageTitle';
 import SponsorLevel from './SponsorLevel';
+import withScreenSize from '../HOC/ScreenSize';
 
 // Corporate Logos
 const google = require('../../assets/corporate/google.png');
@@ -20,22 +21,29 @@ const palantir = require('../../assets/corporate/palantir.png');
 const microsoft = require('../../assets/corporate/microsoft.png');
 
 const Sponsors = (props) => {
+
+  console.log(props);
+
+  // let textClass = props.breakpoint === 'M' ? '' : null;
+
   return (
     <div>
       <div className="textAlignCenter fontFamilyRalewayB marginBottom25px">
         <PageTitle title="2019-2020 Corporate Sponsors" />
 
-        <div className="fontSize14px fontFamilyRaleway marginTop-15px">
-          Thank you all for your continued support for our organization!
-        </div>
+        <div className='width90P marginAuto'>
+          <div className="fontSize14px fontFamilyRaleway marginTop-15px textAlignCenter">
+            Thank you all for your continued support for our organization!
+          </div>
 
-        <div className="fontSize14px fontFamilyRaleway">
-          If you would like to sponsor or donate to URMC, please visit the <span>
-            <Link to='/join' onClick={() => props.updateCurrentPage('Getting Involved')}
-              className="linkColor fontFamilyRalewayB noDecoration">
-              Getting Involved
+          <div className="fontSize14px fontFamilyRaleway textAlignCenter marginTop3px">
+            If you would like to sponsor or donate to URMC, please visit the <span>
+              <Link to='/join' onClick={() => props.updateCurrentPage('Getting Involved')}
+                className="linkColor fontFamilyRalewayB noDecoration">
+                Getting Involved
             </Link>
-          </span> page.
+            </span> page.
+          </div>
         </div>
       </div>
 
@@ -46,4 +54,4 @@ const Sponsors = (props) => {
   )
 }
 
-export default Sponsors; 
+export default withScreenSize(Sponsors); 
