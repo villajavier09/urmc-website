@@ -3,13 +3,19 @@
 }
 
 .aboutPictureDiv {
-  width: 400px;
   border-radius: 15px;
   margin: 10px;
 }
 
-.aboutPicture {
+.pictureWidth {
   width: 400px;
+}
+
+.mobilePictureWidth {
+  width: 350px;
+}
+
+.aboutPicture {
   border-radius: 15px;
   opacity: 1;
   transition: opacity 250ms ease;

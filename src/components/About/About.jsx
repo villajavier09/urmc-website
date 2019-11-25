@@ -133,10 +133,15 @@ class AboutPicture extends React.Component {
   }
 
   render() {
+
+    let pictureWidth = this.props.breakpoint !== 'M' ? 'pictureWidth' : 'mobilePictureWidth';
+    console.log(this.props.breakpoint);
+    console.log(pictureWidth);
+
     return (
-    <div className="aboutPictureDiv" onMouseEnter={this.showPictureOverlay} onMouseLeave={this.hidePictureOverlay}>
+    <div className={`aboutPictureDiv ${pictureWidth}`} onMouseEnter={this.showPictureOverlay} onMouseLeave={this.hidePictureOverlay}>
       <img ref={this.imageRef} src={this.props.picture}
-      className="aboutPicture" alt={this.props.alt}/>
+      className={`aboutPicture ${pictureWidth}`} alt={this.props.alt}/>
 
       {
         this.state.showDescription ?
@@ -211,22 +216,22 @@ const About = (props) => {
 
     <div className="flexCenter flexAlignCenter width90P flexWrap marginBottom25px">
       <AboutPicture picture={aboutPictureOne} eventName="Welcome Back BBQ"
-        eventDate="8.31.19" alt="About #1" />
+        eventDate="8.31.19" alt="About #1" {...props} />
 
       <AboutPicture picture={aboutPictureTwo} eventName="Career Fair Preparation"
-        eventDate="9.5.19" alt="About #2" />
+        eventDate="9.5.19" alt="About #2" {...props} />
 
       <AboutPicture picture={aboutPictureThree} eventName="Under the Hood Series: Data Privacy and Security"
-        eventDate="3.22.19" alt="About #3" />
+        eventDate="3.22.19" alt="About #3" {...props} />
 
       <AboutPicture picture={aboutPictureFour} eventName="Facebook Workshop: A Day in the Life of a Software Engineer"
-        eventDate="4.17.19" alt="About #4" />
+        eventDate="4.17.19" alt="About #4" {...props} />
 
       <AboutPicture picture={aboutPictureFive} eventName="1st Fall General Body Meeting: Welcome Back"
-        eventDate="9.3.19" alt="About #5" />
+        eventDate="9.3.19" alt="About #5" {...props} />
 
       <AboutPicture picture={aboutPictureSix} eventName="Final Spring General Body Meeting: Summer Preparation"
-        eventDate="5.7.19" alt="About #6" />
+        eventDate="5.7.19" alt="About #6" {...props} />
 
     </div>
 
