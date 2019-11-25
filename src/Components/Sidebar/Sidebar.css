@@ -1,0 +1,12 @@
+.lineDivisor {
+  border: 0.5px #ffffff solid;
+}
+
+#sidebar.open {
+  right: 0;
+}
+
+.whiteXIcon {
+  width: 25px !important;
+  height: 25px !important;
+}

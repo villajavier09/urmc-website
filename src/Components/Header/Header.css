@@ -1,0 +1,38 @@
+#mailModal {
+  /* border: 1px solid #36383B; */
+  padding: 40px 70px;
+  width: fit-content;
+  text-align: center;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 0 3px #36383B;
+  border-radius: 10px;
+  margin-top: 35px;
+  font-family: RalewayBold;
+}
+
+.hamburgerIcon {
+  min-width: 50px;
+}
+
+.socialMediaIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.mailIcon {
+  height: 28px;
+}
+
+.headerUnderline {
+  border-bottom: 1px #36383B solid;
+  padding-bottom: 3px;
+}
+
+.headerLink {
+  color: rgba(54, 56, 59, 0.7);
+}
+
+.headerLink:hover {
+  color: #36383B;
+}

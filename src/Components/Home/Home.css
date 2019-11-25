@@ -1,0 +1,58 @@
+.homeButton {
+  padding: 10px 20px;
+  border-radius: 25px;
+}
+
+.listservButton {
+  background-color: rgba(227, 171, 16, 0.8);
+  color: white;
+}
+
+.listservButton:hover {
+  background-color: #E3AB10;
+}
+
+.aboutButton {
+  color: rgba(227, 171, 16, 0.8);
+  border: 2px rgba(227, 171, 16, 0.8) solid;
+}
+
+.aboutButton:hover {
+  color: rgba(227, 171, 16);
+  border: 2px rgba(227, 171, 16) solid;
+}
+
+.girlHeight-lg {
+  height: 500px;
+}
+
+.girlHeight-med {
+  height: 400px;
+}
+
+.girlHeight-sm {
+  height: 300px;
+}
+
+.listservModal {
+  border-radius: 5px;
+  border: 1px #9f9f9f solid;
+  width: 35%;
+  min-width: 400px;
+  min-height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 101;
+}
+
+.submitButtonCurve {
+  border-radius: 0 0 5px 5px;
+}
+
+.xIcon {
+  width: 25px !important;
+  height: 25px !important;
+}
