@@ -151,6 +151,16 @@ class Leadership extends React.Component {
     }
   }
 
+  isSafariBrowser() {
+    let userAgent = navigator.userAgent.toLowerCase();
+
+    if (userAgent.indexOf('safari') !== -1 && userAgent.indexOf('chrome') === -1) {
+      return true;
+    }
+
+    return false;
+  }
+
   render() {
 
     let breakpoint = this.props.breakpoint;
@@ -172,12 +182,16 @@ class Leadership extends React.Component {
       boardMembers.push(
         <BoardMember person={boardMember} key={i} />
       )
+
       i += 1;
     }
 
     let boardMembersClasses = breakpoint !== 'M' ? 'horizontalMargin50px overflowScroll' : '';
     let boardMembersPosition = breakpoint !== 'D' ? 'positionAbsolute overflowScroll' : '';
     let bodyClasses = breakpoint === 'D' ? 'maxWidth75P' : '';
+
+    let isSafariBrowser = this.isSafariBrowser();
+    let updatedHeight = isSafariBrowser ? null : this.state.divHeight;
 
     return (
       <div>
@@ -187,7 +201,7 @@ class Leadership extends React.Component {
           ${bodyClasses}`}>
 
           {
-            breakpoint === 'D' ?
+            breakpoint === 'D' && !isSafariBrowser ?
               <LeadershipBar goToSubteam={this.goToSubteam}
                 selectedSubteam={this.state.selectedSubteam}
                 subteams={subteams} />
@@ -195,10 +209,12 @@ class Leadership extends React.Component {
               null
           }
 
-          <div ref={this.boardMembersRef} className={`displayFlex flexColumn
-            ${boardMembersClasses} ${boardMembersPosition}`}
-            style={{ height: this.state.divHeight }} onScroll={this.getMemberInFocus}>
+          <div ref={this.boardMembersRef}
+            className={`displayFlex flexColumn ${boardMembersClasses} ${boardMembersPosition}`}
+            style={{ height: updatedHeight }} onScroll={this.getMemberInFocus}>
+
             {boardMembers}
+
           </div>
         </div>
       </div>

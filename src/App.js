@@ -15,6 +15,7 @@ import Sponsors from './Components/Sponsors/Sponsors';
 import Events from './Components/Events/Events';
 import Sidebar from './Components/Sidebar/Sidebar';
 import Join from './Components/Join/Join';
+import PageMargin from './Components/Util/PageMargin';
 import withScreenSize from './Components/HOC/ScreenSize';
 
 class App extends React.Component {
@@ -123,6 +124,8 @@ class App extends React.Component {
             <Route path="/join" exact component={Join} />
           </Switch>
         </Router>
+
+        <PageMargin />
       </div>
     )
   }

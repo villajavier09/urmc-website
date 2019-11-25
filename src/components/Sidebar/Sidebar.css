@@ -1,5 +1,6 @@
 .lineDivisor {
   border: 0.5px #ffffff solid;
+  background-color: white;
 }
 
 #sidebar.open {

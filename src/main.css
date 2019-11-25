@@ -727,3 +727,8 @@ body {
 .sidebarTransition {
   transition: all 1.5s ease-in;
 }
+
+.pageMargin {
+  width: 0;
+  height: 25px;
+}

@@ -24,6 +24,7 @@ const SocialMediaIcon = (props) => {
 }
 
 class BoardMember extends React.Component {
+
   render() {
     var person = this.props.person;
 
@@ -41,17 +42,16 @@ class BoardMember extends React.Component {
     let majorClasses = this.props.breakpoint === 'M' ? 'fontSize12px' : 'fontSize14px';
 
     return (
-      <div id={this.props.person.id} className='displayFlex minWidth400px padding15px borderRadius10px'
-        style={{ marginBottom: marginBottom !== undefined ? marginBottom : '25px' }}>
+      <div id={this.props.person.id} ref={this.ref} className='displayFlex minWidth400px padding15px borderRadius10px' style={{ marginBottom: marginBottom !== undefined ? marginBottom : '25px' }}>
 
         <div className="displayFlex flexColumn flexAlignCenter horizontalMargin15px width25P">
           <img src={headshot} alt="Profile Picture" className="profilePic verticalMargin5px" />
           <div className={`fontSize20px textAlignCenter ${nameClasses}`}>{person.name}</div>
           <div className={`fontSize14px verticalMargin5px textAlignCenter ${majorClasses}`}>{person.major} '{person.year}</div>
           <div className="displayFlex flexAlignCenter verticalMargin5px">
-            <SocialMediaIcon URL={instaURL} icon={instagramIcon} />
-            <SocialMediaIcon URL={facebookURL} icon={facebookIcon} />
-            <SocialMediaIcon URL={linkedInURL} icon={linkedInIcon} />
+            {instaURL ? <SocialMediaIcon URL={instaURL} icon={instagramIcon} /> : null}
+            {facebookURL ? <SocialMediaIcon URL={facebookURL} icon={facebookIcon} /> : null}
+            {linkedInURL ? <SocialMediaIcon URL={linkedInURL} icon={linkedInIcon} /> : null}
           </div>
         </div>
 
