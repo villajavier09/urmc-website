@@ -12,7 +12,7 @@ const linkedinIcon = require('../../assets/white-linkedin.png');
 const SidebarLink = (props) => {
   return (
     <div className="displayFlex flexColumn marginAuto width75P maxWidth75P">
-      <Link to='/' className="noDecoration colorWhite fontFamilyRalewayB textUppercase
+      <Link to={props.to} className="noDecoration colorWhite fontFamilyRalewayB textUppercase
       verticalMargin15px" onClick={(e) => props.closeSidebar(e, true)}>
         <div>{props.title}</div>
       </Link>
@@ -40,12 +40,12 @@ const Sidebar = (props) => {
 
       <div className="fullHeight flexSpaceBetween flexColumn">
         <div className="displayFlex flexColumn">
-          <SidebarLink title="Home" showDivisor />
-          <SidebarLink title="About" showDivisor />
-          <SidebarLink title="Leadership" showDivisor />
-          <SidebarLink title="Events" showDivisor />
-          <SidebarLink title="Sponsors" showDivisor />
-          <SidebarLink title="Getting Involved" />
+          <SidebarLink title="Home" to="/" showDivisor {...props} />
+          <SidebarLink title="About" to="/about" showDivisor {...props} />
+          <SidebarLink title="Leadership" to="/leadership" showDivisor {...props} />
+          <SidebarLink title="Events" to="/events" showDivisor {...props} />
+          <SidebarLink title="Sponsors" to="/sponsors" showDivisor {...props} />
+          <SidebarLink title="Getting Involved" to="/join" {...props} />
         </div>
 
         <div className="width75P maxWidth75P marginAuto flexCenter">

@@ -2,12 +2,6 @@
   border: 0.5px #ffffff solid;
 }
 
-#sidebar {
-  /* background-color: #e3ab10; */
-  /* z-index: 1000; */
-  /* transition: right 1000ms; */
-}
-
 #sidebar.open {
   right: 0;
 }

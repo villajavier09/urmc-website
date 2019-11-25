@@ -12,6 +12,10 @@
     "react-svg": "^10.0.22",
     "react-transition-group": "^4.3.0"
   },
+  "engines": {
+    "npm": "6.9.0",
+    "node": "10.13.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
