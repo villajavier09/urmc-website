@@ -61,9 +61,15 @@ class SponsorLevel extends React.Component {
     let logoArr = [];
     let i = 0;
 
+    let logoHeightClass = {
+      'Gold': 'logoGoldHeight',
+      'Silver': 'logoSilverHeight',
+      'Bronze': 'logoBronzeHeight'
+    }[this.props.level];
+
     for (let logo of this.props.logos) {
       logoArr.push(
-        <img src={logo} alt="Logo" className="margin15px" key={i} />
+        <img src={logo} alt="Logo" className={`${logoHeightClass} margin15px`} key={i} />
       )
 
       i++;

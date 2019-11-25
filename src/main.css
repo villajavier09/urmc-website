@@ -699,11 +699,6 @@ body {
   visibility: hidden;
 }
 
-.whiteXIcon {
-  width: 35px !important;
-  height: 35px !important;
-}
-
 .checkbox {
   min-width: 20px;
   min-height: 20px;

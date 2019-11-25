@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Desktop, Tablet, Mobile, TabletAndMobile }
+import { Desktop, TabletAndMobile }
   from '../Util/Breakpoints';
 import { ReactComponent as HamburgerIcon } from '../../assets/hamburger.svg';
 
@@ -26,7 +26,7 @@ const HeaderLink = (props) => {
 
 const SocialMedia = (props) => {
   return (
-    <a href={props.href} target="_blank">
+    <a href={props.href} target="_blank" rel="noopener noreferrer">
       <img src={props.icon} className="socialMediaIcon horizontalMargin5px pointer" alt={props.alt} />
     </a>
   )
@@ -52,6 +52,12 @@ const Header = (props) => {
             currentPage={props.currentPage} />
           <HeaderLink to='/join' title='Getting Involved' updateCurrentPage={props.updateCurrentPage}
             currentPage={props.currentPage} />
+
+          <a href="https://securelb.imodules.com/s/1717/alumni/index.aspx?sid=1717&gid=2&pgid=3052&cid=7311&dids=702.87&sort=1&bledit=1#"
+            className="noDecoration headerLink horizontalMargin25px"
+            target="_blank" rel="noopener noreferrer">
+            Donate
+          </a>
         </div>
 
         <div className="displayFlex flexAlignCenter">

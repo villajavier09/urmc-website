@@ -1,6 +1,5 @@
 // React Library
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // CSS Files
 import '../../main.css';
@@ -57,10 +56,6 @@ class JoinForm extends React.Component {
     }
   }
 
-  isValidForm() {
-    // if (this.state.name.length == 0 || this.state.email.length )
-  }
-
   async subscribeToListserv() {
     console.log("YER");
     const URL = 'https://www.list.cornell.edu/subscribe/subscribe.tml';
@@ -111,10 +106,6 @@ class JoinForm extends React.Component {
       company: '',
       position: ''
     });
-  }
-
-  async sendCompanyEmail() {
-
   }
 
   submitForm(event) {
@@ -193,7 +184,7 @@ const ContactBar = (props) => {
 
       <ContactIcon {...props}
         icon={donateIcon}
-        href="https://www.linkedin.com/company/19012674"
+        href="https://securelb.imodules.com/s/1717/alumni/index.aspx?sid=1717&gid=2&pgid=3052&cid=7311&dids=702.87&sort=1&bledit=1#"
         alt="Donate Logo"
         title="Donate to URMC!" />
     </div>

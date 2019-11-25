@@ -1,102 +1,61 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSpring, animated } from 'react-spring';
 
 import '../../main.css';
 import './Sidebar.css';
 
-import { ReactComponent as WhiteXIcon } from '../../assets/white-x-icon.svg';
+const whiteX = require('../../assets/white-x-icon.png');
 const instagramIcon = require('../../assets/white-instagram.png');
 const facebookIcon = require('../../assets/white-facebook.png');
 const linkedinIcon = require('../../assets/white-linkedin.png');
-const mailIcon = require('../../assets/white-mail.png');
 
-class Sidebar extends React.Component {
+const SidebarLink = (props) => {
+  return (
+    <div className="displayFlex flexColumn marginAuto width75P maxWidth75P">
+      <Link to='/' className="noDecoration colorWhite fontFamilyRalewayB textUppercase
+      verticalMargin15px" onClick={(e) => props.closeSidebar(e, true)}>
+        <div>{props.title}</div>
+      </Link>
 
-  constructor(props) {
-    super(props);
-  }
-  
-  render () {
-    return (
-        <div className='fullHeight' onClick={(e) => this.props.closeSidebar(e)}>
-          <div className="flexSpaceBetween marginAuto width75P maxWidth75P marginTop25px">
-              <WhiteXIcon className="whiteXIcon pointer hidden" />
-              <WhiteXIcon className="whiteXIcon pointer" onClick={(e) => this.props.closeSidebar(e, true)} />
-          </div>
+      { props.showDivisor ? <div className="lineDivisor"></div> : null }
+    </div>
+  )
+}
 
-          <div className="fullHeight flexSpaceBetween flexColumn">
-            <div className="displayFlex flexColumn">
-              <div className="displayFlex flexColumn marginAuto width75P maxWidth75P">
-                <Link to='/' className="noDecoration colorWhite fontFamilyRalewayB textUppercase
-                verticalMargin15px" onClick={(e) => this.props.closeSidebar(e, true)}>
-                  <div>Home</div>
-                </Link>
+const SocialMediaIcon = (props) => {
+  return (
+    <a href={props.href} target="_blank" rel="noopener noreferrer">
+      <img src={props.icon} className="socialMediaIcon horizontalMargin10px pointer" alt={props.alt} />
+    </a>
+  )
+}
 
-                <div className="lineDivisor"></div>
-              </div>
+const Sidebar = (props) => {
+  return (
+    <div className='fullHeight' onClick={(e) => props.closeSidebar(e)}>
+      <div className="flexSpaceBetween marginAuto width75P maxWidth75P marginTop25px">
+      <img src={whiteX} className="whiteXIcon hidden" alt="White X Icon"/>
+          <img src={whiteX} className="whiteXIcon pointer" onClick={(e) => props.closeSidebar(e, true)} alt="White X Icon"/>
+      </div>
 
-              <div className="displayFlex flexColumn marginAuto width75P maxWidth75P">
-                <Link to='/about' className="noDecoration colorWhite fontFamilyRalewayB textUppercase
-                verticalMargin15px" onClick={(e) => this.props.closeSidebar(e, true)}>
-                  <div>About</div>
-                </Link>
+      <div className="fullHeight flexSpaceBetween flexColumn">
+        <div className="displayFlex flexColumn">
+          <SidebarLink title="Home" showDivisor />
+          <SidebarLink title="About" showDivisor />
+          <SidebarLink title="Leadership" showDivisor />
+          <SidebarLink title="Events" showDivisor />
+          <SidebarLink title="Sponsors" showDivisor />
+          <SidebarLink title="Getting Involved" />
+        </div>
 
-                <div className="lineDivisor"></div>
-              </div>
-
-              <div className="displayFlex flexColumn marginAuto width75P maxWidth75P">
-                <Link to='/leadership' className="noDecoration colorWhite fontFamilyRalewayB textUppercase
-                verticalMargin15px" onClick={(e) => this.props.closeSidebar(e, true)}>
-                  <div>Leadership</div>
-                </Link>
-
-                <div className="lineDivisor"></div>
-              </div>
-
-              <div className="displayFlex flexColumn marginAuto width75P maxWidth75P">
-                <Link to='/events' className="noDecoration colorWhite fontFamilyRalewayB textUppercase
-                verticalMargin15px" onClick={(e) => this.props.closeSidebar(e, true)}>
-                  <div>Events</div>
-                </Link>
-
-                <div className="lineDivisor"></div>
-              </div>
-
-              <div className="displayFlex flexColumn marginAuto width75P maxWidth75P">
-                <Link to='/sponsors' className="noDecoration colorWhite fontFamilyRalewayB textUppercase
-                verticalMargin15px" onClick={(e) => this.props.closeSidebar(e, true)}>
-                  <div>Sponsors</div>
-                </Link>
-
-                <div className="lineDivisor"></div>
-              </div>
-
-              <div className="displayFlex flexColumn marginAuto width75P maxWidth75P">
-                <Link to='/join' className="noDecoration colorWhite fontFamilyRalewayB textUppercase
-                verticalMargin15px" onClick={(e) => this.props.closeSidebar(e, true)}>
-                  <div>Getting Involved</div>
-                </Link>
-              </div>
-            </div>
-
-            <div className="width75P maxWidth75P marginAuto flexCenter">
-              <a href="https://www.instagram.com/urmc_cornell" target="_blank">
-                <img src={instagramIcon} className="socialMediaIcon horizontalMargin10px pointer" alt="Instagram Logo" />
-              </a>
-
-              <a href="https://www.facebook.com/pg/cornellurmc/about" target="_blank">
-                <img src={facebookIcon} className="socialMediaIcon horizontalMargin10px pointer" alt="Facebook Logo" />
-              </a>
-
-              <a href="https://www.linkedin.com/company/19012674" target="_blank">
-                <img src={linkedinIcon} className="socialMediaIcon horizontalMargin10px pointer" alt="LinkedIn Logo" />
-              </a>
-            </div>
-          </div>        
-        </div >
-    )
-  }
+        <div className="width75P maxWidth75P marginAuto flexCenter">
+          <SocialMediaIcon icon={instagramIcon} href="https://www.instagram.com/urmc_cornell" alt="Instagram Icon" />
+          <SocialMediaIcon icon={facebookIcon} href="https://www.facebook.com/pg/cornellurmc/about" alt="Facebook Icon" />
+          <SocialMediaIcon icon={linkedinIcon} href="https://www.linkedin.com/company/19012674" alt="LinkedIn Icon" />
+        </div>
+      </div>        
+    </div >
+  )
 }
 
 export default Sidebar; 
