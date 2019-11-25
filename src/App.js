@@ -7,15 +7,15 @@ import './main.css';
 import './App.css';
 
 // Components
-import Header from './components/Header/Header';
-import Home from './components/Home/Home';
-import About from './components/About/About';
-import Leadership from './components/Leadership/Leadership';
-import Sponsors from './components/Sponsors/Sponsors';
-import Events from './components/Events/Events';
-import Sidebar from './components/Sidebar/Sidebar';
-import Join from './components/Join/Join';
-import withScreenSize from './components/HOC/ScreenSize';
+import Header from './Components/Header/Header';
+import Home from './Components/Home/Home';
+import About from './Components/About/About';
+import Leadership from './Components/Leadership/Leadership';
+import Sponsors from './Components/Sponsors/Sponsors';
+import Events from './Components/Events/Events';
+import Sidebar from './Components/Sidebar/Sidebar';
+import Join from './Components/Join/Join';
+import withScreenSize from './Components/HOC/ScreenSize';
 
 class App extends React.Component {
   constructor(props) {
