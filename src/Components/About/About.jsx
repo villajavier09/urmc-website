@@ -120,6 +120,8 @@ class AboutPicture extends React.Component {
 
   hidePictureOverlay() {
     let aboutDescription = this.descriptionRef.current;
+    if (aboutDescription === null) return;
+    
     aboutDescription.classList.remove('aboutPictureDescriptionHover');
     aboutDescription.classList.add('aboutPictureDescription');
 

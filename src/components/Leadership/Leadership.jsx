@@ -131,7 +131,6 @@ class Leadership extends React.Component {
     while (i < heightArray.length) {
       if (this.subteamMap.get(heightArray[i][1].position) === subteam) {
         let element = document.getElementById(heightArray[i][1].id);
-        element.classList.add('selectedBg');
 
         this.setState({
           selectedSubteam: subteam,
@@ -140,7 +139,6 @@ class Leadership extends React.Component {
         }, async () => {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
           setTimeout(() => {
-            element.classList.remove('selectedBg');
             this.setState({ automaticScroll: false });
           }, 1000);
         });

@@ -17,7 +17,7 @@ const SidebarLink = (props) => {
         <div>{props.title}</div>
       </Link>
 
-      { props.showDivisor ? <div className="lineDivisor"></div> : null }
+      <div className="lineDivisor"></div>
     </div>
   )
 }
@@ -40,12 +40,18 @@ const Sidebar = (props) => {
 
       <div className="fullHeight flexSpaceBetween flexColumn">
         <div className="displayFlex flexColumn">
-          <SidebarLink title="Home" to="/" showDivisor {...props} />
-          <SidebarLink title="About" to="/about" showDivisor {...props} />
-          <SidebarLink title="Leadership" to="/leadership" showDivisor {...props} />
-          <SidebarLink title="Events" to="/events" showDivisor {...props} />
-          <SidebarLink title="Sponsors" to="/sponsors" showDivisor {...props} />
+          <SidebarLink title="Home" to="/" {...props} />
+          <SidebarLink title="About" to="/about" {...props} />
+          <SidebarLink title="Leadership" to="/leadership" {...props} />
+          <SidebarLink title="Events" to="/events" {...props} />
+          <SidebarLink title="Sponsors" to="/sponsors" {...props} />
           <SidebarLink title="Getting Involved" to="/join" {...props} />
+
+          <a href="https://securelb.imodules.com/s/1717/alumni/index.aspx?sid=1717&gid=2&pgid=3052&cid=7311&dids=702.87&sort=1&bledit=1#"
+          className="noDecoration colorWhite fontFamilyRalewayB textUppercase verticalMargin15px width75P maxWidth75P marginAuto"
+          target="_blank" rel="noopener noreferrer">
+            Donate
+          </a>
         </div>
 
         <div className="width75P maxWidth75P marginAuto flexCenter">

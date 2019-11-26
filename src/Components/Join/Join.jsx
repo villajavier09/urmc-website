@@ -6,6 +6,7 @@ import '../../main.css';
 import './Join.css';
 
 // Components
+import JoinForm from './JoinForm';
 import withScreenSize from '../HOC/ScreenSize';
 import { DesktopAndTablet, Mobile } from '../Util/Breakpoints';
 
@@ -29,131 +30,6 @@ const ContactIcon = (props) => {
       </div>
     </a>
   )
-}
-
-const FormItem = (props) => {
-  return (
-    <div className="verticalMargin15px flexSpaceBetween flexAlignCenter">
-      <label>{props.label}</label>
-      <input onChange={props.onChange} name={props.name} value={props.value}
-        type={props.type || "text"}/>
-    </div>
-  )
-}
-
-class JoinForm extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.submitForm = this.submitForm.bind(this);
-    this.onChange = this.onChange.bind(this);
-
-    this.state = {
-      name: '',
-      email: '',
-      company: '',
-      position: ''
-    }
-  }
-
-  async subscribeToListserv() {
-    console.log("YER");
-    const URL = 'https://www.list.cornell.edu/subscribe/subscribe.tml';
-
-    let formData = new FormData();
-
-    let data = {
-      email: this.state.email,
-      name: this.state.name,
-      list: 'urmc-l',
-      lists: 'urmc-l',
-      confirm: 'one',
-      showconfirm: 'F',
-      secx: 'cfe1b6e8'
-    }
-
-    for (const name in data) {
-      formData.append(name, data[name]);
-    }
-
-    let options = {
-      method: 'POST',
-      body: formData
-    };
-
-    let response = await fetch(URL, options);
-    let wasMember;
-    console.log(response);
-    if (response && response.ok) {
-        let data = await response.text();
-
-        wasMember = data.includes("You are already a member of the 'urmc-l' mailing list.");
-    }
-
-    let alertMessage;
-
-    if (wasMember) {
-      alertMessage = `${this.state.email} is already subscribed to URMC's mailing list. Thank you for being a part of the URMC community!`;
-    } else {
-      alertMessage = `${this.state.email} is now subscribed to URMC's mailing list. Please check your email for a confirmation message. Welcome to the URMC community! :-)`;
-    }
-
-    alert(alertMessage);
-
-    this.setState({
-      name: '',
-      email: '',
-      company: '',
-      position: ''
-    });
-  }
-
-  submitForm(event) {
-    event.preventDefault();
-
-    if (this.props.subtitle === 'Join the Listserv') {
-      this.subscribeToListserv();
-    } else this.sendCompanyEmail();
-  }
-
-  onChange(event) {
-    this.setState( { [event.target.name]: event.target.value} );
-  }
-
-  render() {
-
-    const { name, email, company, position } = this.state;
-
-    return (
-      <div className={`fontFamilyRalewayB colorCharcoal flexColumnAlignCenter
-      ${this.props.breakpoint === 'D' ? 'width40P horizontalMargin25px' : 'width75P marginBottom25px'}
-      ${this.props.title === 'Companies' && this.props.breakpoint !== 'D' ? 'marginTop25px' : null}`}>
-        <div className="fontSize18px marginBottom3px">{this.props.title}</div>
-        <div className="colorGold fontSize16px marginBottom10px">{this.props.subtitle}</div>
-        <div className="colorLightGrey fontSize12px textAlignCenter marginBottom10px">{this.props.description}</div>
-  
-        <form id={this.props.subtitle} className="width90P" onSubmit={this.submitForm}>
-          <FormItem onChange={this.onChange} name="name" value={name} label="Full Name" />
-          <FormItem onChange={this.onChange} type="email" name="email" value={email} label="Email Address" />
-  
-          {
-            this.props.title === 'Companies' ?
-            <div>
-              <FormItem onChange={this.onChange} name="company" value={company} label="Company" />
-              <FormItem onChange={this.onChange} name="position" value={position} label="Position" />
-            </div>
-            :
-            null
-          }
-        </form>
-  
-        <button type="submit" className="width90P marginTop15px verticalPadding8px
-        fontFamilyRalewayB colorWhite fontSize13px borderRadius5px" form={this.props.subtitle}>
-          {this.props.buttonTitle}
-        </button>
-      </div>
-    )
-  }
 }
 
 const ContactBar = (props) => {
@@ -196,12 +72,12 @@ const Join = (props) => {
   const listservDescription = `Our listserv emails are the central place to find
   out about all URMC events, on-campus and off-campus opportunities
   (internships/jobs) and other things happening within the Computer and
-  Information Science community!`
+  Information Science community!`;
 
   const sponsorDescription = `Does your company want the opportunity to connect
   with extremely talented students of color in computing? Reach out to us via
   email to connect with our Corporate Directors and receive our Corporate
-  Sponsorship Packet for 2019-2020!`
+  Sponsorship Packet for 2019-2020!`;
 
   return (
     <div className={`flexSpaceBetween marginAuto verticalMargin25px
@@ -224,7 +100,6 @@ const Join = (props) => {
 
         <Mobile>
           <div className='horizontalFormDivider marginBottom25px'></div>
-
           <ContactBar {...props} />
         </Mobile>
       </div>
