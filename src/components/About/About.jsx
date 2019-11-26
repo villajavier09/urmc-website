@@ -135,8 +135,6 @@ class AboutPicture extends React.Component {
   render() {
 
     let pictureWidth = this.props.breakpoint !== 'M' ? 'pictureWidth' : 'mobilePictureWidth';
-    console.log(this.props.breakpoint);
-    console.log(pictureWidth);
 
     return (
     <div className={`aboutPictureDiv ${pictureWidth}`} onMouseEnter={this.showPictureOverlay} onMouseLeave={this.hidePictureOverlay}>

@@ -19,7 +19,6 @@ const goldman = require('../../assets/corporate/goldman.png');
 const lyft = require('../../assets/corporate/lyft.png');
 const palantir = require('../../assets/corporate/palantir.png');
 const serviceNow = require('../../assets/corporate/service-now.png');
-
 const apt = require('../../assets/corporate/apt.png');
 const hubspot = require('../../assets/corporate/hubspot.png');
 const microsoft = require('../../assets/corporate/microsoft.png');

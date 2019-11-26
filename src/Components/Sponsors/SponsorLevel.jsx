@@ -4,31 +4,54 @@ import './Sponsors.css';
 
 import withScreenSize from '../HOC/ScreenSize';
 
-import SponsorBackground from './SponsorBackground';
+const BackgroundRow = (props) => {
+  const BACKGROUND_WORDS = 50;
+
+  let words = [];
+  let i = 0;
+
+  while (i < BACKGROUND_WORDS) {
+    words.push(
+      <div className="fontFamilyRalewayB textUppercase rotateText
+      horizontalMargin10px transparentText" key={i}>{props.level}</div>
+    )
+
+    i++;
+  }
+
+  return (
+    <div className="width75P maxWidth75P marginAuto overflowHidden">
+      <div className="displayFlex verticalMargin15px">{words}</div>
+    </div>
+  )
+}
 
 class SponsorLevel extends React.Component {
   constructor(props) {
     super(props);
 
     this.imageDiv = React.createRef();
+    this.bgRef = React.createRef();
 
     this.updateBackgroundRows = this.updateBackgroundRows.bind(this);
-    this.LOAD_TIMEOUT = 200;
     
     this.state = {
       logoDivHeight: 0,
       backgroundRows: [],
-      bgReady: false
+      bgReady: false, // Wait for the initial loading of images.
+      marginTop: 0
     }
   }
 
   componentDidMount() {
     window.addEventListener("resize", this.updateBackgroundRows);
     
+    const LOAD_TIMEOUT = 200;
+
     setTimeout(() => {
-      this.setState( { bgReady: true } );
+      this.setState({ bgReady: true });
       this.updateBackgroundRows();
-    }, this.LOAD_TIMEOUT);
+    }, LOAD_TIMEOUT);
   }
 
   componentWillUnmount() {
@@ -46,20 +69,21 @@ class SponsorLevel extends React.Component {
       
       while (counterHeight < this.state.logoDivHeight) {
         backgroundRows.push(
-          <SponsorBackground level={this.props.level} key={counterHeight} />
+          <BackgroundRow level={this.props.level} key={counterHeight} />
         )
 
         counterHeight += BACKGROUND_ROW_HEIGHT;
       }
 
-      this.setState({ backgroundRows: backgroundRows }); 
+      let bgHeight = backgroundRows.length * BACKGROUND_ROW_HEIGHT;
+      let marginDifference = (bgHeight - this.imageDiv.current.offsetHeight) / 2;
+
+      this.setState({ backgroundRows: backgroundRows, marginTop: marginDifference });
     });
   }
 
   render() {
-    let backgroundRows = this.state.backgroundRows;
     let logoArr = [];
-    let i = 0;
 
     let logoHeightClass = {
       'Gold': 'logoGoldHeight',
@@ -67,23 +91,22 @@ class SponsorLevel extends React.Component {
       'Bronze': 'logoBronzeHeight'
     }[this.props.level];
 
-    for (let logo of this.props.logos) {
+    for (let i = 0; i < this.props.logos.length; i++) {
       logoArr.push(
-        <img src={logo} alt="Logo" className={`${logoHeightClass} margin15px`} key={i} />
+        <img src={this.props.logos[i]} alt="Logo" className={`${logoHeightClass} margin15px`} key={i} />
       )
-
-      i++;
     }
 
-    let hiddenClass = !this.state.bgReady ? 'hidden' : null;
-
+    let backgroundRows = this.state.backgroundRows;
+    let hiddenClass = !this.state.bgReady ? 'hidden' : null; // Show level only once initial background ready.
+    
     return (
       <div className={`width75P maxWidth75P marginAuto displayFlex flexColumn
         flexAlignCenter overflowHidden ${hiddenClass}`}>
         <div className="levelSeparator"></div>
-        <div className="displayFlex flexColumn flexAlignCenter">{backgroundRows}</div>
-        <div ref={this.imageDiv} className="flexCenter flexAlignCenter flexWrap positionAbsolute
-          maxWidth75P verticalPadding15px">{logoArr}</div>
+        <div ref={this.bgRef} className="displayFlex flexColumn flexAlignCenter">{backgroundRows}</div>
+        <div ref={this.imageDiv} style={{marginTop: this.state.marginTop}} className="flexCenter flexAlignCenter flexWrap
+          positionAbsolute maxWidth75P verticalPadding15px">{logoArr}</div>
       </div>
     )
   }
