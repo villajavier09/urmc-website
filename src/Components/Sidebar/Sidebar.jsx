@@ -33,8 +33,8 @@ const SocialMediaIcon = (props) => {
 const Sidebar = (props) => {
   return (
     <div className='fullHeight' onClick={(e) => props.closeSidebar(e)}>
-      <div className="flexSpaceBetween marginAuto width75P maxWidth75P marginTop25px">
-      <img src={whiteX} className="whiteXIcon hidden" alt="White X Icon"/>
+      <div className="flexSpaceBetween marginAuto width75P maxWidth75P marginTop25px marginBottom10px">
+        <img src={whiteX} className="whiteXIcon hidden" alt="White X Icon"/>
           <img src={whiteX} className="whiteXIcon pointer" onClick={(e) => props.closeSidebar(e, true)} alt="White X Icon"/>
       </div>
 
