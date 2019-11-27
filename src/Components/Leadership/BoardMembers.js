@@ -1,32 +1,5 @@
 const boardMembers = [
   {
-    name: "Rami Abdou",
-    major: "Computer Science",
-    year: 20,
-    socials: {
-      I: null,
-      F: null,
-      L: "https://www.linkedin.com/in/rami-abdou/"
-    },
-    position: "Co-President",
-    bio: `My major is Computer Science, and I am currently serving as one of
-    URMC’s Co-Presidents. I want to merge my passion for coding and product
-    development with my love for the URM community, especially at Cornell. I
-    hope that I can take what I’ve learned in my CIS courses and use it to
-    inspire others to create community impact. If you at all related to my
-    interests and goals, please reach out to me because I have a dope side
-    project in the works right now!`,
-    askMe: [
-      "Machine Learning",
-      "Basketball",
-      "My Story",
-      "Being Egyptian",
-      "Entrepreneruship",
-      "Being Jehron's BFF"
-    ]
-  },
-
-  {
     name: "Angie Ortiz",
     major: "Information Science",
     year: 21,

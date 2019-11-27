@@ -24,7 +24,7 @@ class Leadership extends React.Component {
     this.state = {
       automaticScroll: false,
       divHeight: 0,
-      selectedSubteam: 'Presidents',
+      selectedSubteam: subteamMap.get(boardMemberArray[0].position),
       heightArray: [], // Stores offsetTop position of member as well member object.
     }
   }
