@@ -328,12 +328,12 @@ const boardMembers = [
     bio: `Hi, I’m Souleiman, a junior studying Computer Science. I’m half
     Colombian and half Moroccan, and grew up in the Boston area.
     
-    URMC has given a lot of opportunities to me, and I’m trying to pay it forward specifically
-    by helping students with their foundational coursework so that they can
-    successfully affiliate with and succeed in the CIS majors.
+    URMC has given a lot of opportunities to me, and I’m trying to pay it forward
+    specifically by helping students with their foundational coursework so that
+    they can successfully affiliate with and succeed in the CIS majors.
     
-    Outside of school and work, I like studying and practicing religion, making coffee,  reading,
-    biking, and spending time with family and friends.`,
+    Outside of school and work, I like studying and practicing religion, making
+    coffee, reading, biking, and spending time with family and friends.`,
     askMe: [
       "Coffee",
       "Biking",

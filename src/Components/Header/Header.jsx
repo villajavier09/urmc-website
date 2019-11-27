@@ -24,7 +24,7 @@ const HeaderLink = (props) => {
   return (
     <Link to={props.to} className="noDecoration headerLink"
       onClick={() => props.updateCurrentPage(props.title)}>
-      <div className={`${selectedPage} horizontalMargin25px fontSize13px`}>{props.title}</div>
+      <div className={`${selectedPage} horizontalMargin25px fontSize13px textAlignCenter`}>{props.title}</div>
     </Link>
   )
 }
