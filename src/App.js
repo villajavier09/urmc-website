@@ -1,54 +1,50 @@
-// React Library
+/**
+ * @fileoverview The heart of the application which controls the highest level
+ * components such as the Header, the Sidebar as well as the routing for the
+ * entire application.
+ */
+
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-// CSS Files
 import './main.css';
 import './App.css';
 
-// Components
+import About from './Components/About/About';
+import Events from './Components/Events/Events';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
-import About from './Components/About/About';
-import Leadership from './Components/Leadership/Leadership';
-import Sponsors from './Components/Sponsors/Sponsors';
-import Events from './Components/Events/Events';
-import Sidebar from './Components/Sidebar/Sidebar';
 import Join from './Components/Join/Join';
+import Leadership from './Components/Leadership/Leadership';
 import PageMargin from './Components/Util/PageMargin';
+import Sidebar from './Components/Sidebar/Sidebar';
+import Sponsors from './Components/Sponsors/Sponsors';
 import withScreenSize from './Components/HOC/ScreenSize';
+
+const pathnameMap = require('./Components/Util/pathnameMap');
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.pathnameMap = {
-      '/': 'Home',
-      '/about': 'About Us',
-      '/leadership': 'Leadership',
-      '/events': 'Events',
-      '/sponsors': 'Sponsors',
-      '/join': 'Getting Involved'
-    }
-
     this.sidebarRef = React.createRef();
-
-    this.state = {
-      currentPage: '',
-      sidebarOpen: false
-    }
 
     this.openSidebar = this.openSidebar.bind(this);
     this.closeSidebar = this.closeSidebar.bind(this);
     this.updateCurrentPage = this.updateCurrentPage.bind(this);
+
+    this.state = {
+      currentPage: '',
+      isSidebarOpen: false
+    }
   }
 
   componentWillMount() {
-    this.setState({ currentPage: this.pathnameMap[window.location.pathname] });
+    this.setState({ currentPage: pathnameMap[window.location.pathname] });
   }
 
   openSidebar() {
-    this.setState({ sidebarOpen: true });
+    this.setState({ isSidebarOpen: true });
   }
 
   /**
@@ -61,7 +57,7 @@ class App extends React.Component {
   closeSidebar(event, isLinkOrX = false) {
     if (!this.isOutsideSidebar(event, isLinkOrX)) return; // Don't close sidebar.
 
-    this.setState({ sidebarOpen: false });
+    this.setState({ isSidebarOpen: false });
   }
 
   /**
@@ -92,18 +88,19 @@ class App extends React.Component {
   }
 
   render() {
+    let isSidebarOpen = this.state.isSidebarOpen;
 
-    let bgId = this.state.sidebarOpen ? 'bgSidebarOverlay' : 'bgNormalOverlay';
-    let sidebarClass = this.state.sidebarOpen ? 'open' : null;
+    let bgId = isSidebarOpen ? 'bgSidebarOverlay' : 'bgNormalOverlay';
+    let sidebarClass = isSidebarOpen ? 'open' : null;
 
     return (
       <div onClick={this.closeSidebar}>
         <Router>
           <div id={bgId}></div>
-          <div id='sidebarDiv' className={`${sidebarClass}
-          ${this.props.breakpoint !== 'M' ? 'bigSidebarDiv' : 'smallSidebarDiv'}`}>
+          <div id='sidebarDiv'
+            className={`${sidebarClass} ${this.props.breakpoint !== 'M' ? 'bigSidebarDiv' : 'smallSidebarDiv'}`}>
             {
-              this.state.sidebarOpen ?
+              isSidebarOpen ?
                 <Sidebar closeSidebar={this.closeSidebar} />
                 :
                 null

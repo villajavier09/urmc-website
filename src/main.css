@@ -1,9 +1,30 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%; 
-  width: 100%;
-}
+/**
+ * CONTENTS
+ *
+ * COLORS AND BACKGROUNDS
+ * Global...............Globally-available variables and config.
+ *
+ * TOOLS
+ * Mixins...............Useful mixins.
+ *
+ * GENERIC
+ * Normalize.css........A level playing field.
+ * Box-sizing...........Better default `box-sizing`.
+ *
+ * BASE
+ * Headings.............H1–H6 styles.
+ *
+ * OBJECTS
+ * Wrappers.............Wrapping and constraining elements.
+ *
+ * COMPONENTS
+ * Page-head............The main page header.
+ * Page-foot............The main page footer.
+ * Buttons..............Button elements.
+ *
+ * TRUMPS
+ * Text.................Text helpers.
+ */
 
 @font-face {
   font-family: Novecento;
@@ -18,11 +39,6 @@ html, body {
 @font-face {
   font-family: Raleway;
   src: url(./fonts/Raleway-Regular.ttf);
-}
-
-body {
-  margin: 0;
-  height: 100%;
 }
 
 /* COLORS AND BACKGROUNDS */
@@ -552,6 +568,10 @@ body {
   width: 75px;
 }
 
+.minWidth50px {
+  min-width: 50px;
+}
+
 .minWidth150px {
   min-width: 150px;
 }
@@ -705,6 +725,10 @@ body {
 }
 
 .hidden {
+  display: none;
+}
+
+.visibilityHidden {
   visibility: hidden;
 }
 
