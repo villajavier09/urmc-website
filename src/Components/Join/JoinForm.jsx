@@ -1,12 +1,15 @@
 // React Library
 import React from 'react';
 
+import '../../main.css';
+import './Join.css';
+
 const FormItem = (props) => {
   return (
     <div className="verticalMargin15px flexSpaceBetween flexAlignCenter">
       <label>{props.label}</label>
       <input required onChange={props.onChange} name={props.name} value={props.value}
-        type={props.type || "text"}/>
+        type={props.type || "text"} />
     </div>
   )
 }
@@ -22,12 +25,13 @@ class JoinForm extends React.Component {
       name: '',
       email: '',
       company: '',
-      position: ''
+      position: '',
+      emailSending: false
     }
   }
 
   onChange(event) {
-    this.setState( { [event.target.name]: event.target.value} );
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   submitForm(event) {
@@ -49,9 +53,11 @@ class JoinForm extends React.Component {
 
   async sendCompanyEmail(event) {
     event.preventDefault();
-    
+
+    this.setState({ emailSending: true });
+
     const URL = process.env.NODE_ENV === 'development' ?
-     'http://127.0.0.1:8080/' : 'https://urmc-website-api.herokuapp.com/'
+      'http://127.0.0.1:8080/' : 'https://urmc-website-api.herokuapp.com/'
 
     let body = {
       name: this.state.name,
@@ -71,6 +77,7 @@ class JoinForm extends React.Component {
     }
 
     let response = await fetch(URL, options);
+    this.setState({ emailSending: false });
 
     let alertMessage;
 
@@ -89,7 +96,7 @@ class JoinForm extends React.Component {
 
     const { name, email, company, position } = this.state;
 
-    const actionURL = this.props.subtitle === 'Join the Listserv' ? 
+    const actionURL = this.props.subtitle === 'Join the Listserv' ?
       "https://www.list.cornell.edu/subscribe/subscribe.tml" : null;
 
     const formMethod = this.props.subtitle === 'Join the Listserv' ? "POST" : null;
@@ -106,30 +113,31 @@ class JoinForm extends React.Component {
         <form id={this.props.subtitle} className="width90P"
           action={actionURL} method={formMethod}
           target={formTarget} onSubmit={this.submitForm}>
-        
+
           <FormItem onChange={this.onChange} name="name" value={name} label="Full Name" />
           <FormItem onChange={this.onChange} name="email" value={email} label="Email Address" type="email" />
-  
+
           {
             this.props.title === 'Companies' ?
-            <div>
-              <FormItem onChange={this.onChange} name="company" value={company} label="Company" />
-              <FormItem onChange={this.onChange} name="position" value={position} label="Position" />
-            </div>
-            :
-            null
+              <div>
+                <FormItem onChange={this.onChange} name="company" value={company} label="Company" />
+                <FormItem onChange={this.onChange} name="position" value={position} label="Position" />
+              </div>
+              :
+              null
           }
 
-          <input type="text" className="hidden noWidthAndHeight" name="list" value="urmc-l" readOnly/>
-          <input type="text" className="hidden noWidthAndHeight" name="lists" value="urmc-l" readOnly/>
-          <input type="text" className="hidden noWidthAndHeight" name="confirm" value="one" readOnly/>
-          <input type="text" className="hidden noWidthAndHeight" name="showconfirm" value="F" readOnly/>
-          <input type="text" className="hidden noWidthAndHeight" name="secx" value="cfe1b6e8" readOnly/>
+          <input type="text" className="hidden noWidthAndHeight" name="list" value="urmc-l" readOnly />
+          <input type="text" className="hidden noWidthAndHeight" name="lists" value="urmc-l" readOnly />
+          <input type="text" className="hidden noWidthAndHeight" name="confirm" value="one" readOnly />
+          <input type="text" className="hidden noWidthAndHeight" name="showconfirm" value="F" readOnly />
+          <input type="text" className="hidden noWidthAndHeight" name="secx" value="cfe1b6e8" readOnly />
         </form>
-  
-        <button type="submit" className="width90P marginTop15px verticalPadding8px
-        fontFamilyRalewayB colorWhite fontSize13px borderRadius5px" form={this.props.subtitle}>
-          {this.props.buttonTitle}
+
+        <button type="submit" className={`width90P marginTop15px verticalPadding8px
+          fontFamilyRalewayB colorWhite fontSize13px borderRadius5px
+          ${this.state.emailSending ? 'submitButtonDisabled' : 'submitButton'}`} form={this.props.subtitle}>
+          {this.state.emailSending ? 'Sending' : this.props.buttonTitle}
         </button>
       </div>
     )

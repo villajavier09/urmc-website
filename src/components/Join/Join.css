@@ -53,14 +53,31 @@ input:focus {
   outline: none;
 }
 
-button {
+.submitButton {
   outline: none;
   cursor: pointer;
   border: none;
   box-shadow: 0 0 3px lightgray;
-  background-color: #e3ab10cb;
+  background-color: rgba(227, 171, 16, 0.796);
+  transition: background-color 1000ms ease;
+  -webkit-transition: background-color 1000ms ease;
 }
 
-button:hover {
+.submitButton:hover {
   background-color: #e3ab10;
+}
+
+.submitButtonDisabled {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 3px lightgray;
+  background-color: lightgray;
+  transition: background-color 1000ms ease;
+  -webkit-transition: background-color 1000ms ease;
+}
+
+.periodLoading {
+  animation: 1s blink step-end infinite;
+  -webkit-animation: 1s blink step-end infinite;
 }
