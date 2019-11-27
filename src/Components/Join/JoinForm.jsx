@@ -49,8 +49,6 @@ class JoinForm extends React.Component {
 
   async sendCompanyEmail(event) {
     event.preventDefault();
-
-    console.log(process.env.NODE_ENV);
     
     const URL = process.env.NODE_ENV === 'development' ?
      'http://127.0.0.1:8080/' : 'https://urmc-website-api.herokuapp.com/'
@@ -73,6 +71,18 @@ class JoinForm extends React.Component {
     }
 
     let response = await fetch(URL, options);
+
+    let alertMessage;
+
+    if (response && response.ok) {
+      alertMessage = `Your interest has been sent to our Corporate Directors. Please give them a few days to reach back out to you. Talk soon!`
+    } else {
+      alertMessage = `Unfortunately, there was a problem in sending your interest to sponsor URMC. Please shoot us a manual email at urmc@cornell.edu. Thanks!`
+    }
+
+    alert(alertMessage);
+
+    this.resetForm();
   }
 
   render() {
