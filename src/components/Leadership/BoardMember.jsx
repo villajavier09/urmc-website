@@ -42,8 +42,10 @@ class BoardMember extends React.Component {
     let majorClasses = this.props.breakpoint === 'M' ? 'fontSize12px' : 'fontSize14px';
     let profilePicSize = this.props.breakpoint === 'M' ? 'smallProfilePic' : 'profilePic';
 
+    let id = person.name.toLowerCase().replace(' ', '') + person.id;
+
     return (
-      <div id={this.props.person.id} ref={this.ref} className='displayFlex minWidth350px padding15px borderRadius10px' style={{ marginBottom: marginBottom !== undefined ? marginBottom : '25px' }}>
+      <div id={id} className='displayFlex minWidth350px padding15px borderRadius10px' style={{ marginBottom: marginBottom !== undefined ? marginBottom : '25px' }}>
 
         <div className="displayFlex flexColumn flexAlignCenter horizontalMargin15px width25P">
           <img src={headshot} alt="Profile Picture" className={`${profilePicSize} verticalMargin5px`} />

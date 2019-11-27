@@ -6,7 +6,9 @@ import withScreenSize from '../HOC/ScreenSize';
 import PageTitle from '../Util/PageTitle';
 import LeadershipBar from './LeadershipBar';
 import BoardMember from './BoardMember';
+
 const boardMemberArray = require('./BoardMembers.js');
+const subteamMap = require('../Util/subteamMap');
 
 class Leadership extends React.Component {
   constructor(props) {
@@ -15,83 +17,56 @@ class Leadership extends React.Component {
     // Parent div of all the board members.
     this.boardMembersRef = React.createRef();
 
-    this.getMemberInFocus = this.getMemberInFocus.bind(this);
     this.buildHeightArray = this.buildHeightArray.bind(this);
+    this.getSubteamInFocus = this.getSubteamInFocus.bind(this);
     this.goToSubteam = this.goToSubteam.bind(this);
 
-    this.subteamMap = new Map([['Co-President', 'Presidents'], ['Co-Events Chair', 'Events'],
-    ['Co-Outreach Chair', 'Outreach'], ['Co-Design Chair', 'Design'],
-    ['Professional Development Chair', 'Professional'], ['Co-Corporate Chair', 'Corporate'],
-    ['Operations Chair', 'Operations'], ['Secretary', 'Secretary'], ['Co-Mentorship Chair', 'Mentorship'],
-    ['CS Academic Chair', 'Academic'], ['IS Academic Chair', 'Academic'],
-    ['Co-PR and Alumni Chair', 'PR & Alumni'], ['Floater', 'Floater']])
-
     this.state = {
+      automaticScroll: false,
       divHeight: 0,
       selectedSubteam: 'Presidents',
-      memberInFocus: 1,
       heightArray: [], // Stores offsetTop position of member as well member object.
-      lastChildMarginBottom: 0,
-      automaticScroll: false
     }
   }
 
   componentDidMount() {
     window.addEventListener("resize", this.buildHeightArray);
+
     this.buildHeightArray();
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.buildHeightArray);
+    window.removeEventListener("resize", this.buildHeightArray, false);
   }
 
   buildHeightArray() {
     const MARGIN_BOTTOM = 25; // For each board member div.
 
+    let boardMembersRef = this.boardMembersRef.current;
+
     // Total height of the parent div of the board members.
-    let divHeight = window.innerHeight - this.boardMembersRef.current.offsetTop;
+    let divHeight = window.innerHeight - boardMembersRef.offsetTop;
 
-    let arr = [];
-    let arrLength = this.boardMembersRef.current.children.length;
+    let heightArray = [];
+    let arrLength = boardMembersRef.children.length;
 
-    let i = 0;
+    for (let i = 0; i < arrLength; i++) {
+      let child = boardMembersRef.children[i];
 
-    for (let child of this.boardMembersRef.current.children) {
       let offsetTop;
 
-      // Case: First Child
       if (i === 0) offsetTop = child.offsetHeight + MARGIN_BOTTOM;
+      else offsetTop = heightArray[i - 1][0] + child.offsetHeight + MARGIN_BOTTOM;
 
-      // Case: Last Child
-      else if (i === arrLength - 1) {
-        offsetTop = child.offsetHeight + this.state.lastChildMarginBottom;
+      let member = boardMemberArray[i];
 
-        if (child.offsetHeight < this.state.divHeight) {
-          let marginBottom = this.state.divHeight - child.offsetHeight;
-          offsetTop += marginBottom;
-
-          this.setState({ lastChildMarginBottom: marginBottom });
-        } else {
-          offsetTop += MARGIN_BOTTOM;
-        }
-      }
-
-      // Case: All Other Children
-      else offsetTop = arr[i - 1][0] + child.offsetHeight + MARGIN_BOTTOM;
-
-      let member = this.findReactElement(child).props.person;
-      arr.push([offsetTop, member]);
-
-      i++;
+      heightArray.push([offsetTop, member]);
     }
 
-    this.setState({
-      heightArray: arr,
-      divHeight: divHeight
-    });
+    this.setState({ heightArray: heightArray, divHeight: divHeight });
   }
 
-  getMemberInFocus() {
+  getSubteamInFocus() {
     if (this.state.automaticScroll) return; // Don't scroll if already using JS scrollIntoView function.
 
     let scrollPosition = this.boardMembersRef.current.scrollTop;
@@ -105,47 +80,31 @@ class Leadership extends React.Component {
       i++;
     }
 
-    let member = heightArray[i][1];
+    let member = boardMemberArray[i];
 
-    this.setState({
-      selectedSubteam: this.subteamMap.get(member.position),
-      memberInFocus: member.id
-    });
-  }
-
-  findReactElement(node) {
-    for (var key in node) {
-      if (key.startsWith("__reactInternalInstance$")) {
-        return node[key]._debugOwner.stateNode;
-      }
-    }
-
-    return null;
+    this.setState({ selectedSubteam: subteamMap.get(member.position) });
   }
 
   goToSubteam(subteam) {
     let heightArray = this.state.heightArray;
 
-    let i = 0;
+    for (let i = 0; i < heightArray.length; i++) {
+      let member = heightArray[i][1];
 
-    while (i < heightArray.length) {
-      if (this.subteamMap.get(heightArray[i][1].position) === subteam) {
-        let element = document.getElementById(heightArray[i][1].id);
+      if (subteamMap.get(member.position) === subteam) {
+        let ID = member.name.toLowerCase().replace(' ', '') + member.id;
+        let element = document.getElementById(ID);
 
         this.setState({
           selectedSubteam: subteam,
-          memberInFocus: heightArray[i][1].id,
           automaticScroll: true
-        }, async () => {
+        }, () => {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          setTimeout(() => {
-            this.setState({ automaticScroll: false });
-          }, 1000);
+          setTimeout(() => { this.setState({ automaticScroll: false }) }, 1000);
         });
+
         break;
       }
-
-      i++;
     }
   }
 
@@ -160,7 +119,6 @@ class Leadership extends React.Component {
   }
 
   render() {
-
     let breakpoint = this.props.breakpoint;
 
     let subteams = [];
@@ -170,7 +128,7 @@ class Leadership extends React.Component {
     let i = 0;
 
     for (let boardMember of boardMemberArray) {
-      let subteam = this.subteamMap.get(boardMember.position);
+      let subteam = subteamMap.get(boardMember.position);
 
       if (!subteamSet.has(subteam)) {
         subteams.push(subteam);
@@ -186,7 +144,6 @@ class Leadership extends React.Component {
 
     let boardMembersClasses = breakpoint !== 'M' ? 'horizontalMargin50px overflowScroll' : '';
     let boardMembersPosition = breakpoint !== 'D' ? 'positionAbsolute overflowScroll' : '';
-    let bodyClasses = breakpoint === 'D' ? 'maxWidth75P' : '';
 
     let isSafariBrowser = this.isSafariBrowser();
     let updatedHeight = isSafariBrowser ? null : this.state.divHeight;
@@ -196,7 +153,7 @@ class Leadership extends React.Component {
         <PageTitle title="2019-2020 Executive Board Members" />
 
         <div className={`flexSpaceBetween fontFamilyRalewayB marginTop25px marginAuto
-          ${bodyClasses}`}>
+          ${breakpoint === 'D' ? 'maxWidth75P' : ''}`}>
 
           {
             breakpoint === 'D' && !isSafariBrowser ?
@@ -209,10 +166,8 @@ class Leadership extends React.Component {
 
           <div ref={this.boardMembersRef}
             className={`displayFlex flexColumn ${boardMembersClasses} ${boardMembersPosition}`}
-            style={{ height: updatedHeight }} onScroll={this.getMemberInFocus}>
-
+            style={{ height: updatedHeight }} onScroll={this.getSubteamInFocus}>
             {boardMembers}
-
           </div>
         </div>
       </div>

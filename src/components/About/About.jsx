@@ -1,19 +1,11 @@
-/**
- * @fileoverview The about page that highlights 
- */
-
-// React Library
 import React from 'react';
 
-// CSS Files
 import '../../main.css';
 import './About.css'
 
-// Components
 import PageTitle from '../Util/PageTitle';
 import withScreenSize from '../HOC/ScreenSize';
 
-// Images
 const academicIcon = require('../../assets/academic.png');
 const communityIcon = require('../../assets/community.png');
 const professionalIcon = require('../../assets/professional.png');

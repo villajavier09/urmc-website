@@ -45,7 +45,7 @@ const Header = (props) => {
 
     headerLinks.push(
       <HeaderLink to={path} title={title} updateCurrentPage={props.updateCurrentPage}
-        currentPage={props.currentPage} />
+        currentPage={props.currentPage} key={path} />
     )
   }
 
@@ -53,7 +53,7 @@ const Header = (props) => {
 
   for (const [name, obj] of Object.entries(socialMediaMap)) {
     socialMedias.push(
-      <SocialMedia icon={obj.logo} href={obj.href} alt={`${name} Logo`} />
+      <SocialMedia icon={obj.logo} href={obj.href} alt={`${name} Logo`} key={name} />
     )
   }
 
