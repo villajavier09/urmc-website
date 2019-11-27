@@ -1,3 +1,7 @@
+/**
+ * @fileoverview The about page that highlights 
+ */
+
 // React Library
 import React from 'react';
 
