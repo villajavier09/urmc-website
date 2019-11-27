@@ -50,6 +50,8 @@ class JoinForm extends React.Component {
   async sendCompanyEmail(event) {
     event.preventDefault();
 
+    console.log(process.env.NODE_ENV);
+    
     const URL = process.env.NODE_ENV === 'development' ?
      'http://127.0.0.1:8080/' : 'https://urmc-website-api.herokuapp.com/'
 
