@@ -92,7 +92,7 @@ class Leadership extends React.Component {
       let member = heightArray[i][1];
 
       if (subteamMap.get(member.position) === subteam) {
-        let ID = member.name.toLowerCase().replace(' ', '') + member.id;
+        let ID = member.name.toLowerCase().replace(' ', '');
         let element = document.getElementById(ID);
 
         this.setState({

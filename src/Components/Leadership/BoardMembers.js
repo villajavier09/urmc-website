@@ -1,6 +1,5 @@
 const boardMembers = [
   {
-    id: 1,
     name: "Rami Abdou",
     major: "Computer Science",
     year: 20,
@@ -28,7 +27,31 @@ const boardMembers = [
   },
 
   {
-    id: 2,
+    name: "Angie Ortiz",
+    major: "Information Science",
+    year: 21,
+    socials: {
+      I: "https://www.instagram.com/angiefromig/",
+      F: null,
+      L: "https://www.linkedin.com/in/angie-ortiz-28604717b/"
+    },
+    position: "Co-Events Chair",
+    bio: `I was born in Honduras and migrated to the Bronx, NY at the age of six.
+    I am an only child, first generation college student whose interests lie in
+    community building amongst underrepresented/underserved groups. On campus,
+    I am the President of a Latina based sorority, the Executive VP of the
+    Multicultural Greek Fraternal Council (MGFC), Co-Events Chair for URMC, and
+    a student employee for the IT Department of the Johnson College of Business
+    as a Salesforce Administrator. Outside of campus, you can catch me exploring
+    different parts of Ithaca or binging adult swim shows.`,
+    askMe: [
+      "Rick and Morty",
+      "College Softball Games",
+      "Trap Music"
+    ]
+  },
+
+  {
     name: "Raheel Abeiku Yanful",
     major: "Computer Science",
     year: 21,
@@ -65,7 +88,6 @@ const boardMembers = [
   },
 
   {
-    id: 3,
     name: "Tewodros 'Tedi' Mitiku",
     major: "Computer Science",
     year: 23,
@@ -93,7 +115,6 @@ const boardMembers = [
   },
 
   {
-    id: 4,
     name: "Esuvat Bomani",
     major: "Information Science",
     year: 21,
@@ -119,7 +140,63 @@ const boardMembers = [
   },
 
   {
-    id: 10,
+    name: "Miah Sanchez",
+    major: "Computer Science",
+    year: 22,
+    socials: {
+      I: 'https://www.instagram.com/miah_sanchezz/',
+      F: null,
+      L: 'https://www.linkedin.com/in/miah-sanchez/'
+    },
+    position: "Co-Outreach Chair",
+    bio: `Hi! I'm Miah and I'm the co-outreach chair for URMC!! Outside of URMC
+    I am involved in the National Society of Black Engineers, the Black Student
+    Union, the Society of Hispanic Professional Engineers, the Cornell Hip Hop
+    Heads, and Quisqueya, an organization for Dominicans at Cornell. I am also a
+    consultant for CS 2110, a course about object-oriented programming and data
+    structures, so if you ever have any questions please reach out!!!! URMC has
+    opened so many doors for me and has allowed me to meet some amazing people,
+    it has really inspired me to pay it forward and impact as many people as I
+    can!!!!`,
+    askMe: [
+      "Intersectionality",
+      "Music",
+      "Being Afro-Latinx",
+      "Natural Hair Care",
+      "FOOD"
+    ]
+  },
+
+  {
+    name: "Rainer Sainvil",
+    major: "Computer Science",
+    year: 21,
+    socials: {
+      I: 'https://www.instagram.com/rainer.__/',
+      F: 'https://www.facebook.com/profile.php?id=100019069754081',
+      L: 'https://www.linkedin.com/in/rainersainvil/'
+    },
+    position: "Co-Outreach Chair",
+    bio: `I am junior majoring in CS and minoring in Business in the College of
+    Engineering. I'm from Brooklyn, NY and my parents are immigrants from Haiti.
+    I am very passionate about understanding and empowering people, as a mentor,
+    mentee, brother, and friend. URMC has empowered me to take control of my own
+    future in tech by providing me a reference frame to judge myself on and
+    guide myself by. I hope to provide this space for future generations of URMs
+    in tech to the point of not needing it, but wanting it. In this journey, I
+    want to learn more about each and every one of you and become a more complete
+    person in the process.`,
+    askMe: [
+      "Music",
+      "Basketball",
+      "Investing",
+      "Business Strategy",
+      "Communication",
+      "Mentorship"
+    ]
+  },
+
+  {
     name: "Dami Odunowo",
     major: "Communication",
     year: 21,
@@ -147,7 +224,6 @@ const boardMembers = [
   },
 
   {
-    id: 5,
     name: "Emily Romero",
     major: "Computer Science",
     year: 23,
@@ -175,7 +251,6 @@ const boardMembers = [
   },
 
   {
-    id: 6,
     name: "Johnathan Anderson",
     major: "Computer Science",
     year: 21,
@@ -209,7 +284,30 @@ const boardMembers = [
   },
 
   {
-    id: 7,
+    name: "Jewel Ingram",
+    major: "Design & Environmental Analysis",
+    year: 21,
+    socials: {
+      I: null,
+      F: null,
+      L: "www.linkedin.com/in/jewel-ingram-092209153"
+    },
+    position: "Co-Design Chair",
+    bio: `Hi my name is Jewel, and I am Co-Design Chair for URMC! I came up to
+    Cornell from my home in Atlanta, GA to major in Design & Environmental
+    Analysis and minor in Information Science. I joined URMC because I loved
+    the support it gave in a field that can be very challenging. My interests
+    include UX/UI design, design research, and graphic design. Combining
+    creativity and innovation to better people’s lives has always been a passion
+    of mine and goal for my future career.`,
+    askMe: [
+      "Music",
+      "Art",
+      "True Crime Podcasts"
+    ]
+  },
+
+  {
     name: "Marcella Imoisili",
     major: "Information Science",
     year: 21,
@@ -243,41 +341,7 @@ const boardMembers = [
     ]
   },
 
-  // 8: {
-  //   id: 8,
-  //   name: "Cynthia Enofe",
-  //   major: "Undecided",
-  //   year: 23,
-  //   socials: {
-  //     I: null,
-  //     F: null,
-  //     L: null
-  //   },
-  //   position: "Underclassmen Floater",
-  //   bio: `My name is Cynthia and my parents are from Nigeria (aye). I'm from
-  //   Harlem, NY and I have lived in the NYC my entire life. I've always been
-  //   intrigued by computers as my Dad decided to pick up software development as
-  //   I grew into my adolescence. I would hear words such as Java and Python
-  //   around the house, but my father was constantly discouraged at the fact that
-  //   he desired a career in an industry that did not welcome people like him. I
-  //   immediately became interested in Computer Science in college as I sought out
-  //   a career in the field in order to shift the demographics of the individuals
-  //   in the industry and also aid other minority students who would like to pursue
-  //   a career in computing, but do not believe in themselves enough. I started
-  //   out in computing by writing silly code in my TI-84 Plus graphing calculator
-  //   during class, but I became more serious about coding when I joined URMC and
-  //   saw how much the industry had to offer.`,
-  //   askMe: [
-  //     "Nigerian vs. Ghanian Jollof",
-  //     "Horoscopes",
-  //     "Traveling",
-  //     "Cool Jokes",
-  //     "Anything Really!"
-  //   ]
-  // },
-
   {
-    id: 8,
     name: "Vivian Kiniga",
     major: "MPS in Information Science",
     year: 21,
@@ -300,7 +364,88 @@ const boardMembers = [
   },
 
   {
-    id: 9,
+    name: "Maxine Nzegwu",
+    major: "Computer Science",
+    year: 22,
+    socials: {
+      I: "https://www.instagram.com/maxine.amaka/",
+      F: "https://www.facebook.com/maxine.nzegwu",
+      L: "https://www.linkedin.com/in/maxine-nzegwu-74677a186/"
+    },
+    position: "Secretary",
+    bio: `My name is Maxine and I am a sophomore majoring in Computer Science
+    hoping to land a career in software development! I’m the 5th of 6 children
+    to Nigerian Igbo parents and currently live in New Jersey. Some of my
+    hobbies include singing, playing piano and playing violin. I hope to be able
+    to leave an impact on other URMs by motivating them to achieve their goals
+    while ignoring societal barriers.`,
+    askMe: [
+      "Bryson Tiller",
+      "Piano",
+      "Violin",
+      "Track and Field"
+    ]
+  },
+
+  {
+    name: "Giovannie Webb",
+    major: "Computer Science",
+    year: 22,
+    socials: {
+      I: "https://www.instagram.com/giovanniewebb/",
+      F: "https://www.facebook.com/gio.webb",
+      L: "https://www.linkedin.com/in/giovannie-webb-1b3626171/"
+    },
+    position: "Operations Chair",
+    bio: `Hey! I'm Giovannie, the Operations Chair, and a sophomore majoring in
+    Computer Science. Born and raised in Brooklyn, I've seen my fair share of
+    URM's who could definitely benefit from increased representation and more
+    opportunity, so it's a pleasure to be working with URMC to help achieve this
+    goal. Apart from URMC, I'm also the Membership Chair for National Society of
+    Black Engineers, and a tutor for Calculus II. If you see me around on campus
+    or anywhere, don't be afraid to say hello!`,
+    askMe: [
+      "Sneakers",
+      "Hair Products",
+      "Lil' Wayne",
+      "Basketball",
+      "Soccer"
+    ]
+  },
+
+  {
+    name: "Cynthia Enofe",
+    major: "Undecided",
+    year: 23,
+    socials: {
+      I: null,
+      F: null,
+      L: null
+    },
+    position: "Floater",
+    bio: `My name is Cynthia and my parents are from Nigeria (aye). I'm from
+      Harlem, NY and I have lived in the NYC my entire life. I've always been
+      intrigued by computers as my Dad decided to pick up software development as
+      I grew into my adolescence. I would hear words such as Java and Python
+      around the house, but my father was constantly discouraged at the fact that
+      he desired a career in an industry that did not welcome people like him. I
+      immediately became interested in Computer Science in college as I sought out
+      a career in the field in order to shift the demographics of the individuals
+      in the industry and also aid other minority students who would like to pursue
+      a career in computing, but do not believe in themselves enough. I started
+      out in computing by writing silly code in my TI-84 Plus graphing calculator
+      during class, but I became more serious about coding when I joined URMC and
+      saw how much the industry had to offer.`,
+    askMe: [
+      "Nigerian vs. Ghanian Jollof",
+      "Horoscopes",
+      "Traveling",
+      "Cool Jokes",
+      "Anything Really!"
+    ]
+  },
+
+  {
     name: "Dylan Castillo",
     major: "Computer Science",
     year: 23,
