@@ -60,7 +60,7 @@ class BoardMember extends React.Component {
 
         <div className="horizontalMargin15px width75P">
           <div className="fontSize16px textUppercase marginBottom10px">{person.position}</div>
-          <div className="fontFamilyRaleway fontSize13px marginBottom15px">{person.bio}</div>
+          <div className="fontFamilyRaleway fontSize13px marginBottom15px preserveLineSpacing">{person.bio}</div>
 
           <div className="marginBottom5px">Ask Me About</div>
           <div className="displayFlex flexWrap width90P">

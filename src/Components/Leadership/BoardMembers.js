@@ -36,7 +36,7 @@ const boardMembers = [
     position: "Co-Events Chair",
     bio: `Raheel is an Ahmadi Muslim of Ghanaian descent from the Bronx. He
     majors in Computer Science and plans to minor in Engineering Entrepreneurship.
-    
+
     Through URMC, Raheel has found purpose. He knew he wanted to serve the
     members of his community but he didn’t know how and feared his time was
     running out. Raheel believes URMs have unlimited potential but can often
@@ -269,8 +269,9 @@ const boardMembers = [
     bio: `Hi my name is Jewel, and I am Co-Design Chair for URMC! I came up to
     Cornell from my home in Atlanta, GA to major in Design & Environmental
     Analysis and minor in Information Science. I joined URMC because I loved
-    the support it gave in a field that can be very challenging. My interests
-    include UX/UI design, design research, and graphic design. Combining
+    the support it gave in a field that can be very challenging.
+    
+    My interests include UX/UI design, design research, and graphic design. Combining
     creativity and innovation to better people’s lives has always been a passion
     of mine and goal for my future career.`,
     askMe: [
@@ -311,6 +312,33 @@ const boardMembers = [
       "INFO 1300",
       "INFO 2300",
       "INFO 2040"
+    ]
+  },
+
+  {
+    name: "Souleiman Benhida",
+    major: "Computer Science",
+    year: 21,
+    socials: {
+      I: null,
+      F: null,
+      L: null
+    },
+    position: "CS Academic Chair",
+    bio: `Hi, I’m Souleiman, a junior studying Computer Science. I’m half
+    Colombian and half Moroccan, and grew up in the Boston area.
+    
+    URMC has given a lot of opportunities to me, and I’m trying to pay it forward specifically
+    by helping students with their foundational coursework so that they can
+    successfully affiliate with and succeed in the CIS majors.
+    
+    Outside of school and work, I like studying and practicing religion, making coffee,  reading,
+    biking, and spending time with family and friends.`,
+    askMe: [
+      "Coffee",
+      "Biking",
+      "Self Improvement",
+      "Islam"
     ]
   },
 
@@ -374,7 +402,9 @@ const boardMembers = [
     Computer Science. Born and raised in Brooklyn, I've seen my fair share of
     URM's who could definitely benefit from increased representation and more
     opportunity, so it's a pleasure to be working with URMC to help achieve this
-    goal. Apart from URMC, I'm also the Membership Chair for National Society of
+    goal.
+    
+    Apart from URMC, I'm also the Membership Chair for National Society of
     Black Engineers, and a tutor for Calculus II. If you see me around on campus
     or anywhere, don't be afraid to say hello!`,
     askMe: [

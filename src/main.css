@@ -716,6 +716,10 @@
 
 /* MISCELLANEOUS */
 
+.preserveLineSpacing {
+  white-space: pre-line;
+}
+
 .circle {
   border-radius: 50%;
 }
