@@ -50,6 +50,7 @@ input {
 input:focus {
   border: 1px #e3ab10 solid;
   transition: ease-in, border, 250ms;
+  outline: none;
 }
 
 button {

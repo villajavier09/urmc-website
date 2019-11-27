@@ -5,7 +5,7 @@ const FormItem = (props) => {
   return (
     <div className="verticalMargin15px flexSpaceBetween flexAlignCenter">
       <label>{props.label}</label>
-      <input onChange={props.onChange} name={props.name} value={props.value}
+      <input required onChange={props.onChange} name={props.name} value={props.value}
         type={props.type || "text"}/>
     </div>
   )
@@ -31,75 +31,57 @@ class JoinForm extends React.Component {
   }
 
   submitForm(event) {
-    event.preventDefault();
-
     if (this.props.subtitle === 'Join the Listserv') {
-      this.subscribeToListserv();
-    } else this.sendCompanyEmail();
+      this.resetForm();
+    } else this.sendCompanyEmail(event);
   }
 
-  async subscribeToListserv() {
-    console.log("YER");
-    const URL = 'https://www.list.cornell.edu/subscribe/subscribe.tml';
+  resetForm() {
+    setTimeout(() => {
+      this.setState({
+        name: '',
+        email: '',
+        company: '',
+        position: ''
+      });
+    }, 0);
+  }
 
-    let formData = new FormData();
+  async sendCompanyEmail(event) {
+    event.preventDefault();
 
-    let data = {
-      email: this.state.email,
+    const URL = process.env.NODE_ENV === 'development' ?
+     'http://127.0.0.1:8080/' : 'https://urmc-website-api.herokuapp.com/'
+
+    let body = {
       name: this.state.name,
-      list: 'urmc-l',
-      lists: 'urmc-l',
-      confirm: 'one',
-      showconfirm: 'F',
-      secx: 'cfe1b6e8'
-    }
-
-    for (const name in data) {
-      formData.append(name, data[name]);
+      email: this.state.email,
+      company: this.state.company,
+      position: this.state.position
     }
 
     let options = {
       method: 'POST',
-      body: formData,
-      mode: 'cors'
-    };
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify(body)
+    }
 
     let response = await fetch(URL, options);
-
-    let wasMember;
-
-    console.log(response);
-    if (response && response.ok) {
-        let data = await response.text();
-
-        wasMember = data.includes("You are already a member of the 'urmc-l' mailing list.");
-    }
-
-    let alertMessage;
-
-    if (wasMember) {
-      alertMessage = `${this.state.email} is already subscribed to URMC's mailing list. Thank you for being a part of the URMC community!`;
-    } else {
-      alertMessage = `${this.state.email} is now subscribed to URMC's mailing list. Please check your email for a confirmation message. Welcome to the URMC community! :-)`;
-    }
-
-    alert(alertMessage);
-
-    this.setState({
-      name: '',
-      email: '',
-      company: '',
-      position: ''
-    });
-  }
-
-  sendCompanyEmail() {
-    console.log("SENDING COMPANY EMAIL");
   }
 
   render() {
 
     const { name, email, company, position } = this.state;
+
+    const actionURL = this.props.subtitle === 'Join the Listserv' ? 
+      "https://www.list.cornell.edu/subscribe/subscribe.tml" : null;
+
+    const formMethod = this.props.subtitle === 'Join the Listserv' ? "POST" : null;
+    const formTarget = this.props.subtitle === 'Join the Listserv' ? "_blank" : null;
 
     return (
       <div className={`fontFamilyRalewayB colorCharcoal flexColumnAlignCenter
@@ -108,8 +90,11 @@ class JoinForm extends React.Component {
         <div className="fontSize18px marginBottom3px">{this.props.title}</div>
         <div className="colorGold fontSize16px marginBottom10px">{this.props.subtitle}</div>
         <div className="colorLightGrey fontSize12px textAlignCenter marginBottom10px">{this.props.description}</div>
-  
-        <form id={this.props.subtitle} className="width90P" onSubmit={this.submitForm}>
+
+        <form id={this.props.subtitle} className="width90P"
+          action={actionURL} method={formMethod}
+          target={formTarget} onSubmit={this.submitForm}>
+        
           <FormItem onChange={this.onChange} name="name" value={name} label="Full Name" />
           <FormItem onChange={this.onChange} name="email" value={email} label="Email Address" type="email" />
   
@@ -122,6 +107,12 @@ class JoinForm extends React.Component {
             :
             null
           }
+
+          <input type="text" className="hidden noWidthAndHeight" name="list" value="urmc-l" readOnly/>
+          <input type="text" className="hidden noWidthAndHeight" name="lists" value="urmc-l" readOnly/>
+          <input type="text" className="hidden noWidthAndHeight" name="confirm" value="one" readOnly/>
+          <input type="text" className="hidden noWidthAndHeight" name="showconfirm" value="F" readOnly/>
+          <input type="text" className="hidden noWidthAndHeight" name="secx" value="cfe1b6e8" readOnly/>
         </form>
   
         <button type="submit" className="width90P marginTop15px verticalPadding8px
