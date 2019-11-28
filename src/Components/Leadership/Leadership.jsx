@@ -38,13 +38,38 @@ class Leadership extends React.Component {
     let response = await fetch(`${URL}/board-members`);
 
     response.json().then((members) => {
+      let orderedMembers = this.orderBoardMembers(members);
+
       this.setState({
-        boardMembers: members,
+        boardMembers: orderedMembers,
         selectedSubteam: subteamMap.get(members[0].position)
       }, () => {
         this.buildHeightArray();
       });
     });
+  }
+
+  orderBoardMembers(memberArray) {
+    let memberMap = new Map();
+
+    for (let member of memberArray) {
+      let subteam = subteamMap.get(member.position);
+
+      if (memberMap.has(subteam)) {
+        let valueArray = memberMap.get(subteam);
+        valueArray.push(member);
+
+        memberMap.set(subteam, valueArray);
+      } else memberMap.set(subteam, [member]);
+    }
+
+    let resultArray = [];
+
+    for (let members of memberMap.values()) {
+      resultArray = resultArray.concat(members);
+    }
+
+    return resultArray;
   }
 
   componentWillUnmount() {
