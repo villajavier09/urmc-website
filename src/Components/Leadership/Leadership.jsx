@@ -7,7 +7,6 @@ import PageTitle from '../Util/PageTitle';
 import LeadershipBar from './LeadershipBar';
 import BoardMember from './BoardMember';
 
-const boardMemberArray = require('./BoardMembers.js');
 const subteamMap = require('../Util/subteamMap');
 
 class Leadership extends React.Component {
@@ -24,15 +23,28 @@ class Leadership extends React.Component {
     this.state = {
       automaticScroll: false,
       divHeight: 0,
-      selectedSubteam: subteamMap.get(boardMemberArray[0].position),
+      selectedSubteam: '',
       heightArray: [], // Stores offsetTop position of member as well member object.
+      boardMembers: []
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     window.addEventListener("resize", this.buildHeightArray);
 
-    this.buildHeightArray();
+    const URL = process.env.NODE_ENV === 'development' ?
+      'http://127.0.0.1:8080' : 'https://urmc-website-api.herokuapp.com'
+
+    let response = await fetch(`${URL}/board-members`);
+
+    response.json().then((members) => {
+      this.setState({
+        boardMembers: members,
+        selectedSubteam: subteamMap.get(members[0].position)
+      }, () => {
+        this.buildHeightArray();
+      });
+    });
   }
 
   componentWillUnmount() {
@@ -58,7 +70,7 @@ class Leadership extends React.Component {
       if (i === 0) offsetTop = child.offsetHeight + MARGIN_BOTTOM;
       else offsetTop = heightArray[i - 1][0] + child.offsetHeight + MARGIN_BOTTOM;
 
-      let member = boardMemberArray[i];
+      let member = this.state.boardMembers[i];
 
       heightArray.push([offsetTop, member]);
     }
@@ -80,7 +92,7 @@ class Leadership extends React.Component {
       i++;
     }
 
-    let member = boardMemberArray[i];
+    let member = this.state.boardMembers[i];
 
     this.setState({ selectedSubteam: subteamMap.get(member.position) });
   }
@@ -137,7 +149,7 @@ class Leadership extends React.Component {
     let boardMembers = [];
     let i = 0;
 
-    for (let boardMember of boardMemberArray) {
+    for (let boardMember of this.state.boardMembers) {
       let subteam = subteamMap.get(boardMember.position);
 
       if (!subteamSet.has(subteam)) {
