@@ -100,7 +100,17 @@ class Leadership extends React.Component {
           automaticScroll: true
         }, () => {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          setTimeout(() => { this.setState({ automaticScroll: false }) }, 1000);
+          let boardMembersRef = this.boardMembersRef.current;
+
+          setTimeout(() => {
+            if ((boardMembersRef.offsetTop + boardMembersRef.scrollTop) === element.offsetTop) {
+              this.setState({ automaticScroll: false })
+            } else {
+              setTimeout(() => {
+                this.setState({ automaticScroll: false })
+              }, 1000);
+            }
+          }, 1000);
         });
 
         break;
