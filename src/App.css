@@ -32,7 +32,7 @@
   }
 }
 
-#bgNormalOverlay {
+.bgNormalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -42,7 +42,7 @@
   background-image: linear-gradient(#FFFFFF , #E3E3E3);
 }
 
-#bgSidebarOverlay {
+.bgSidebarOverlay {
   position: fixed;
   top: 0;
   left: 0;

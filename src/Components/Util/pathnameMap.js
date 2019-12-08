@@ -5,7 +5,8 @@ const pathnameMap = {
   '/leadership': 'Leadership',
   '/events': 'Events',
   '/sponsors': 'Sponsors',
-  '/join': 'Getting Involved'
+  '/join': 'Getting Involved',
+  '/admin': 'Admin'
 }
 
 module.exports = pathnameMap;

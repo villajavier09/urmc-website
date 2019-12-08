@@ -11,6 +11,7 @@ import './main.css';
 import './App.css';
 
 import About from './Components/About/About';
+import Admin from './Components/Admin/Admin';
 import Events from './Components/Events/Events';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
@@ -32,10 +33,13 @@ class App extends React.Component {
     this.openSidebar = this.openSidebar.bind(this);
     this.closeSidebar = this.closeSidebar.bind(this);
     this.updateCurrentPage = this.updateCurrentPage.bind(this);
+    this.toggleOverlay = this.toggleOverlay.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       currentPage: '',
-      isSidebarOpen: false
+      isSidebarOpen: false,
+      normalOverlay: true
     }
   }
 
@@ -44,7 +48,42 @@ class App extends React.Component {
   }
 
   openSidebar() {
-    this.setState({ isSidebarOpen: true });
+    this.setState({ isSidebarOpen: true, normalOverlay: false });
+  }
+
+  handleClick(event) {
+    if (this.state.isSidebarOpen) {
+      this.closeSidebar(event);
+    } else if (!this.state.normalOverlay) {
+      if (this.isOutsideModal(event)) {
+        this.setState({ normalOverlay: true });
+      }
+    }
+  }
+
+  isOutsideModal(event) {
+    let editModalElement = document.getElementById('editMemberModal');
+    if (editModalElement === null) return false;
+
+    console.log(editModalElement)
+
+    let leftPixel = editModalElement.offsetLeft;
+    let rightPixel = leftPixel + editModalElement.offsetWidth;
+    let topPixel = editModalElement.offsetTop;
+    let bottomPixel = topPixel + editModalElement.offsetHeight;
+
+    // console.log(leftPixel)
+    // console.log(rightPixel)
+    // console.log(event.clientX)
+
+    // console.log(topPixel)
+    // console.log(bottomPixel)
+    // console.log(event.clientY)
+
+    if (event.clientX < leftPixel || event.clientX > rightPixel) return true;
+    if (event.clientY < topPixel || event.clientY > bottomPixel) return true;
+
+    return false;
   }
 
   /**
@@ -57,7 +96,7 @@ class App extends React.Component {
   closeSidebar(event, isLinkOrX = false) {
     if (!this.isOutsideSidebar(event, isLinkOrX)) return; // Don't close sidebar.
 
-    this.setState({ isSidebarOpen: false });
+    this.setState({ isSidebarOpen: false, normalOverlay: true });
   }
 
   /**
@@ -87,16 +126,21 @@ class App extends React.Component {
     this.setState({ currentPage: page });
   }
 
+  toggleOverlay() {
+    let normalOverlay = this.state.normalOverlay;
+    this.setState({ normalOverlay: !normalOverlay });
+  }
+
   render() {
     let isSidebarOpen = this.state.isSidebarOpen;
 
-    let bgId = isSidebarOpen ? 'bgSidebarOverlay' : 'bgNormalOverlay';
+    let bgClass = this.state.normalOverlay ? 'bgNormalOverlay' : 'bgSidebarOverlay';
     let sidebarClass = isSidebarOpen ? 'open' : null;
 
     return (
-      <div onClick={this.closeSidebar}>
+      <div onClick={this.handleClick}>
         <Router>
-          <div id={bgId}></div>
+          <div className={bgClass}></div>
           <div id='sidebarDiv'
             className={`${sidebarClass} ${this.props.breakpoint !== 'M' ? 'bigSidebarDiv' : 'smallSidebarDiv'}`}>
             {
@@ -107,8 +151,13 @@ class App extends React.Component {
             }
           </div>
 
-          <Header openSidebar={this.openSidebar} updateCurrentPage={this.updateCurrentPage}
-            currentPage={this.state.currentPage} {...this.props} />
+          {
+            this.state.currentPage !== 'Admin' ?
+              <Header openSidebar={this.openSidebar} updateCurrentPage={this.updateCurrentPage}
+                currentPage={this.state.currentPage} {...this.props} />
+              :
+              null
+          }
 
           <Switch>
             <Route path="/" exact render={(props) => <Home {...props}
@@ -119,6 +168,8 @@ class App extends React.Component {
             <Route path="/sponsors" exact render={(props) => <Sponsors {...props}
               updateCurrentPage={this.updateCurrentPage} />} />
             <Route path="/join" exact component={Join} />
+            <Route path="/admin" exact render={(props) => <Admin {...props}
+              updateCurrentPage={this.updateCurrentPage} toggleOverlay={this.toggleOverlay} />} />
           </Switch>
         </Router>
 

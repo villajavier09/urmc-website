@@ -33,7 +33,7 @@ class Leadership extends React.Component {
     window.addEventListener("resize", this.buildHeightArray);
 
     const URL = process.env.NODE_ENV === 'development' ?
-      'http://127.0.0.1:8080' : 'https://urmc-website-api.herokuapp.com'
+      'http://127.0.0.1:8080' : 'https://urmc-website-api.herokuapp.com';
 
     let response = await fetch(`${URL}/board-members`);
 

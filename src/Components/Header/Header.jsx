@@ -41,7 +41,7 @@ const Header = (props) => {
   let headerLinks = [];
 
   for (const [path, title] of Object.entries(pathnameMap)) {
-    if (path === '/') continue;
+    if (path === '/' || path === '/admin') continue;
 
     headerLinks.push(
       <HeaderLink to={path} title={title} updateCurrentPage={props.updateCurrentPage}

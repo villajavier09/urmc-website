@@ -1,0 +1,74 @@
+@font-face {
+  font-family: Novecento;
+  src: url(../../fonts/Novecentowide-DemiBold.otf);
+}
+
+.boxShadow {
+  box-shadow: 0 0 5px #929292;
+}
+
+.lightBoxShadow {
+  box-shadow: 0 0 2px #929292;
+}
+
+.charcoalXIcon {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.googleLoginButton {
+  font-family: Novecento !important;
+  font-size: 14px !important;
+  padding: 10px !important;
+  background-color: #e3ab10 !important;
+  color: white !important;
+  text-align: center !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  border-radius: 5px !important;
+}
+
+.gradient {
+  background: linear-gradient(to right, #E3AB10, #EFCC6B, #FFFFFF);
+}
+
+.borderRadius {
+  border-radius: 5px 5px 0 0;
+}
+
+.separator {
+  border: 1px rgb(226, 226, 226) solid;
+}
+
+.editButton {
+  border: 1px #e3ab10 solid;
+  color: #e3ab10;
+  background-color: rgba(227, 171, 16, 0.1);
+  font-size: 12px;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0px 0px 0px 0px;
+  z-index: 10;
+}
+
+.formItemSeparator {
+  border: 1px rgb(226, 226, 226) solid;
+}
+
+.inputNoFocus {
+  outline: none;
+}
+
+.inputNoFocus:focus {
+  outline: none;
+  border: none;
+}

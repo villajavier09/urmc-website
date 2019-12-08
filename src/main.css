@@ -79,6 +79,10 @@
   background-color: #eeeeee;
 }
 
+.bgGrey2 {
+  background-color: #c5c5c5;
+}
+
 .bgGreen {
   background-color: green;
 }
@@ -242,6 +246,11 @@
 
 .positionAbsolute {
   position: absolute;
+}
+
+.positionMiddle {
+  top: 50%;
+  right: 50%;
 }
 
 .positionFixed {
@@ -457,8 +466,16 @@
   padding-right: 0px;
 }
 
+.noPadding {
+  padding: 0;
+}
+
 .padding15px {
   padding: 15px;
+}
+
+.padding25px {
+  padding: 25px;
 }
 
 .paddingTop15px {
@@ -468,6 +485,11 @@
 .noVerticalPadding {
   padding-top: 0px;
   padding-bottom: 0px;
+}
+
+.verticalPadding3px {
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .verticalPadding5px {
@@ -498,6 +520,15 @@
 .verticalPadding25px {
   padding-top: 25px;
   padding-bottom: 25px;
+}
+
+.paddingBottom50px {
+  padding-bottom: 50px;
+}
+
+.horizontalPadding8px {
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .horizontalPadding15px {
@@ -566,6 +597,10 @@
 
 .width75px {
   width: 75px;
+}
+
+.width350px {
+  width: 350px;
 }
 
 .minWidth50px {
@@ -696,6 +731,10 @@
   border: 2px black solid;
 }
 
+.noBorder {
+  border: none;
+}
+
 /* OVERFLOWS */
 
 .overflowScroll {
@@ -768,4 +807,30 @@
 .pageMargin {
   width: 0;
   height: 25px;
+}
+
+.bgNormalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: linear-gradient(#FFFFFF , #E3E3E3);
+}
+
+.bgAlternativeOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.705);
+  -webkit-transition: background-color 400ms ease-out;;
+  transition: background-color 400ms ease-out;
+}
+
+.noBoxShadow {
+  box-shadow: none;
 }
