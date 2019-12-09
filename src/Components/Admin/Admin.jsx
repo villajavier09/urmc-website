@@ -21,7 +21,7 @@ const AdminLogin = (props) => {
         </div>
 
         <GoogleLogin
-          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+          clientId='710389758047-ghdt5r42cgo83q96th9ttloo21k5eqqp.apps.googleusercontent.com'
           buttonText="Sign In with Google"
           className="googleLoginButton"
           icon={false}

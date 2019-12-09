@@ -9,6 +9,8 @@ import BoardMember from './BoardMember';
 
 const subteamMap = require('../Util/subteamMap');
 
+const spinner = require('../../assets/spinner.png');
+
 class Leadership extends React.Component {
   constructor(props) {
     super(props);
@@ -42,11 +44,15 @@ class Leadership extends React.Component {
 
       this.setState({
         boardMembers: orderedMembers,
-        selectedSubteam: subteamMap.get(members[0].position)
+        selectedSubteam: subteamMap.get(orderedMembers[0].position)
       }, () => {
         this.buildHeightArray();
       });
     });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.buildHeightArray, false);
   }
 
   orderBoardMembers(memberArray) {
@@ -66,14 +72,11 @@ class Leadership extends React.Component {
     let resultArray = [];
 
     for (let members of memberMap.values()) {
-      resultArray = resultArray.concat(members);
+      if (members[0].position === 'Co-President') resultArray = members.concat(resultArray);
+      else resultArray = resultArray.concat(members);
     }
 
     return resultArray;
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.buildHeightArray, false);
   }
 
   buildHeightArray() {
@@ -87,8 +90,12 @@ class Leadership extends React.Component {
     let heightArray = [];
     let arrLength = boardMembersRef.children.length;
 
+    if (arrLength === 0) return;
+
     for (let i = 0; i < arrLength; i++) {
       let child = boardMembersRef.children[i];
+
+      console.log(child);
 
       let offsetTop;
 
@@ -96,6 +103,7 @@ class Leadership extends React.Component {
       else offsetTop = heightArray[i - 1][0] + child.offsetHeight + MARGIN_BOTTOM;
 
       let member = this.state.boardMembers[i];
+      console.log(member);
 
       heightArray.push([offsetTop, member]);
     }
@@ -125,8 +133,12 @@ class Leadership extends React.Component {
   goToSubteam(subteam) {
     let heightArray = this.state.heightArray;
 
+    console.log(heightArray)
+
     for (let i = 0; i < heightArray.length; i++) {
       let member = heightArray[i][1];
+
+      console.log(member);
 
       if (subteamMap.get(member.position) === subteam) {
         let ID = member.name.toLowerCase().replace(' ', '');
@@ -178,8 +190,8 @@ class Leadership extends React.Component {
       let subteam = subteamMap.get(boardMember.position);
 
       if (!subteamSet.has(subteam)) {
-        subteams.push(subteam);
         subteamSet.add(subteam);
+        subteams.push(subteam);
       }
 
       boardMembers.push(
@@ -214,7 +226,12 @@ class Leadership extends React.Component {
           <div ref={this.boardMembersRef}
             className={`displayFlex flexColumn ${boardMembersClasses} ${boardMembersPosition}`}
             style={{ height: updatedHeight }} onScroll={this.getSubteamInFocus}>
-            {boardMembers}
+            {
+              this.state.boardMembers.length > 0 ?
+                boardMembers
+                :
+                <img src={spinner} className="spin" alt="Spinner" />
+            }
           </div>
         </div>
       </div>
