@@ -1,12 +1,12 @@
 import React from 'react';
-import '../../styles/main.css';
-import './Leadership.css';
+import '../styles/main.css';
+import '../styles/Leadership.css';
 
-import withScreenSize from '../HOC/ScreenSize';
+import withScreenSize from './HOC/ScreenSize';
 
-const instagramIcon = require('../../assets/instagram.png');
-const facebookIcon = require('../../assets/facebook.png');
-const linkedInIcon = require('../../assets/linkedin.png');
+const instagramIcon = require('../assets/instagram.png');
+const facebookIcon = require('../assets/facebook.png');
+const linkedInIcon = require('../assets/linkedin.png');
 
 const SocialMediaIcon = (props) => {
   return (
@@ -34,7 +34,7 @@ class BoardMember extends React.Component {
 
     let name = person.name;
     let firstName = name.substr(0, name.indexOf(' ')).toLowerCase();
-    const headshot = require(`../../assets/headshots/${firstName}.jpg`);
+    const headshot = require(`../assets/headshots/${firstName}.jpg`);
 
     let marginBottom = this.props.marginBottom;
 

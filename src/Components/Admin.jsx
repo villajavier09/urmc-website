@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/main.css';
-import './Admin.css';
+
+import '../styles/main.css';
+import '../styles/Admin.css';
 
 import GoogleLogin from 'react-google-login';
-import AuthService from '../Services/AuthService';
+import AuthService from './Services/AuthService';
 
-const charcoalX = require('../../assets/charcoal-x-icon.png');
-const fingerprint = require('../../assets/fingerprint.png');
+const charcoalX = require('../assets/charcoal-x-icon.png');
+const fingerprint = require('../assets/fingerprint.png');
 
 const AdminLogin = (props) => {
   return (

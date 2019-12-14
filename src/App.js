@@ -10,16 +10,16 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './styles/main.css';
 import './App.css';
 
-import About from './Components/About/About';
-import Admin from './Components/Admin/Admin';
-import Events from './Components/Events/Events';
-import Header from './Components/Header/Header';
-import Home from './Components/Home/Home';
-import Join from './Components/Join/Join';
-import Leadership from './Components/Leadership/Leadership';
+import About from './Components/About';
+import Admin from './Components/Admin';
+import Events from './Components/Events';
+import Header from './Components/Header';
+import Home from './Components/Home';
+import Join from './Components/Join';
+import Leadership from './Components/Leadership';
 import PageMargin from './Components/Util/PageMargin';
-import Sidebar from './Components/Sidebar/Sidebar';
-import Sponsors from './Components/Sponsors/Sponsors';
+import Sidebar from './Components/Sidebar';
+import Sponsors from './Components/Sponsors';
 import withScreenSize from './Components/HOC/ScreenSize';
 
 const pathnameMap = require('./Components/Util/pathnameMap');

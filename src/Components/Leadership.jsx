@@ -1,15 +1,15 @@
 import React from 'react';
-import '../../styles/main.css';
-import './Leadership.css';
+import '../styles/main.css';
+import '../styles/Leadership.css';
 
-import withScreenSize from '../HOC/ScreenSize';
-import PageTitle from '../Util/PageTitle';
+import withScreenSize from './HOC/ScreenSize';
+import PageTitle from './Util/PageTitle';
 import LeadershipBar from './LeadershipBar';
 import BoardMember from './BoardMember';
 
-const subteamMap = require('../Util/subteamMap');
+const subteamMap = require('./Util/subteamMap');
 
-const spinner = require('../../assets/spinner.png');
+const spinner = require('../assets/spinner.png');
 
 class Leadership extends React.Component {
   constructor(props) {

@@ -1,20 +1,20 @@
 import React from 'react';
 
-import '../../styles/main.css';
-import './About.css'
+import '../styles/main.css';
+import '../styles/About.css'
 
-import PageTitle from '../Util/PageTitle';
-import withScreenSize from '../HOC/ScreenSize';
+import PageTitle from './Util/PageTitle';
+import withScreenSize from './HOC/ScreenSize';
 
-const academicIcon = require('../../assets/academic.png');
-const communityIcon = require('../../assets/community.png');
-const professionalIcon = require('../../assets/professional.png');
-const aboutPictureOne = require('../../assets/about/about-1.jpg');
-const aboutPictureTwo = require('../../assets/about/about-2.jpg');
-const aboutPictureThree = require('../../assets/about/about-3.jpg');
-const aboutPictureFour = require('../../assets/about/about-4.jpg');
-const aboutPictureFive = require('../../assets/about/about-5.jpg');
-const aboutPictureSix = require('../../assets/about/about-6.jpg');
+const academicIcon = require('../assets/academic.png');
+const communityIcon = require('../assets/community.png');
+const professionalIcon = require('../assets/professional.png');
+const aboutPictureOne = require('../assets/about/about-1.jpg');
+const aboutPictureTwo = require('../assets/about/about-2.jpg');
+const aboutPictureThree = require('../assets/about/about-3.jpg');
+const aboutPictureFour = require('../assets/about/about-4.jpg');
+const aboutPictureFive = require('../assets/about/about-5.jpg');
+const aboutPictureSix = require('../assets/about/about-6.jpg');
 
 const QuickFactBar = (props) => {
 

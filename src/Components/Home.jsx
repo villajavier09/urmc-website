@@ -6,13 +6,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../../styles/main.css';
-import './Home.css';
+import '../styles/main.css';
+import '../styles/Home.css';
 
-import { DesktopAndTablet, Mobile } from '../Util/Breakpoints';
-import withScreenSize from '../HOC/ScreenSize';
+import { DesktopAndTablet, Mobile } from './Util/Breakpoints';
+import withScreenSize from './HOC/ScreenSize';
 
-const girl = require('../../assets/girl.png');
+const girl = require('../assets/girl.png');
 
 const HomeButton = (props) => {
   return (

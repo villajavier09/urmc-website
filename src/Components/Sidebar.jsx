@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../../styles/main.css';
-import './Sidebar.css';
+import '../styles/main.css';
+import '../styles/Sidebar.css';
 
-const whiteX = require('../../assets/white-x-icon.png');
-const instagramIcon = require('../../assets/white-instagram.png');
-const facebookIcon = require('../../assets/white-facebook.png');
-const linkedinIcon = require('../../assets/white-linkedin.png');
+const whiteX = require('../assets/white-x-icon.png');
+const instagramIcon = require('../assets/white-instagram.png');
+const facebookIcon = require('../assets/white-facebook.png');
+const linkedinIcon = require('../assets/white-linkedin.png');
 
 const SidebarLink = (props) => {
   return (

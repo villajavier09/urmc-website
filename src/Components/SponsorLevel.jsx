@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../styles/main.css';
-import './Sponsors.css';
+import '../styles/main.css';
+import '../styles/Sponsors.css';
 
-import withScreenSize from '../HOC/ScreenSize';
+import withScreenSize from './HOC/ScreenSize';
 
 const BackgroundRow = (props) => {
   const BACKGROUND_WORDS = 50;

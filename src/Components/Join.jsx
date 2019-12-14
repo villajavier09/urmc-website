@@ -2,20 +2,20 @@
 import React from 'react';
 
 // CSS Files
-import '../../styles/main.css';
-import './Join.css';
+import '../styles/main.css';
+import '../styles/Join.css';
 
 // Components
 import JoinForm from './JoinForm';
-import withScreenSize from '../HOC/ScreenSize';
-import { DesktopAndTablet, Mobile } from '../Util/Breakpoints';
+import withScreenSize from './HOC/ScreenSize';
+import { DesktopAndTablet, Mobile } from './Util/Breakpoints';
 
 // Images
-const mailIcon = require('../../assets/mail.png');
-const instagramIcon = require('../../assets/instagram.png');
-const facebookIcon = require('../../assets/facebook.png');
-const linkedinIcon = require('../../assets/linkedin.png');
-const donateIcon = require('../../assets/donation.png');
+const mailIcon = require('../assets/mail.png');
+const instagramIcon = require('../assets/instagram.png');
+const facebookIcon = require('../assets/facebook.png');
+const linkedinIcon = require('../assets/linkedin.png');
+const donateIcon = require('../assets/donation.png');
 
 const ContactIcon = (props) => {
   return (

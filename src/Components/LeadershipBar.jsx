@@ -1,7 +1,7 @@
 import React from 'react';
 
-import '../../styles/main.css';
-import './Leadership.css';
+import '../styles/main.css';
+import '../styles/Leadership.css';
 
 const LeadershipBar = (props) => {
   let subteams = props.subteams;

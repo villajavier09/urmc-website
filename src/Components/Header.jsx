@@ -8,15 +8,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../../styles/main.css';
-import './Header.css';
+import '../styles/main.css';
+import '../styles/Header.css';
 
-import { Desktop, TabletAndMobile } from '../Util/Breakpoints';
-import { ReactComponent as HamburgerIcon } from '../../assets/hamburger.svg';
+import { Desktop, TabletAndMobile } from './Util/Breakpoints';
+import { ReactComponent as HamburgerIcon } from '../assets/hamburger.svg';
 
-const pathnameMap = require('../Util/pathnameMap');
-const socialMediaMap = require('../Util/socialMedia');
-const fingerprint = require('../../assets/fingerprint.png');
+const pathnameMap = require('./Util/pathnameMap');
+const socialMediaMap = require('./Util/socialMedia');
+const fingerprint = require('../assets/fingerprint.png');
 
 const HeaderLink = (props) => {
   let selectedPage = props.title === props.currentPage ? 'headerUnderline colorCharcoal' : '';

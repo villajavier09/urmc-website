@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../styles/main.css';
-import './Events.css';
+import '../styles/main.css';
+import '../styles/Events.css';
 
-import withScreenSize from '../HOC/ScreenSize';
-import PageTitle from '../Util/PageTitle';
+import withScreenSize from './HOC/ScreenSize';
+import PageTitle from './Util/PageTitle';
 
 class Events extends React.Component {
 
