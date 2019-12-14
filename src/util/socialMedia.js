@@ -1,8 +1,12 @@
+/**
+ * @fileoverview Stores a map of each of Instagram, Facebook and LinkedIn to
+ * each icon as well as the URL to URMC's respective profile.
+ */
+
 const instagramIcon = require('../assets/instagram.png');
 const facebookIcon = require('../assets/facebook.png');
 const linkedinIcon = require('../assets/linkedin.png');
 
-// Maps the social media name to the logo and URL of the social media page.
 const socialMediaMap = {
   'Instagram': {
     logo: instagramIcon,

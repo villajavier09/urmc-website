@@ -82,7 +82,7 @@ class App extends React.Component {
    * @returns {Boolean}
    * 
    * @param event - The JS event associated with a click.
-   * @param isLinkOrX - True if the click event's target is either a link to
+   * @param {Boolean} isLinkOrX - True if the click event's target is either a link to
    * another page or the X Icon.
    */
   isOutsideSidebar(event, isLinkOrX) {
@@ -134,7 +134,7 @@ class App extends React.Component {
    * Update the current page in the state so that the Header Component correctly
    * highlights the current page.
    * 
-   * @param page {String} - The page title.
+   * @param {String} page  - The page title.
    */
   updateCurrentPage(page) {
     this.setState({ currentPage: page });
@@ -186,5 +186,7 @@ class App extends React.Component {
     )
   }
 }
+
+/******************************************************************************/
 
 export default withScreenSize(App);

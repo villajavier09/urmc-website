@@ -1,7 +1,13 @@
+/**
+ * @fileoverview The About Component which shows our purpose, the three pillars
+ * of URMC, some quick facts about founding and current status, as well as few
+ * high-quality pictures from events that happened this year.
+ */
+
 import React from 'react';
 
 import '../styles/Main.css';
-import '../styles/About.css'
+import '../styles/Misc.css';
 
 import PageTitle from './Common/PageTitle';
 import withScreenSize from './HOC/ScreenSize';
@@ -16,6 +22,91 @@ const aboutPictureFour = require('../assets/about/about-4.jpg');
 const aboutPictureFive = require('../assets/about/about-5.jpg');
 const aboutPictureSix = require('../assets/about/about-6.jpg');
 
+/******************************************************************************/
+
+const PurposeStatement = () => {
+  return (
+    <div className="fontFamilyRaleway">
+      The purpose of Underrepresented Minorities in Computing is to promote
+      diversity within the computing fields and foster an environment that
+      empowers underrepresented minorities with technological aspirations
+      through career development, community building and academic support.
+    </div>
+  )
+}
+
+/******************************************************************************/
+
+const CommunityQuote = () => {
+ return (
+  <div className="marginTop25px">
+    <i className="fontFamilyRalewayB fontSize15px">
+        "Every successful individual knows that their achievements depend on a
+      <span className="fontSize18px"> community</span> of people working together."
+    </i>  
+  </div>
+ )
+}
+
+/******************************************************************************/
+
+const Pillar = (props) => {
+  let programMap = {
+    'Academic Support': [
+      "Class Channels (Slack)",
+      "Faculty Lunches",
+      "Weekly Office Hours",
+      "Prelim Review Sessions"
+    ],
+    'Community Development': [
+      "M&M Mentorship Program",
+      "Monthly General Body Meetings",
+      "Social Outings",
+      "Under the Hood Series"
+    ],
+    'Professional Excellence': [
+      "Cracking the Coding Interview",
+      "Company Recruitment",
+      "Resume Reviews and Mock Interviews",
+      "Technical Skills Workshops"
+    ]
+  };
+
+  let programs = [];
+
+  for (const program of programMap[props.title]) {
+    programs.push(
+      <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> {program}</div>
+    )
+  }
+
+  return (
+    <div className="flexColumnAlignCenter horizontalMargin25px minWidth200px
+    marginAuto verticalMargin25px">
+      <img src={props.icon} alt="Academic Icon" className="height125px" />
+      <div className="marginTop15px fontFamilyRalewayB">{props.title}</div>
+      <div className="fontSize14px textAlignCenter marginTop10px">{programs}</div>
+    </div>
+  )
+}
+
+/******************************************************************************/
+
+const QuickFact = (props) => {
+  return (
+    <div className={`${props.classes} textAlignCenter`}>
+      <div>{props.title}</div>
+      <div className="fontSize30px">{props.number}</div>
+    </div>
+  )
+}
+
+/******************************************************************************/
+
+/**
+ * Includes the founding year, the number of active members, as well as the
+ * number of company sponsorships.
+ */
 const QuickFactBar = (props) => {
 
   let outerDivClasses = {
@@ -33,56 +124,25 @@ const QuickFactBar = (props) => {
   return (
     <div className={`${outerDivClasses} fontFamilyRalewayB bgCharcoal
       colorWhite verticalPadding20px borderRadius10px marginTop50px marginBottom100px`}>
-        <div className={`${quickFactClasses} textAlignCenter`}>
-          <div>Founded</div>
-          <div className="fontSize30px">2016</div>
-        </div>
-
-        <div className={`${quickFactClasses} textAlignCenter`}>
-          <div>Active Members</div>
-          <div className="fontSize30px">150+</div>
-        </div>
-
-        <div className={`${quickFactClasses} textAlignCenter`}>
-          <div>Company Sponsors</div>
-          <div className="fontSize30px">15</div>
-        </div>
+        <QuickFact classes={quickFactClasses} title="Founded" number="2016" />
+        <QuickFact classes={quickFactClasses} title="Active Members" number="150+" />
+        <QuickFact classes={quickFactClasses} title="Company Sponsors" number="15" />
       </div>
   )
 }
 
-const PurposeStatement = () => {
-  return (
-    <div className="fontFamilyRaleway">
-      The purpose of Underrepresented Minorities in Computing is to promote
-      diversity within the computing fields and foster an environment that
-      empowers underrepresented minorities with technological aspirations
-      through career development, community building and academic support.
-    </div>
-  )
-}
-
-const CommunityQuote = () => {
- return (
-  <div className="marginTop25px">
-    <i className="fontFamilyRalewayB fontSize15px">
-        "Every successful individual knows that their achievements depend on a
-      <span className="fontFamilyRalewayB fontSize18px"> community</span> of people working together."
-    </i>  
-  </div>
- )
-}
+/******************************************************************************/
 
 class AboutPicture extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.showPictureOverlay = this.showPictureOverlay.bind(this);
-    this.hidePictureOverlay = this.hidePictureOverlay.bind(this);
-
-    this.imageRef = React.createRef();
     this.descriptionRef = React.createRef();
+    this.imageRef = React.createRef();
+
+    this.hidePictureOverlay = this.hidePictureOverlay.bind(this);
+    this.showPictureOverlay = this.showPictureOverlay.bind(this);
 
     this.state = {
       descriptionOffsetTop: 0,
@@ -91,6 +151,27 @@ class AboutPicture extends React.Component {
     }
   }
 
+  /**
+   * Removes the description overlay from the image.
+  */
+  hidePictureOverlay() {
+    let aboutDescription = this.descriptionRef.current;
+    if (aboutDescription === null) return;
+    
+    aboutDescription.classList.remove('aboutPictureDescriptionHover');
+    aboutDescription.classList.add('aboutPictureDescription');
+    this.imageRef.current.classList.remove('aboutPictureHover');
+
+    this.setState({
+      showDescription: false,
+      descriptionOffsetTop: 0,
+      descriptionOffsetLeft: 0 
+    });
+  }
+
+  /**
+   * Sets the absolute left and right positions of the description overlay.
+  */
   showPictureOverlay() {
     this.setState({ showDescription: true }, () => {
       let aboutImage = this.imageRef.current;
@@ -114,48 +195,34 @@ class AboutPicture extends React.Component {
     });
   }
 
-  hidePictureOverlay() {
-    let aboutDescription = this.descriptionRef.current;
-    if (aboutDescription === null) return;
-    
-    aboutDescription.classList.remove('aboutPictureDescriptionHover');
-    aboutDescription.classList.add('aboutPictureDescription');
-
-    this.imageRef.current.classList.remove('aboutPictureHover');
-
-    this.setState({
-      showDescription: false,
-      descriptionOffsetTop: 0,
-      descriptionOffsetLeft: 0 
-    });
-  }
-
   render() {
 
-    let pictureWidth = this.props.breakpoint !== 'M' ? 'pictureWidth' : 'mobilePictureWidth';
+    let props = this.props;
+    let pictureWidth = this.props.breakpoint !== 'M' ? 'width400px' : 'width350px';
 
     return (
-    <div className={`aboutPictureDiv ${pictureWidth}`} onMouseEnter={this.showPictureOverlay} onMouseLeave={this.hidePictureOverlay}>
-      <img ref={this.imageRef} src={this.props.picture}
-      className={`aboutPicture ${pictureWidth}`} alt={this.props.alt}/>
+      <div className={`margin10px borderRadius15px ${pictureWidth}`}
+      onMouseEnter={this.showPictureOverlay} onMouseLeave={this.hidePictureOverlay}>
+        <img ref={this.imageRef} src={props.picture}
+        className={`aboutPicture ${pictureWidth}`} alt={props.alt}/>
 
-      {
-        this.state.showDescription ?
-        <div ref={this.descriptionRef}
-        style={{top: this.state.descriptionOffsetTop + 'px',
-                left: this.state.descriptionOffsetLeft + 'px'}}
-          className="colorCharcoal zIndex1000 fontFamilyRalewayB
-          textAlignCenter aboutPictureDescription fontSize20px">
-            <div className="fontSize18px">{this.props.eventName}</div>
-            <div className="fontSize30px marginTop25px">{this.props.eventDate}</div>
-        </div>
-        :
-        null
-      }
-    </div>
+        {
+          this.state.showDescription ?
+          <div ref={this.descriptionRef}
+          style={{top: this.state.descriptionOffsetTop + 'px',
+                  left: this.state.descriptionOffsetLeft + 'px'}}
+            className="colorCharcoal zIndex1000 fontFamilyRalewayB
+            textAlignCenter aboutPictureDescription fontSize20px">
+              <div className="fontSize18px">{props.eventName}</div>
+              <div className="fontSize30px marginTop25px">{props.eventDate}</div>
+          </div> : null
+        }
+      </div>
     )
   }
 }
+
+/******************************************************************************/
 
 const About = (props) => {
 
@@ -163,76 +230,34 @@ const About = (props) => {
 
   return (
     <div className="flexColumnAlignCenter">
-    <PageTitle title="About Us" />
+      <PageTitle title="About Us" />
 
-    <div className={`${aboutTextWidthClass} marginAuto textAlignCenter colorCharcoal fontSize14px`}>
-      <PurposeStatement />
-      <CommunityQuote />
-    </div>
-
-    <div className="width90P flexCenter marginTop25px flexWrap textAlignCenter">
-      <div className="flexColumnAlignCenter horizontalMargin25px minWidth200px marginAuto verticalMargin25px">
-        <img src={academicIcon} alt="Academic Icon" className="aboutIcon" />
-        <div className="marginTop15px fontFamilyRalewayB">Academic Support</div>
-
-        <div className="fontSize14px textAlignCenter marginTop10px">
-          <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> Class Channels (Slack)</div>
-          <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> Faculty Lunches</div>
-          <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> Weekly Office Hours</div>
-          <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> Prelim Review Sessions</div>
-        </div>
+      <div className={`${aboutTextWidthClass} textAlignCenter colorCharcoal fontSize14px`}>
+        <PurposeStatement />
+        <CommunityQuote />
       </div>
 
-      <div className="flexColumnAlignCenter horizontalMargin25px minWidth200px marginAuto verticalMargin25px">
-        <img src={communityIcon} alt="Community Icon" className="aboutIcon" />
-        <div className="marginTop15px fontFamilyRalewayB">Community Development</div>
-
-        <div className="fontSize14px textAlignCenter marginTop10px">
-          <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> M&M Mentorship Program</div>
-          <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> Monthly General Body Meetings</div>
-          <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> Social Outings</div>
-          <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> Under the Hood Series</div>
-        </div>
+      <div className="width90P flexCenter marginTop25px flexWrap textAlignCenter">
+        <Pillar title="Academic Support" icon={academicIcon} />
+        <Pillar title="Community Development" icon={communityIcon} />
+        <Pillar title="Professional Excellence" icon={professionalIcon} />
       </div>
 
-      <div className="flexColumnAlignCenter horizontalMargin25px minWidth200px marginAuto verticalMargin25px">
-        <img src={professionalIcon} alt="Professional Icon" className="aboutIcon" />
-        <div className="marginTop15px fontFamilyRalewayB">Professional Excellence</div>
+      <QuickFactBar breakpoint={props.breakpoint} />
 
-        <div className="fontSize14px textAlignCenter marginTop10px">
-          <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> Cracking the Coding Interview</div>
-          <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> Company Recruitment</div>
-          <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> Resume Reviews and Mock Interviews</div>
-          <div className="fontFamilyRaleway verticalMargin5px"><span>&#9675;</span> Technical Skills Workshops</div>
-        </div>
+      <div className="flexCenter flexAlignCenter width90P flexWrap marginBottom25px">
+        <AboutPicture picture={aboutPictureOne} eventName="Welcome Back BBQ" eventDate="8.31.19" alt="About #1" {...props} />
+        <AboutPicture picture={aboutPictureTwo} eventName="Career Fair Preparation" eventDate="9.5.19" alt="About #2" {...props} />
+        <AboutPicture picture={aboutPictureThree} eventName="Under the Hood Series: Data Privacy and Security" eventDate="3.22.19" alt="About #3" {...props} />
+        <AboutPicture picture={aboutPictureFour} eventName="Facebook Workshop: A Day in the Life of a Software Engineer" eventDate="4.17.19" alt="About #4" {...props} />
+        <AboutPicture picture={aboutPictureFive} eventName="1st Fall General Body Meeting: Welcome Back" eventDate="9.3.19" alt="About #5" {...props} />
+        <AboutPicture picture={aboutPictureSix} eventName="Final Spring General Body Meeting: Summer Preparation" eventDate="5.7.19" alt="About #6" {...props} />
       </div>
-    </div>
-
-    <QuickFactBar breakpoint={props.breakpoint} />
-
-    <div className="flexCenter flexAlignCenter width90P flexWrap marginBottom25px">
-      <AboutPicture picture={aboutPictureOne} eventName="Welcome Back BBQ"
-        eventDate="8.31.19" alt="About #1" {...props} />
-
-      <AboutPicture picture={aboutPictureTwo} eventName="Career Fair Preparation"
-        eventDate="9.5.19" alt="About #2" {...props} />
-
-      <AboutPicture picture={aboutPictureThree} eventName="Under the Hood Series: Data Privacy and Security"
-        eventDate="3.22.19" alt="About #3" {...props} />
-
-      <AboutPicture picture={aboutPictureFour} eventName="Facebook Workshop: A Day in the Life of a Software Engineer"
-        eventDate="4.17.19" alt="About #4" {...props} />
-
-      <AboutPicture picture={aboutPictureFive} eventName="1st Fall General Body Meeting: Welcome Back"
-        eventDate="9.3.19" alt="About #5" {...props} />
-
-      <AboutPicture picture={aboutPictureSix} eventName="Final Spring General Body Meeting: Summer Preparation"
-        eventDate="5.7.19" alt="About #6" {...props} />
 
     </div>
-
-  </div>
   )
 }
+
+/******************************************************************************/
 
 export default withScreenSize(About);

@@ -458,6 +458,10 @@
   margin-left: 50px;
 }
 
+.margin10px {
+  margin: 10px;
+}
+
 .margin15px {
   margin: 15px;
 }
@@ -603,6 +607,10 @@
   width: 350px;
 }
 
+.width400px {
+  width: 400px;
+}
+
 .minWidth50px {
   min-width: 50px;
 }
@@ -653,6 +661,10 @@
 
 .heightMaxContent {
   height: max-content;
+}
+
+.height125px {
+  height: 125px;
 }
 
 .height50P {
@@ -721,6 +733,10 @@
 
 .borderRadius10px {
   border-radius: 10px;
+}
+
+.borderRadius15px {
+  border-radius: 15px;
 }
 
 .borderRadius25px {
