@@ -8,14 +8,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../styles/main.css';
+import '../styles/Main.css';
 import '../styles/Header.css';
 
 import { Desktop, TabletAndMobile } from './Common/Breakpoints';
 import { ReactComponent as HamburgerIcon } from '../assets/hamburger.svg';
 
-const pathnameMap = require('./Util/pathnameMap');
-const socialMediaMap = require('./Util/socialMedia');
+const pathnameMap = require('../util/pathnameMap');
+const socialMediaMap = require('../util/socialMedia');
 const fingerprint = require('../assets/fingerprint.png');
 
 const HeaderLink = (props) => {

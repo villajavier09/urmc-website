@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/main.css';
+import '../styles/Main.css';
 import '../styles/About.css'
 
 import PageTitle from './Common/PageTitle';

@@ -1,6 +1,6 @@
-const instagramIcon = require('../../assets/instagram.png');
-const facebookIcon = require('../../assets/facebook.png');
-const linkedinIcon = require('../../assets/linkedin.png');
+const instagramIcon = require('../assets/instagram.png');
+const facebookIcon = require('../assets/facebook.png');
+const linkedinIcon = require('../assets/linkedin.png');
 
 // Maps the social media name to the logo and URL of the social media page.
 const socialMediaMap = {

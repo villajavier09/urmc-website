@@ -1,0 +1,841 @@
+/**
+ * CONTENTS
+ *
+ * COLORS AND BACKGROUNDS
+ * Global...............Globally-available variables and config.
+ *
+ * TOOLS
+ * Mixins...............Useful mixins.
+ *
+ * GENERIC
+ * Normalize.css........A level playing field.
+ * Box-sizing...........Better default `box-sizing`.
+ *
+ * BASE
+ * Headings.............H1–H6 styles.
+ *
+ * OBJECTS
+ * Wrappers.............Wrapping and constraining elements.
+ *
+ * COMPONENTS
+ * Page-head............The main page header.
+ * Page-foot............The main page footer.
+ * Buttons..............Button elements.
+ *
+ * TRUMPS
+ * Text.................Text helpers.
+ */
+
+@font-face {
+  font-family: Novecento;
+  src: url(../fonts/Novecentowide-DemiBold.otf);
+}
+
+@font-face {
+  font-family: RalewayBold;
+  src: url(../fonts/Raleway-Bold.ttf);
+}
+
+@font-face {
+  font-family: Raleway;
+  src: url(../fonts/Raleway-Regular.ttf);
+}
+
+/* COLORS AND BACKGROUNDS */
+
+.colorLightGrey {
+  color: #9c9c9c;
+}
+
+.colorBlack {
+  color: #000000;
+}
+
+.colorCharcoal {
+  color: #36383B;
+}
+
+.colorWhite {
+  color: #ffffff;
+}
+
+.colorDisabled {
+  color: #9A9A9A;
+}
+
+.colorGold {
+  color:  #e3ab10;
+}
+
+.bgCharcoal {
+  background-color: #36383B;
+}
+
+.bgGold {
+  background-color: #e3ab10;
+}
+
+.bgGrey1 {
+  background-color: #eeeeee;
+}
+
+.bgGrey2 {
+  background-color: #c5c5c5;
+}
+
+.bgGreen {
+  background-color: green;
+}
+
+.bgGreyTransparent {
+  background-color: rgba(128, 128, 128, 0.5)
+}
+
+.bgWhite {
+  background-color: white;
+}
+
+.bgGradient { 
+  background-image: linear-gradient(to bottom, white, #E3E3E3);
+}
+
+/* TEXT AND FONTS */
+
+.fontFamilyNovecento {
+  font-family: Novecento;
+}
+
+.fontFamilyRalewayB {
+  font-family: RalewayBold;
+}
+
+.fontFamilyRaleway {
+  font-family: Raleway;
+}
+
+.fontSize12px {
+  font-size: 12px;
+}
+
+.fontSize13px {
+  font-size: 13px;
+}
+
+.fontSize14px {
+  font-size: 14px;
+}
+
+.fontSize15px {
+  font-size: 15px;
+}
+
+.fontSize16px {
+  font-size: 16px;
+}
+
+.fontSize18px {
+  font-size: 18px;
+}
+
+.fontSize20px {
+  font-size: 20px;
+}
+
+.fontSize25px {
+  font-size: 25px;
+}
+
+.fontSize30px {
+  font-size: 30px;
+}
+
+.fontSize40px {
+  font-size: 40px;
+}
+
+.textAlignCenter {
+  text-align: center;
+}
+
+.textAlignRight {
+  text-align: right;
+}
+
+.textUppercase {
+  text-transform: uppercase;
+}
+
+.noDecoration {
+  text-decoration: none;
+}
+
+.textUnderline {
+  text-decoration: underline;
+}
+
+/* DISPLAYS AND POSITIONS */
+
+.displayInline {
+  display: inline;
+}
+
+.displayBlock {
+  display: block;
+}
+
+.displayNone {
+  display: none;
+}
+
+.displayFlex {
+  display: flex;
+}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.flexColumnAlignCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flexWrap {
+  flex-wrap: wrap;
+}
+
+.flexGrow1 {
+  flex-grow: 1;
+}
+
+.flexAlignSelfStart {
+  align-self: flex-start;
+}
+
+.flexAlignSelfEnd {
+  align-self: flex-end;
+}
+
+.flexAlignCenter {
+  align-items: center;
+}
+
+.flexAlignEnd {
+  align-items: flex-end;
+}
+
+.flexAlignStart {
+  align-items: flex-start;
+}
+
+.flexSpaceBetween {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.flexContentEnd {
+  justify-content: flex-end;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.positionAbsolute {
+  position: absolute;
+}
+
+.positionMiddle {
+  top: 50%;
+  right: 50%;
+}
+
+.positionFixed {
+  position: fixed;
+}
+
+.positionRelative {
+  position: relative;
+}
+
+.floatRight {
+  float: right;
+}
+
+.zIndex1000 {
+  z-index: 1000;
+}
+
+.top {
+  top: 0;
+}
+
+.topLeft {
+  top: 0;
+  left: 0;
+}
+
+.topRight {
+  top: 0;
+  right: 0;
+}
+
+/* PADDING AND MARGINS */
+
+.noMargin {
+  margin: 0;
+}
+
+.noMarginBottom {
+  margin-bottom: 0;
+}
+
+.noMarginTop {
+  margin-top: 0;
+}
+
+.marginTop-15px {
+  margin-top: -15px;
+}
+
+.marginAuto {
+  margin: auto;
+}
+
+.noVerticalMargin {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.verticalMargin3px {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.verticalMargin5px {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.verticalMargin10px {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.verticalMargin15px {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.verticalMargin25px {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.verticalMargin40px {
+  margin: 40px 0px;
+}
+
+.verticalMargin50px {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.marginBottom3px {
+  margin-bottom: 3px;
+}
+
+.marginBottom5px {
+  margin-bottom: 5px;
+}
+
+.marginBottom10px {
+  margin-bottom: 10px;
+}
+
+.marginBottom15px {
+  margin-bottom: 15px;
+}
+
+.marginBottom25px {
+  margin-bottom: 25px;
+}
+
+.marginBottom50px {
+  margin-bottom: 50px;
+}
+
+.marginBottom100px {
+  margin-bottom: 100px;
+}
+
+.marginTop3px {
+  margin-top: 3px;
+}
+
+.marginTop10px {
+  margin-top: 10px;
+}
+
+.marginTop15px {
+  margin-top: 15px;
+}
+
+.marginTop18px {
+  margin-top: 18px;
+}
+
+.marginTop25px {
+  margin-top: 25px;
+}
+
+.marginTop35px {
+  margin-top: 35px;
+}
+
+.marginTop50px {
+  margin-top: 50px;
+}
+
+.marginTop100px {
+  margin-top: 100px;
+}
+
+.noMarginLeft {
+  margin-left: 0px;
+}
+
+.marginLeftAuto {
+  margin-left: auto;
+}
+
+.marginLeft15px {
+  margin-left: 15px;
+}
+
+.noMarginRight {
+  margin-right: 0px;
+}
+
+.marginRight15px {
+  margin-right: 15px;
+}
+
+.marginRightAuto {
+  margin-right: auto;
+}
+
+.horizontalMargin2px {
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.horizontalMargin5px {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.horizontalMargin10px {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.horizontalMargin15px {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.horizontalMargin25px {
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+.horizontalMargin50px {
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.margin15px {
+  margin: 15px;
+}
+
+.noPaddingRight {
+  padding-right: 0px;
+}
+
+.noPadding {
+  padding: 0;
+}
+
+.padding15px {
+  padding: 15px;
+}
+
+.padding25px {
+  padding: 25px;
+}
+
+.paddingTop15px {
+  padding-top: 15px;
+}
+
+.noVerticalPadding {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.verticalPadding3px {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.verticalPadding5px {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.verticalPadding8px {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.verticalPadding10px {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.verticalPadding15px {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.verticalPadding20px {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.verticalPadding25px {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.paddingBottom50px {
+  padding-bottom: 50px;
+}
+
+.horizontalPadding8px {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.horizontalPadding15px {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.horizontalPadding25px {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+/* HEIGHTS AND WIDTHS */
+
+.minWidth {
+  width: min-content;
+}
+
+.fitWidth {
+  width: fit-content;
+}
+
+.width25P {
+  width: 25%;
+}
+
+.width30P {
+  width: 33.3%;
+}
+
+.width33P {
+  width: 33.3%;
+}
+
+.width40P {
+  width: 40%;
+}
+
+.width50P {
+  width: 50%;
+}
+
+.width60P {
+  width: 60%;
+}
+
+.width75P {
+  width: 75%;
+}
+
+.width80P {
+  width: 80%;
+}
+
+.width90P {
+  width: 90%;
+}
+
+.width95P {
+  width: 95%;
+}
+
+.width50px {
+  width: 50px;
+}
+
+.width75px {
+  width: 75px;
+}
+
+.width350px {
+  width: 350px;
+}
+
+.minWidth50px {
+  min-width: 50px;
+}
+
+.minWidth150px {
+  min-width: 150px;
+}
+
+.minWidth200px {
+  min-width: 200px;
+}
+
+.minWidth250px {
+  min-width: 250px;
+}
+
+.minWidth350px {
+  min-width: 350px;
+}
+
+.minWidth400px {
+  min-width: 400px;
+}
+
+.minWidth500px {
+  min-width: 500px;
+}
+
+.maxWidth75P {
+  max-width: 75%;
+}
+
+.maxWidth90P {
+  max-width: 90%;
+}
+
+.maxWidth200px {
+  max-width: 125px;
+}
+
+.widthMaxContent {
+  width: max-content;
+}
+
+.minHeight {
+  height: min-content;
+}
+
+.heightMaxContent {
+  height: max-content;
+}
+
+.height50P {
+  height: 50%;
+}
+
+.height80P {
+  height: 80%;
+}
+
+.fullHeight {
+  height: 100%;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.fitHeight {
+  height: fit-content;
+}
+
+.fullWidthAndHeight {
+  width: 100%;
+  height: 100%;
+}
+
+.noWidthAndHeight {
+  width: 0;
+  height: 0;
+}
+
+/* BORDERS */
+
+.borderGrey1px {
+  border: 1px solid #808080;
+}
+
+.borderCharcoal1px {
+  border: 1px #36383B solid;
+}
+
+.borderDarkOrange1px {
+  border: 1px solid var(--blu-dark-orange);
+}
+
+.borderMedOrange1px {
+  border: 1px solid var(--blu-med-orange);
+}
+
+.borderTopGrey1px {
+  border-top: 1px solid #808080;
+}
+
+.borderBottomGrey1px {
+  border-bottom: 1px solid #808080;
+}
+
+.borderWhite1px {
+  border: 1px solid #ffffff;
+}
+
+.borderRadius5px {
+  border-radius: 5px;
+}
+
+.borderRadius10px {
+  border-radius: 10px;
+}
+
+.borderRadius25px {
+  border-radius: 25px;
+}
+
+.borderTest {
+  border: 2px black solid;
+}
+
+.noBorder {
+  border: none;
+}
+
+/* OVERFLOWS */
+
+.overflowScroll {
+  overflow: scroll;
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
+.overflowXHidden {
+  overflow-x: hidden;
+}
+
+.overflowYHidden {
+  overflow-y: hidden;
+}
+
+/* MISCELLANEOUS */
+
+.preserveLineSpacing {
+  white-space: pre-line;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.visibilityHidden {
+  visibility: hidden;
+}
+
+.checkbox {
+  min-width: 20px;
+  min-height: 20px;
+  cursor: pointer;
+}
+
+.noBlur {
+  filter: blur(0) !important;
+}
+
+.blur2px {
+  filter: blur(2px);
+}
+
+.overlayBlur {
+  background-color: rgba(0, 0, 0);
+  filter: opacity(70%);
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebarTransition {
+  transition: all 1.5s ease-in;
+}
+
+.pageMargin {
+  width: 0;
+  height: 25px;
+}
+
+.bgNormalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: linear-gradient(#FFFFFF , #E3E3E3);
+}
+
+.bgAlternativeOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.705);
+  -webkit-transition: background-color 400ms ease-out;;
+  transition: background-color 400ms ease-out;
+}
+
+.noBoxShadow {
+  box-shadow: none;
+}
+
+.socialMediaIcon {
+  width: 28px;
+  height: 28px;
+}

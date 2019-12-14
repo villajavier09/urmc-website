@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Default file that comes when using the create-react-app NPM
+ * module installation. This is the entry point of the application.
+ */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
