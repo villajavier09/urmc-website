@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../main.css';
+import '../../styles/main.css';
 import './Admin.css';
 
 import GoogleLogin from 'react-google-login';

@@ -6,7 +6,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../../main.css';
+import '../../styles/main.css';
 import './Home.css';
 
 import { DesktopAndTablet, Mobile } from '../Util/Breakpoints';

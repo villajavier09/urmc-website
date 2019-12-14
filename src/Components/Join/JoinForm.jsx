@@ -1,7 +1,7 @@
 // React Library
 import React from 'react';
 
-import '../../main.css';
+import '../../styles/main.css';
 import './Join.css';
 
 const FormItem = (props) => {

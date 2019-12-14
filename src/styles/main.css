@@ -28,17 +28,17 @@
 
 @font-face {
   font-family: Novecento;
-  src: url(./fonts/Novecentowide-DemiBold.otf);
+  src: url(../fonts/Novecentowide-DemiBold.otf);
 }
 
 @font-face {
   font-family: RalewayBold;
-  src: url(./fonts/Raleway-Bold.ttf);
+  src: url(../fonts/Raleway-Bold.ttf);
 }
 
 @font-face {
   font-family: Raleway;
-  src: url(./fonts/Raleway-Regular.ttf);
+  src: url(../fonts/Raleway-Regular.ttf);
 }
 
 /* COLORS AND BACKGROUNDS */

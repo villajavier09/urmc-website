@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../../main.css';
+import '../../styles/main.css';
 import './Sponsors.css';
 
 import PageTitle from '../Util/PageTitle';

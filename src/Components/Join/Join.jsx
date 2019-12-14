@@ -2,7 +2,7 @@
 import React from 'react';
 
 // CSS Files
-import '../../main.css';
+import '../../styles/main.css';
 import './Join.css';
 
 // Components

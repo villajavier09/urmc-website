@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../main.css';
+import '../../styles/main.css';
 import './Leadership.css';
 
 const LeadershipBar = (props) => {

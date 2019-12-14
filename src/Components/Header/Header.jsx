@@ -8,7 +8,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../../main.css';
+import '../../styles/main.css';
 import './Header.css';
 
 import { Desktop, TabletAndMobile } from '../Util/Breakpoints';

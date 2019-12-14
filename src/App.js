@@ -7,7 +7,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import './main.css';
+import './styles/main.css';
 import './App.css';
 
 import About from './Components/About/About';
