@@ -3,7 +3,7 @@ import '../styles/main.css';
 import '../styles/Events.css';
 
 import withScreenSize from './HOC/ScreenSize';
-import PageTitle from './Util/PageTitle';
+import PageTitle from './Common/PageTitle';
 
 class Events extends React.Component {
 

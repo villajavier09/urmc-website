@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import '../styles/main.css';
 import '../styles/Header.css';
 
-import { Desktop, TabletAndMobile } from './Util/Breakpoints';
+import { Desktop, TabletAndMobile } from './Common/Breakpoints';
 import { ReactComponent as HamburgerIcon } from '../assets/hamburger.svg';
 
 const pathnameMap = require('./Util/pathnameMap');
@@ -58,29 +58,31 @@ const Header = (props) => {
   }
 
   return (
-    <div className="flexSpaceBetween flexAlignCenter width90P marginAuto paddingTop15px">
-      <Link to='/'>
-        <img src={fingerprint} className="width50px" alt="URMC Fingerprint Logo"
-          onClick={() => props.updateCurrentPage('Home')} />
-      </Link>
+    <div className="verticalPadding15px">
+      <div className="flexSpaceBetween flexAlignCenter width90P marginAuto">
+        <Link to='/'>
+          <img src={fingerprint} className="width50px" alt="URMC Fingerprint Logo"
+            onClick={() => props.updateCurrentPage('Home')} />
+        </Link>
 
-      <Desktop>
-        <div className="fontFamilyNovecento displayFlex fontSize14px">
-          {headerLinks}
+        <Desktop>
+          <div className="fontFamilyNovecento displayFlex fontSize14px">
+            {headerLinks}
 
-          <a href="https://securelb.imodules.com/s/1717/alumni/index.aspx?sid=1717&gid=2&pgid=3052&cid=7311&dids=702.87&sort=1&bledit=1#"
-            className="noDecoration headerLink horizontalMargin25px" target="_blank" rel="noopener noreferrer">
-            Donate
+            <a href="https://securelb.imodules.com/s/1717/alumni/index.aspx?sid=1717&gid=2&pgid=3052&cid=7311&dids=702.87&sort=1&bledit=1#"
+              className="noDecoration headerLink horizontalMargin25px" target="_blank" rel="noopener noreferrer">
+              Donate
           </a>
-        </div>
+          </div>
 
-        <div className="displayFlex flexAlignCenter">{socialMedias}</div>
-      </Desktop>
+          <div className="displayFlex flexAlignCenter">{socialMedias}</div>
+        </Desktop>
 
-      <TabletAndMobile>
-        <HamburgerIcon onClick={props.openSidebar} className="minWidth50px pointer" />
-      </TabletAndMobile>
-    </div >
+        <TabletAndMobile>
+          <HamburgerIcon onClick={props.openSidebar} className="minWidth50px pointer" />
+        </TabletAndMobile>
+      </div >
+    </div>
   )
 }
 

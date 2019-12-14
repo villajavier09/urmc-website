@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/main.css';
 import '../styles/About.css'
 
-import PageTitle from './Util/PageTitle';
+import PageTitle from './Common/PageTitle';
 import withScreenSize from './HOC/ScreenSize';
 
 const academicIcon = require('../assets/academic.png');

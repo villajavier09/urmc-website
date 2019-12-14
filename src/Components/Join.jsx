@@ -8,7 +8,7 @@ import '../styles/Join.css';
 // Components
 import JoinForm from './JoinForm';
 import withScreenSize from './HOC/ScreenSize';
-import { DesktopAndTablet, Mobile } from './Util/Breakpoints';
+import { DesktopAndTablet, Mobile } from './Common/Breakpoints';
 
 // Images
 const mailIcon = require('../assets/mail.png');

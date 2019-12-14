@@ -8,7 +8,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './styles/main.css';
-import './App.css';
+import './styles/App.css';
 
 import About from './Components/About';
 import Admin from './Components/Admin';
@@ -17,7 +17,7 @@ import Header from './Components/Header';
 import Home from './Components/Home';
 import Join from './Components/Join';
 import Leadership from './Components/Leadership';
-import PageMargin from './Components/Util/PageMargin';
+import PageMargin from './Components/Common/PageMargin';
 import Sidebar from './Components/Sidebar';
 import Sponsors from './Components/Sponsors';
 import withScreenSize from './Components/HOC/ScreenSize';

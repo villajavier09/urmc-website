@@ -834,3 +834,8 @@
 .noBoxShadow {
   box-shadow: none;
 }
+
+.socialMediaIcon {
+  width: 28px;
+  height: 28px;
+}

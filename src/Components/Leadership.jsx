@@ -3,7 +3,7 @@ import '../styles/main.css';
 import '../styles/Leadership.css';
 
 import withScreenSize from './HOC/ScreenSize';
-import PageTitle from './Util/PageTitle';
+import PageTitle from './Common/PageTitle';
 import LeadershipBar from './LeadershipBar';
 import BoardMember from './BoardMember';
 

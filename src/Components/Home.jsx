@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import '../styles/main.css';
 import '../styles/Home.css';
 
-import { DesktopAndTablet, Mobile } from './Util/Breakpoints';
+import { DesktopAndTablet, Mobile } from './Common/Breakpoints';
 import withScreenSize from './HOC/ScreenSize';
 
 const girl = require('../assets/girl.png');

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../styles/main.css';
 import '../styles/Sponsors.css';
 
-import PageTitle from './Util/PageTitle';
+import PageTitle from './Common/PageTitle';
 import SponsorLevel from './SponsorLevel';
 import withScreenSize from './HOC/ScreenSize';
 
