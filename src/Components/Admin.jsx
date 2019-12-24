@@ -203,7 +203,9 @@ class MemberModal extends React.Component {
   }
 
   onChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value }, () => {
+      console.log(this.state.askMe)
+    });
   }
 
   onChangePicture(event) {
@@ -229,11 +231,17 @@ class MemberModal extends React.Component {
     event.preventDefault();
 
     let askMe = this.state.askMe;
-    askMe = askMe.split(',');
+    console.log(typeof askMe)
+    if (typeof askMe == "string") {
+      askMe = askMe.split(',');
+    }
+
+    console.log(askMe);
 
     let trimmedAskMe = [];
 
     for (let str of askMe) {
+      console.log(str);
       trimmedAskMe.push(str.trim());
     }
     
