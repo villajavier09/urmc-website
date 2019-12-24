@@ -333,7 +333,7 @@ class Admin extends React.Component {
   constructor(props) {
     super(props);
 
-    this.Auth = new AuthService();
+    this.Auth = new AuthService(serverURL);
     
     this.fetchBoardMembers = this.fetchBoardMembers.bind(this);
     this.logout = this.logout.bind(this);

@@ -38,8 +38,8 @@ export default class AuthService {
       }
 
       const options = {
-        method: 'post',
-        url: serverURL,
+        method: 'POST',
+        url: `${this.apiEndpoint}/google/auth`,
         data: profileAndToken,
         headers: {
           'Content-Type': 'application/json'
