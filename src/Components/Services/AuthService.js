@@ -1,14 +1,12 @@
 import axios from 'axios';
 import decode from 'jwt-decode';
 
+const { serverURL } = require('../../util/config');
+
 export default class AuthService {
   constructor(endpoint) {
     // API Service Endpoint
-
-    const URL = process.env.NODE_ENV === 'development' ?
-      'http://127.0.0.1:8080' : 'https://urmc-website-api.herokuapp.com'
-
-    this.apiEndpoint = endpoint || URL;
+    this.apiEndpoint = endpoint || serverURL;
     this.fetch = this.fetch.bind(this);
     this.signIn = this.signIn.bind(this);
     this.getProfile = this.getProfile.bind(this);
