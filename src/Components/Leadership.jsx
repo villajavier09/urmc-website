@@ -1,21 +1,84 @@
-import React from 'react';
-import '../styles/Main.css';
-import '../styles/Leadership.css';
+/**
+ * @fileoverview The Leadership Component which shows all of our executive
+ * board members, all details are fetched from an API except for their headshots.
+ * Two of the largest subcomponents are LeadershipBar and the BoardMember
+ * components.
+ */
 
-import withScreenSize from './HOC/ScreenSize';
-import PageTitle from './Common/PageTitle';
-import LeadershipBar from './LeadershipBar';
+import React from 'react';
+
+import '../styles/Main.css';
+import '../styles/Misc.css';
+
 import BoardMember from './BoardMember';
+import PageTitle from './Common/PageTitle';
+import withScreenSize from './HOC/ScreenSize';
 
 const subteamMap = require('../util/subteamMap');
-
+const { serverURL } = require('../util/config');
 const spinner = require('../assets/spinner.png');
+
+/******************************************************************************/
+
+const Line = (props) => {
+  return (
+    <div>
+      {props.i !== props.length - 1 ? <div className="leadershipLine" /> : null}
+    </div>
+  )
+}
+
+/******************************************************************************/
+
+const Circle = (props) => {
+  let subteam = props.subteam;
+
+  return (
+    <div className={`${props.selectedSubteam === subteam ? 'bgCharcoal' : null}
+    leadershipCircle horizontalMargin10px pointer`} onClick={() => props.goToSubteam(subteam)} />
+  )
+}
+
+/******************************************************************************/
+
+const SubteamTitle = (props) => {
+  return (
+    <div className={`${props.selectedSubteam === props.subteam
+      ? 'colorCharcoal' : 'colorDisabled'} textUppercase fontSize14px horizontalMargin10px pointer`}
+      onClick={() => props.goToSubteam(props.subteam)}
+    >{props.subteam || 'Other'}</div>
+  )
+}
+
+/******************************************************************************/
+
+const LeadershipBar = (props) => {
+  let subteams = props.subteams;
+
+  return (
+    <div>
+      {
+        subteams.map((subteam, i) =>
+          <div className="displayFlex" key={i}>
+            <div className="flexColumnAlignCenter">
+              <Circle selectedSubteam={props.selectedSubteam} goToSubteam={props.goToSubteam} subteam={subteam} />
+              <Line i={i} length={subteams.length} />
+            </div>
+
+            <SubteamTitle selectedSubteam={props.selectedSubteam} goToSubteam={props.goToSubteam} subteam={subteam} />
+          </div>
+        )
+      }
+    </div>
+  )
+}
+
+/******************************************************************************/
 
 class Leadership extends React.Component {
   constructor(props) {
     super(props);
 
-    // Parent div of all the board members.
     this.boardMembersRef = React.createRef();
 
     this.buildHeightArray = this.buildHeightArray.bind(this);
@@ -24,20 +87,23 @@ class Leadership extends React.Component {
 
     this.state = {
       automaticScroll: false,
+      boardMembers: [],
       divHeight: 0,
-      selectedSubteam: '',
       heightArray: [], // Stores offsetTop position of member as well member object.
-      boardMembers: []
+      selectedSubteam: ''
     }
   }
 
+  /**
+   * Fetch the board members from the database, order the board members, then
+   * build the height array for the board members.
+   */
   async componentDidMount() {
     window.addEventListener("resize", this.buildHeightArray);
 
-    const URL = process.env.NODE_ENV === 'development' ?
-      'http://127.0.0.1:8080' : 'https://urmc-website-api.herokuapp.com';
+    console.log(serverURL);
 
-    let response = await fetch(`${URL}/board-members`);
+    let response = await fetch(`${serverURL}/board-members`);
 
     response.json().then((members) => {
       let orderedMembers = this.orderBoardMembers(members);
@@ -55,6 +121,14 @@ class Leadership extends React.Component {
     window.removeEventListener("resize", this.buildHeightArray, false);
   }
 
+  /**
+   * Order the board members by first putting the Presidents first and then
+   * after that, put it alphabetically.
+   * 
+   * @param {Array} memberArray -- The unordered executive board members.
+   * 
+   * @returns {Array}
+   */
   orderBoardMembers(memberArray) {
     let memberMap = new Map();
 
@@ -103,7 +177,6 @@ class Leadership extends React.Component {
       else offsetTop = heightArray[i - 1][0] + child.offsetHeight + MARGIN_BOTTOM;
 
       let member = this.state.boardMembers[i];
-      console.log(member);
 
       heightArray.push([offsetTop, member]);
     }

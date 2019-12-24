@@ -1,13 +1,15 @@
 import React from 'react';
 
 import '../styles/Main.css';
-import '../styles/Leadership.css';
+import '../styles/Misc.css';
 
 import withScreenSize from './HOC/ScreenSize';
 
 const instagramIcon = require('../assets/instagram.png');
 const facebookIcon = require('../assets/facebook.png');
 const linkedInIcon = require('../assets/linkedin.png');
+
+const { serverURL } = require('../util/config');
 
 const SocialMediaIcon = (props) => {
   return (
@@ -29,13 +31,9 @@ class BoardMember extends React.Component {
   render() {
     var person = this.props.person;
 
-    const instaURL = person.socials['I'];
-    const facebookURL = person.socials['F'];
-    const linkedInURL = person.socials['L'];
-
-    let name = person.name;
-    let firstName = name.substr(0, name.indexOf(' ')).toLowerCase();
-    const headshot = require(`../assets/headshots/${firstName}.jpg`);
+    const instaURL = person.instagram;
+    const facebookURL = person.facebook;
+    const linkedInURL = person.linkedIn;
 
     let marginBottom = this.props.marginBottom;
 
@@ -49,7 +47,7 @@ class BoardMember extends React.Component {
       <div id={ID} className='displayFlex minWidth350px padding15px borderRadius10px' style={{ marginBottom: marginBottom !== undefined ? marginBottom : '25px' }}>
 
         <div className="displayFlex flexColumn flexAlignCenter horizontalMargin15px width25P">
-          <img src={headshot} alt="Profile Picture" className={`${profilePicSize} verticalMargin5px`} />
+          <img src={`${serverURL}/public/uploads/${person.picture}`} alt="Profile Picture" className={`${profilePicSize} verticalMargin5px`} />
           <div className={`fontSize20px textAlignCenter ${nameClasses}`}>{person.name}</div>
           <div className={`fontSize14px verticalMargin5px textAlignCenter ${majorClasses}`}>{person.major} '{person.year}</div>
           <div className="displayFlex flexAlignCenter verticalMargin5px">

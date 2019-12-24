@@ -1,5 +1,5 @@
 /**
- * CONTENTS
+ * TABLE OF CONTENTS
  *
  * COLORS AND BACKGROUNDS
  * Global...............Globally-available variables and config.
@@ -474,6 +474,10 @@
   padding: 0;
 }
 
+.padding8px {
+  padding: 8px;
+}
+
 .padding15px {
   padding: 15px;
 }
@@ -484,6 +488,10 @@
 
 .paddingTop15px {
   padding-top: 15px;
+}
+
+.paddingTop25px {
+  padding-top: 25px;
 }
 
 .noVerticalPadding {
@@ -749,6 +757,10 @@
 
 .noBorder {
   border: none;
+}
+
+.noOutline {
+  outline: none;
 }
 
 /* OVERFLOWS */

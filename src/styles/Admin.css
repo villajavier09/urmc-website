@@ -28,10 +28,6 @@
   border-radius: 5px !important;
 }
 
-.gradient {
-  background: linear-gradient(to right, #E3AB10, #EFCC6B, #FFFFFF);
-}
-
 .borderRadius {
   border-radius: 5px 5px 0 0;
 }
@@ -58,6 +54,14 @@
   transform: translate(-50%, -50%);
   padding: 0px 0px 0px 0px;
   z-index: 10;
+  max-height: 80%;
+}
+
+#editMemberForm {
+  max-height: 400px;
+  overflow: scroll;
+  padding: 0px 25px 0px 25px;
+  margin: 15px 0px 15px 0px;
 }
 
 .formItemSeparator {
