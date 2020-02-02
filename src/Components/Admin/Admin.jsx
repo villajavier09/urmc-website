@@ -1,37 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../styles/Main.css';
-import '../styles/Admin.css';
+import '../../styles/Main.css';
+import '../../styles/Admin.css';
 
-import GoogleLogin from 'react-google-login';
-import AuthService from './Services/AuthService';
+import AuthService from '../Services/AuthService';
+import AdminLogin from './AdminLogin';
 
-const charcoalX = require('../assets/charcoal-x-icon.png');
-const fingerprint = require('../assets/fingerprint.png');
-const { serverURL } = require('../util/config');
-
-const AdminLogin = (props) => {
-  return (
-    <div className="width350px marginAuto boxShadow borderRadius10px padding25px
-      fontFamilyRalewayB">
-        <div className="flexSpaceBetween flexAlignCenter marginBottom25px">
-          <div className="colorCharcoal fontSize20px">E-Board Member <span className="colorGold">Login</span></div>
-          <Link to='/' onClick={() => props.updateCurrentPage('Home')}>
-            <img src={charcoalX} className="charcoalXIcon" alt="Charcoal X Icon"/>
-          </Link>
-        </div>
-
-        <GoogleLogin
-          clientId='710389758047-ghdt5r42cgo83q96th9ttloo21k5eqqp.apps.googleusercontent.com'
-          buttonText="Sign In with Google"
-          className="googleLoginButton"
-          icon={false}
-          onSuccess={props.successGoogle}
-        />
-      </div>
-  )
-}
+const fingerprint = require('../../assets/fingerprint.png');
+const { serverURL } = require('../../util/config');
 
 class DeleteCheckbox extends React.Component {
   constructor(props) {
@@ -350,6 +327,7 @@ class Admin extends React.Component {
     this.toggleAddModal = this.toggleAddModal.bind(this);
     this.toggleMemberToDelete = this.toggleMemberToDelete.bind(this);
     this.deleteBoardMembers = this.deleteBoardMembers.bind(this);
+    this.successGoogle = this.successGoogle.bind(this);
 
     this.state = {
       profile: this.Auth.getProfile(),
@@ -357,7 +335,8 @@ class Admin extends React.Component {
       boardMember: null,
       showEditModal: false,
       showAddModal: false,
-      membersToDelete: []
+      membersToDelete: [],
+      isValidEmail: true
     }
   }
 
@@ -366,19 +345,24 @@ class Admin extends React.Component {
   }
 
   successGoogle = async (response) => {
+    const email = response.profileObj.email;
+    const isValidEmail = this.validateEmail(email);
+
+    if (!isValidEmail) return this.setState({ isValidEmail: isValidEmail });
+
     let success = await this.Auth.signIn(response.accessToken, response.profileObj);
 
     if (success) {
       let profile = this.Auth.getProfile();
-
-      this.setState({ profile: profile }, () => {
-        this.fetchBoardMembers();
-      });
+      this.setState({ profile: profile }, () => this.fetchBoardMembers());
     }
   };
 
+  validateEmail(email) {
+    return email.includes('@cornell.edu');
+  }
+
   async fetchBoardMembers () {
-    console.log("IN FETCH")
     let response = await fetch(`${serverURL}/board-members`);
 
     response.json().then((members) => {
@@ -486,7 +470,7 @@ class Admin extends React.Component {
         deleteCount={this.state.membersToDelete.length} deleteBoardMembers={this.deleteBoardMembers} />
         :
         <AdminLogin updateCurrentPage={this.props.updateCurrentPage}
-          successGoogle={this.successGoogle} />
+          successGoogle={this.successGoogle} isValidEmail={this.state.isValidEmail} />
       }
 
       {

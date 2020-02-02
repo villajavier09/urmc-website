@@ -11,7 +11,7 @@ import './styles/App.css';
 import './styles/Main.css';
 
 import About from './Components/About';
-import Admin from './Components/Admin';
+import Admin from './Components/Admin/Admin';
 import Events from './Components/Events';
 import Header from './Components/Header';
 import Home from './Components/Home';
