@@ -5,9 +5,11 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Player } from 'video-react';
 
 import '../styles/Main.css';
 import '../styles/Home.css';
+
 
 import { DesktopAndTablet, Mobile } from './Common/Breakpoints';
 import withScreenSize from './HOC/ScreenSize';
@@ -40,34 +42,6 @@ const Home = (props) => {
   let purposeText = breakpoint === 'M' ? 'fontSize14px textAlignCenter' : 'fontSize16px';
 
 
-  const GivingDayMessage = (props) => {
-    return (
-      <div className="marginTop35px">
-        <div className="fontFamilyRalewayB colorCharcoal fontSize25px ">
-          {props.givingDayTitle}
-        </div>
-        <div className="marginTop15px">
-        <iframe width="500" height="300" src="https://www.youtube.com/embed/_kks1RLvpDg"
-        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-        </iframe>
-        </div>
-        <div className={'${purposeText} marginTop25px fontFamilyRaleway colorCharcoal fontSize15px'}>
-          Cornell's annual Day of Giving is on March 12th. This year consider making a gift to URMC. In the past year,
-          our organization has grown in size from 10 active members to over 160. Your donation will help us sustain this
-          growth. Donations will greatly assist URMC in funding scholarships for Tapia and AfroTech conferences, funding
-          learning software and online courses, and expanding outreach oppurtunities.
-
-    </div>
-        <div className='marginTop25px colorCharcoal'>
-          <a href="https://givingday.cornell.edu/campaigns/under-represented-minorities-in-computing-urmc" target="_blank"
-            className="donateButton fontSize16px homeButton marginRight15px fitWidth textAlignCenter fontFamilyNovecento">
-            Donate
-          </a>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className="marginTop35px displayFlex">
       <div className={`${breakpoint === 'M' ? 'marginAuto' : 'width60P'}`}>
@@ -77,7 +51,7 @@ const Home = (props) => {
             Underrepresented Minorities in Computing
           </div>
 
-          <div className="marginTop25px fontFamilyRaleway colorCharcoal">
+          <div className={`${purposeText} marginTop25px fontFamilyRaleway colorCharcoal`}>
             The purpose of Underrepresented Minorities in Computing is to promote
             diversity within the computing fields and foster an environment that
             empowers underrepresented minorities with technological aspirations
@@ -94,7 +68,29 @@ const Home = (props) => {
           </div>
 
           <div>
-            <GivingDayMessage givingDayTitle="Giving Day 2020" />
+          <div className="marginTop35px">
+            <div className="fontFamilyRalewayB colorCharcoal fontSize25px ">
+              Giving Day 2020
+            </div>
+            <div className="marginTop15px">
+            <iframe width="500" height="300" src="https://www.youtube.com/embed/_kks1RLvpDg"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+            </div>
+            <div className= "marginTop25px fontFamilyRaleway colorCharcoal fontSize15px">
+              Cornell's annual Day of Giving is on March 12th. This year consider making a gift to URMC. In the past year,
+              our organization has grown in size from 10 active members to over 160. Your donation will help us sustain this
+              growth. Donations will greatly assist URMC in funding scholarships for Tapia and AfroTech conferences, funding
+              learning software and online courses, and expanding outreach oppurtunities.
+
+              </div>
+            <div className='marginTop25px colorCharcoal'>
+              <a href="https://givingday.cornell.edu/campaigns/under-represented-minorities-in-computing-urmc" target="_blank"
+                className="donateButton fontSize16px homeButton marginRight15px fitWidth textAlignCenter fontFamilyNovecento">
+                Donate
+              </a>
+            </div>
+          </div>
           </div>
 
         </div>
