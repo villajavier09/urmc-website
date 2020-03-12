@@ -180,9 +180,7 @@ class MemberModal extends React.Component {
   }
 
   onChange(event) {
-    this.setState({ [event.target.name]: event.target.value }, () => {
-      console.log(this.state.askMe)
-    });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   onChangePicture(event) {
@@ -193,11 +191,9 @@ class MemberModal extends React.Component {
     let imageObject = new FormData();
     imageObject.append("imageData", this.state.profilePicture);
 
-    let options = {
+    const options = {
       method: 'PUT',
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      },
+      headers: {'Access-Control-Allow-Origin': '*' },
       body: imageObject
     }
 
@@ -208,19 +204,13 @@ class MemberModal extends React.Component {
     event.preventDefault();
 
     let askMe = this.state.askMe;
-    console.log(typeof askMe)
     if (typeof askMe == "string") {
       askMe = askMe.split(',');
     }
 
-    console.log(askMe);
-
     let trimmedAskMe = [];
 
-    for (let str of askMe) {
-      console.log(str);
-      trimmedAskMe.push(str.trim());
-    }
+    for (let str of askMe) trimmedAskMe.push(str.trim());
     
     let body = {
       askMe: trimmedAskMe,
@@ -283,7 +273,7 @@ class MemberModal extends React.Component {
 
     formItems.push(
       <div className="verticalMargin25px">
-        <input type="file" className="noBorder noBoxShadow" name="profilePicture"
+        <input type="file" className="noBorder noBoxShadow" name="file"
         onChange={this.onChangePicture}/>
       </div>
     )
@@ -425,9 +415,7 @@ class Admin extends React.Component {
     } else {
       membersToDelete.push(member);
     }
-    this.setState({ membersToDelete: membersToDelete }, () => {
-      console.log(this.state);
-    });
+    this.setState({ membersToDelete: membersToDelete });
   }
 
   sortBoardMembers(array, key) {
