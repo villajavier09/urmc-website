@@ -5,7 +5,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Player } from 'video-react';
 
 import '../styles/Main.css';
 import '../styles/Home.css';
