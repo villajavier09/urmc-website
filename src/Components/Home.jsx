@@ -47,7 +47,9 @@ const Home = (props) => {
           {props.givingDayTitle}
         </div>
         <div className="marginTop15px">
-          <iframe width="500" height="300" src="https://youtu.be/_kks1RLvpDg" />
+        <iframe width="500" height="300" src="https://www.youtube.com/embed/_kks1RLvpDg"
+        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
         </div>
         <div className={'${purposeText} marginTop25px fontFamilyRaleway colorCharcoal fontSize15px'}>
           Cornell's annual Day of Giving is on March 12th. This year consider making a gift to URMC. In the past year,
@@ -92,7 +94,7 @@ const Home = (props) => {
           </div>
 
           <div>
-            <GivingDayMessage givingDayTitle="Consider Donating for Giving Day" />
+            <GivingDayMessage givingDayTitle="Giving Day 2020" />
           </div>
 
         </div>
