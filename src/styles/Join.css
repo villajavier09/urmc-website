@@ -80,6 +80,8 @@ input:focus {
   outline: none;
   cursor: pointer;
   border: none;
+  padding: 8px;
+  text-decoration: none;
   box-shadow: 0 0 3px lightgray;
   background-color: rgba(227, 171, 16, 0.796);
   transition: background-color 1000ms ease;

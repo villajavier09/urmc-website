@@ -40,33 +40,31 @@ const Home = (props) => {
   let purposeText = breakpoint === 'M' ? 'fontSize14px textAlignCenter' : 'fontSize16px';
 
 
-const GivingDayMessage = (props) =>{
-  return(
-    <div className= "marginTop35px">
-    <div className= "fontFamilyRalewayB colorCharcoal fontSize25px ">
-      {props.givingDayTitle}
-    </div>
-    <div className="marginTop15px">
-    <iframe width= "500" height= "300" src="https://youtu.be/_kks1RLvpDg">
-    </iframe>
-    </div>
-    <div className= {'${purposeText} marginTop25px fontFamilyRaleway colorCharcoal fontSize15px'}>
-    Cornell's annual Day of Giving is on March 12th. This year consider making a gift to URMC. In the past year,
-    our organization has grown in size from 10 active members to over 160. Your donation will help us sustain this
-    growth. Donations will greatly assist URMC in funding scholarships for Tapia and AfroTech conferences, funding
-    learning software and online courses, and expanding outreach oppurtunities.
+  const GivingDayMessage = (props) => {
+    return (
+      <div className="marginTop35px">
+        <div className="fontFamilyRalewayB colorCharcoal fontSize25px ">
+          {props.givingDayTitle}
+        </div>
+        <div className="marginTop15px">
+          <iframe width="500" height="300" src="https://youtu.be/_kks1RLvpDg" />
+        </div>
+        <div className={'${purposeText} marginTop25px fontFamilyRaleway colorCharcoal fontSize15px'}>
+          Cornell's annual Day of Giving is on March 12th. This year consider making a gift to URMC. In the past year,
+          our organization has grown in size from 10 active members to over 160. Your donation will help us sustain this
+          growth. Donations will greatly assist URMC in funding scholarships for Tapia and AfroTech conferences, funding
+          learning software and online courses, and expanding outreach oppurtunities.
 
     </div>
-    <div className='marginTop25px colorCharcoal'>
-    <Link to ="https://givingday.cornell.edu/campaigns/under-represented-minorities-in-computing-urmc">
-    <button type = "button" className= "donateButton fontSize16px homeButton marginRight15px fitWidth textAlignCenter fontFamilyNovecento">
-    Donate
-    </button>
-    </Link>
-    </div>
-    </div>
-  )
-}
+        <div className='marginTop25px colorCharcoal'>
+          <a href="https://givingday.cornell.edu/campaigns/under-represented-minorities-in-computing-urmc" target="_blank"
+            className="donateButton fontSize16px homeButton marginRight15px fitWidth textAlignCenter fontFamilyNovecento">
+            Donate
+          </a>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="marginTop35px displayFlex">
@@ -94,10 +92,10 @@ const GivingDayMessage = (props) =>{
           </div>
 
           <div>
-          <GivingDayMessage givingDayTitle="Consider Donating for Giving Day"/ >
+            <GivingDayMessage givingDayTitle="Consider Donating for Giving Day" />
           </div>
 
-      </div>
+        </div>
       </div>
       <DesktopAndTablet>
         <img src={girl} alt="URMC Girl" className={girlClasses} />

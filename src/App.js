@@ -141,6 +141,9 @@ class App extends React.Component {
   }
 
   render() {
+    setTimeout(() => {
+      this.setState({ showPopup: true });
+    }, 3000);
     const isSidebarOpen = this.state.isSidebarOpen;
 
     const bgClass = this.state.isNormalOverlay ? 'bgNormalOverlay' : 'bgOtherOverlay';

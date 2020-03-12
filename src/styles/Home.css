@@ -37,4 +37,5 @@
 .donateButton {
   background-color: rgba(227, 171, 16, 0.8);
   color: white;
+  text-decoration: none;
 }

@@ -23,8 +23,8 @@ const ContactIcon = (props) => {
     <a href={props.href} className="flexColumnAlignCenter noDecoration colorCharcoal
     fontFamilyRalewayB maxWidth200px verticalMargin10px" target="_blank" rel="noopener noreferrer">
       <img src={props.icon} alt={props.alt}
-      className={`${props.href !== undefined ? 'pointer' : null}
-      ${props.breakpoint === 'D' ? 'bigSocialMediaIcon' : 'smallSocialMediaIcon' }`} />
+        className={`${props.href !== undefined ? 'pointer' : null}
+      ${props.breakpoint === 'D' ? 'bigSocialMediaIcon' : 'smallSocialMediaIcon'}`} />
       <div className={`textAlignCenter marginTop10px
       ${props.breakpoint === 'D' ? 'fontSize13px' : 'fontSize12px'}`}>
         {props.title}
@@ -85,11 +85,11 @@ const Join = (props) => {
   ways to get involved in the organization. ';
 
   const alumniTitle = "Alumni";
-  const alumniSubtitle= "Join our Listserv"
+  const alumniSubtitle = "Join our Listserv"
 
   return (
     <div className={`flexSpaceBetween marginAuto verticalMargin25px
-    ${props.breakpoint !== 'M' ? 'maxWidth75P' : null }`}>
+    ${props.breakpoint !== 'M' ? 'maxWidth75P' : null}`}>
       <DesktopAndTablet>
         <ContactBar {...props} />
       </DesktopAndTablet>
@@ -98,28 +98,26 @@ const Join = (props) => {
         : 'flexColumn flexAlignCenter'}`}>
 
         <JoinForm title="Students" subtitle="Join the Listserv"
-        description={listservDescription} buttonTitle="Subscribe" {...props} />
+          description={listservDescription} buttonTitle="Subscribe" {...props} />
 
         <div className={`${props.breakpoint === 'D' ? 'verticalFormDivider'
-        : 'horizontalFormDivider'}`}></div>
+          : 'horizontalFormDivider'}`}></div>
 
         <JoinForm title="Companies" subtitle="Sponsor Us"
-        description={sponsorDescription} buttonTitle="Send Interest" {...props} />
+          description={sponsorDescription} buttonTitle="Send Interest" {...props} />
 
         <div className={`${props.breakpoint === 'D' ? 'verticalFormDivider'
-        : 'horizontalFormDivider'}`}></div>
+          : 'horizontalFormDivider'}`}></div>
 
-        <div className = "fontFamilyRalewayB colorCharcoal flexColumnAlignCenter width40P horizontalMargin25px">
-        <div className="fontSize18px marginBottom3px">{alumniTitle}</div>
-        <div className="colorGold fontSize16px marginBottom10px">{alumniSubtitle}</div>
-        <div className="colorLightGrey fontSize12px textAlignCenter marginBottom10px">{alumniDescription}</div>
-        <div className="colorGold">
-        <Link to ="https://docs.google.com/forms/d/1FMHMJnXLrYXLFnZqWzgK9mXtQjUeEKSJji-XBJWpPm8/edit#responses">
-        <button type = "button" className= "alumniButton fitWidth marginTop15px verticalPadding8px fontFamilyRalewayB colorWhite fontSize13px borderRadius5px">
-        Interest Form
-        </button>
-        </Link>
-        </div>
+        <div className="fontFamilyRalewayB colorCharcoal flexColumnAlignCenter width40P horizontalMargin25px">
+          <div className="fontSize18px marginBottom3px">{alumniTitle}</div>
+          <div className="colorGold fontSize16px marginBottom10px">{alumniSubtitle}</div>
+          <div className="colorLightGrey fontSize12px textAlignCenter marginBottom10px">{alumniDescription}</div>
+          <div className="colorGold marginTop15px">
+            <a className="alumniButton fitWidth verticalPadding8px fontFamilyRalewayB colorWhite fontSize13px borderRadius5px" href="https://docs.google.com/forms/d/1FMHMJnXLrYXLFnZqWzgK9mXtQjUeEKSJji-XBJWpPm8/edit#responses" target="_blank">
+              Interest Form
+              </a>
+          </div>
         </div>
 
 
