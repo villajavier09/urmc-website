@@ -124,9 +124,9 @@ class Leadership extends React.Component {
   /**
    * Order the board members by first putting the Presidents first and then
    * after that, put it alphabetically.
-   * 
+   *
    * @param {Array} memberArray -- The unordered executive board members.
-   * 
+   *
    * @returns {Array}
    */
   orderBoardMembers(memberArray) {

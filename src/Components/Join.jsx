@@ -9,6 +9,7 @@ import '../styles/Join.css';
 import JoinForm from './JoinForm';
 import withScreenSize from './HOC/ScreenSize';
 import { DesktopAndTablet, Mobile } from './Common/Breakpoints';
+import { Link } from 'react-router-dom';
 
 // Images
 const mailIcon = require('../assets/mail.png');
@@ -79,6 +80,13 @@ const Join = (props) => {
   email to connect with our Corporate Directors and receive our Corporate
   Sponsorship Packet for 2019-2020!`;
 
+  const alumniDescription = 'Are you an alumni who wants to keep up with \
+  URMC? Join the listserv to receive emails about URMC events and learn about \
+  ways to get involved in the organization. ';
+
+  const alumniTitle = "Alumni";
+  const alumniSubtitle= "Join our Listserv"
+
   return (
     <div className={`flexSpaceBetween marginAuto verticalMargin25px
     ${props.breakpoint !== 'M' ? 'maxWidth75P' : null }`}>
@@ -97,6 +105,23 @@ const Join = (props) => {
 
         <JoinForm title="Companies" subtitle="Sponsor Us"
         description={sponsorDescription} buttonTitle="Send Interest" {...props} />
+
+        <div className={`${props.breakpoint === 'D' ? 'verticalFormDivider'
+        : 'horizontalFormDivider'}`}></div>
+
+        <div className = "fontFamilyRalewayB colorCharcoal flexColumnAlignCenter width40P horizontalMargin25px">
+        <div className="fontSize18px marginBottom3px">{alumniTitle}</div>
+        <div className="colorGold fontSize16px marginBottom10px">{alumniSubtitle}</div>
+        <div className="colorLightGrey fontSize12px textAlignCenter marginBottom10px">{alumniDescription}</div>
+        <div className="colorGold">
+        <Link to ="https://docs.google.com/forms/d/1FMHMJnXLrYXLFnZqWzgK9mXtQjUeEKSJji-XBJWpPm8/edit#responses">
+        <button type = "button" className= "alumniButton fitWidth marginTop15px verticalPadding8px fontFamilyRalewayB colorWhite fontSize13px borderRadius5px">
+        Interest Form
+        </button>
+        </Link>
+        </div>
+        </div>
+
 
         <Mobile>
           <div className='horizontalFormDivider marginBottom25px'></div>
