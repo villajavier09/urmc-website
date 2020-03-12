@@ -46,16 +46,16 @@ const GivingDayMessage = (props) =>{
     <div className= "fontFamilyRalewayB colorCharcoal fontSize25px ">
       {props.givingDayTitle}
     </div>
+    <div className="marginTop15px">
+    <iframe width= "500" height= "300" src="https://youtu.be/_kks1RLvpDg">
+    </iframe>
+    </div>
     <div className= {'${purposeText} marginTop25px fontFamilyRaleway colorCharcoal fontSize15px'}>
     Cornell's annual Day of Giving is on March 12th. This year consider making a gift to URMC. In the past year,
     our organization has grown in size from 10 active members to over 160. Your donation will help us sustain this
     growth. Donations will greatly assist URMC in funding scholarships for Tapia and AfroTech conferences, funding
     learning software and online courses, and expanding outreach oppurtunities.
 
-    </div>
-    <div className="marginTop15px">
-    <iframe width= "500" height= "300" src="https://youtu.be/_kks1RLvpDg">
-    </iframe>
     </div>
     <div className='marginTop25px colorCharcoal'>
     <Link to ="https://givingday.cornell.edu/campaigns/under-represented-minorities-in-computing-urmc">
@@ -69,7 +69,7 @@ const GivingDayMessage = (props) =>{
 }
 
   return (
-    <div className="marginTop25px displayFlex">
+    <div className="marginTop35px displayFlex">
       <div className={`${breakpoint === 'M' ? 'marginAuto' : 'width60P'}`}>
         <div className={`width75P marginAuto ${breakpoint === 'M' ? 'flexColumnAlignCenter' : ''}`}>
           <div className={`fontFamilyRalewayB colorCharcoal
