@@ -101,6 +101,8 @@ class Leadership extends React.Component {
   async componentDidMount() {
     window.addEventListener("resize", this.buildHeightArray);
 
+    console.log(serverURL);
+
     let response = await fetch(`${serverURL}/board-members`);
 
     response.json().then((members) => {

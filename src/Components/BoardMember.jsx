@@ -28,13 +28,6 @@ const SocialMediaIcon = (props) => {
 
 class BoardMember extends React.Component {
 
-  arrayBufferToBase64(buffer) {
-    let binary = '';
-    const bytes = [].slice.call(new Uint8Array(buffer));
-    bytes.forEach((b) => binary += String.fromCharCode(b));
-    return window.btoa(binary);
-  };
-
   render() {
     var person = this.props.person;
 
@@ -54,7 +47,7 @@ class BoardMember extends React.Component {
       <div id={ID} className='displayFlex minWidth350px padding15px borderRadius10px' style={{ marginBottom: marginBottom !== undefined ? marginBottom : '25px' }}>
 
         <div className="displayFlex flexColumn flexAlignCenter horizontalMargin15px width25P">
-          <img src={`https://urmc-board.s3.us-east-2.amazonaws.com/${person._id}`} alt="Profile Picture" className={`${profilePicSize} verticalMargin5px`} />
+          <img src={`${serverURL}/public/uploads/${person.picture}`} alt="Profile Picture" className={`${profilePicSize} verticalMargin5px`} />
           <div className={`fontSize20px textAlignCenter ${nameClasses}`}>{person.name}</div>
           <div className={`fontSize14px verticalMargin5px textAlignCenter ${majorClasses}`}>{person.major} '{person.year}</div>
           <div className="displayFlex flexAlignCenter verticalMargin5px">
