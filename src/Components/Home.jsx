@@ -42,7 +42,7 @@ const Home = (props) => {
 
 
   return (
-    <div className="marginTop35px displayFlex">
+    <div className="marginTop25px displayFlex flexAlignCenter">
       <div className={`${breakpoint === 'M' ? 'marginAuto' : 'width60P'}`}>
         <div className={`width75P marginAuto ${breakpoint === 'M' ? 'flexColumnAlignCenter' : ''}`}>
           <div className={`fontFamilyRalewayB colorCharcoal
@@ -65,33 +65,7 @@ const Home = (props) => {
             <HomeButton buttonTitle='Join the Listserv' link='/join' pageTitle='Getting Involved' {...props} />
             <HomeButton buttonTitle='Learn More' link='/about' pageTitle='About Us' {...props} />
           </div>
-
-          <div>
-          <div className="marginTop35px">
-            <div className="fontFamilyRalewayB colorCharcoal fontSize25px ">
-              Giving Day 2020
-            </div>
-            <div className="marginTop15px">
-            <iframe width="500" height="300" src="https://www.youtube.com/embed/_kks1RLvpDg"
-            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-            </iframe>
-            </div>
-            <div className= "marginTop25px fontFamilyRaleway colorCharcoal fontSize15px">
-              Cornell's annual Day of Giving is on March 12th. This year consider making a gift to URMC. In the past year,
-              our organization has grown in size from 10 active members to over 160. Your donation will help us sustain this
-              growth. Donations will greatly assist URMC in funding scholarships for Tapia and AfroTech conferences, funding
-              learning software and online courses, and expanding outreach oppurtunities.
-
-              </div>
-            <div className='marginTop25px colorCharcoal'>
-              <a href="https://givingday.cornell.edu/campaigns/under-represented-minorities-in-computing-urmc" target="_blank"
-                className="donateButton fontSize16px homeButton marginRight15px fitWidth textAlignCenter fontFamilyNovecento">
-                Donate
-              </a>
-            </div>
-          </div>
-          </div>
-
+          
         </div>
       </div>
       <DesktopAndTablet>
