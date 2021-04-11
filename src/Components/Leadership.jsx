@@ -280,7 +280,7 @@ class Leadership extends React.Component {
 
     return (
       <div>
-        <PageTitle title="2019-2020 Executive Board Members" />
+        <PageTitle title="2020-2021 Executive Board Members" />
 
         <div className={`flexSpaceBetween fontFamilyRalewayB marginTop25px marginAuto
           ${breakpoint === 'D' ? 'maxWidth75P' : ''}`}>
