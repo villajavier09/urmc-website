@@ -30,6 +30,7 @@ const oracle = require('../assets/corporate/oracle.png')
 const uber = require('../assets/corporate/uber.png')
 const yext = require('../assets/corporate/yext.png')
 const figma = require('../assets/corporate/figma.png')
+const pinterest = require('../assets/corporate/pinterest.png')
 
 const Sponsors = (props) => {
 
@@ -56,7 +57,7 @@ const Sponsors = (props) => {
 
       <SponsorLevel level="Gold" logos={[thoughtworks, janestreet]} />
       <SponsorLevel level="Silver" logos={[bloomberg, capitalOne,
-        facebook, oracle, uber, yext]} />
+        facebook, oracle, uber, yext, pinterest]} />
       <SponsorLevel level="Bronze" logos={[palantir, duolingo, figma]} />
     </div>
   )
