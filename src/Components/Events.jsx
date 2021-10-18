@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Main.css';
+import '../styles/main.css';
 import '../styles/Events.css';
 
 import withScreenSize from './HOC/ScreenSize';
@@ -43,4 +43,4 @@ class Events extends React.Component {
   };
 };
 
-export default withScreenSize(Events); 
+export default withScreenSize(Events);

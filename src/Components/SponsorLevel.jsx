@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Main.css';
+import '../styles/main.css';
 import '../styles/Sponsors.css';
 
 import withScreenSize from './HOC/ScreenSize';
@@ -34,7 +34,7 @@ class SponsorLevel extends React.Component {
     this.bgRef = React.createRef();
 
     this.updateBackgroundRows = this.updateBackgroundRows.bind(this);
-    
+
     this.state = {
       logoDivHeight: 0,
       backgroundRows: [],
@@ -45,7 +45,7 @@ class SponsorLevel extends React.Component {
 
   componentDidMount() {
     window.addEventListener("resize", this.updateBackgroundRows);
-    
+
     const LOAD_TIMEOUT = 200;
 
     setTimeout(() => {
@@ -66,7 +66,7 @@ class SponsorLevel extends React.Component {
 
       let counterHeight = 0;
       let backgroundRows = [];
-      
+
       while (counterHeight < this.state.logoDivHeight) {
         backgroundRows.push(
           <BackgroundRow level={this.props.level} key={counterHeight} />
@@ -99,13 +99,13 @@ class SponsorLevel extends React.Component {
 
     let backgroundRows = this.state.backgroundRows;
     let hiddenClass = !this.state.bgReady ? 'hidden' : null; // Show level only once initial background ready.
-    
+
     return (
       <div className={`width75P maxWidth75P marginAuto displayFlex flexColumn
         flexAlignCenter overflowHidden ${hiddenClass}`}>
         <div className="levelSeparator"></div>
         <div ref={this.bgRef} className="displayFlex flexColumn flexAlignCenter">{backgroundRows}</div>
-        <div ref={this.imageDiv} style={{marginTop: this.state.marginTop}} className="flexCenter flexAlignCenter flexWrap
+        <div ref={this.imageDiv} style={{ marginTop: this.state.marginTop }} className="flexCenter flexAlignCenter flexWrap
           positionAbsolute maxWidth75P verticalPadding15px">{logoArr}</div>
       </div>
     )

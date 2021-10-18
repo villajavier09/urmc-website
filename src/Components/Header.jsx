@@ -8,7 +8,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../styles/Main.css';
+import '../styles/main.css';
 import '../styles/Header.css';
 
 import { Desktop, TabletAndMobile } from './Common/Breakpoints';
@@ -72,7 +72,7 @@ const Header = (props) => {
             <a href="https://securelb.imodules.com/s/1717/alumni/index.aspx?sid=1717&gid=2&pgid=3052&cid=7311&dids=702.87&sort=1&bledit=1#"
               className="noDecoration headerLink horizontalMargin25px" target="_blank" rel="noopener noreferrer">
               Donate
-          </a>
+            </a>
           </div>
 
           <div className="displayFlex flexAlignCenter">{socialMedias}</div>

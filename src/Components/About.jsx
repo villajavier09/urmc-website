@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-import '../styles/Main.css';
+import '../styles/main.css';
 import '../styles/Misc.css';
 
 import PageTitle from './Common/PageTitle';
@@ -38,14 +38,14 @@ const PurposeStatement = () => {
 /******************************************************************************/
 
 const CommunityQuote = () => {
- return (
-  <div className="marginTop25px">
-    <i className="fontFamilyRalewayB fontSize15px">
+  return (
+    <div className="marginTop25px">
+      <i className="fontFamilyRalewayB fontSize15px">
         "Every successful individual knows that their achievements depend on a
-      <span className="fontSize18px"> community</span> of people working together."
-    </i>  
-  </div>
- )
+        <span className="fontSize18px"> community</span> of people working together."
+      </i>
+    </div>
+  )
 }
 
 /******************************************************************************/
@@ -124,10 +124,10 @@ const QuickFactBar = (props) => {
   return (
     <div className={`${outerDivClasses} fontFamilyRalewayB bgCharcoal
       colorWhite verticalPadding20px borderRadius10px marginTop50px marginBottom100px`}>
-        <QuickFact classes={quickFactClasses} title="Founded" number="2016" />
-        <QuickFact classes={quickFactClasses} title="Active Members" number="150+" />
-        <QuickFact classes={quickFactClasses} title="Company Sponsors" number="15" />
-      </div>
+      <QuickFact classes={quickFactClasses} title="Founded" number="2016" />
+      <QuickFact classes={quickFactClasses} title="Active Members" number="150+" />
+      <QuickFact classes={quickFactClasses} title="Company Sponsors" number="15" />
+    </div>
   )
 }
 
@@ -157,7 +157,7 @@ class AboutPicture extends React.Component {
   hidePictureOverlay() {
     let aboutDescription = this.descriptionRef.current;
     if (aboutDescription === null) return;
-    
+
     aboutDescription.classList.remove('aboutPictureDescriptionHover');
     aboutDescription.classList.add('aboutPictureDescription');
     this.imageRef.current.classList.remove('aboutPictureHover');
@@ -165,7 +165,7 @@ class AboutPicture extends React.Component {
     this.setState({
       showDescription: false,
       descriptionOffsetTop: 0,
-      descriptionOffsetLeft: 0 
+      descriptionOffsetLeft: 0
     });
   }
 
@@ -202,20 +202,22 @@ class AboutPicture extends React.Component {
 
     return (
       <div className={`margin10px borderRadius15px ${pictureWidth}`}
-      onMouseEnter={this.showPictureOverlay} onMouseLeave={this.hidePictureOverlay}>
+        onMouseEnter={this.showPictureOverlay} onMouseLeave={this.hidePictureOverlay}>
         <img ref={this.imageRef} src={props.picture}
-        className={`aboutPicture ${pictureWidth}`} alt={props.alt}/>
+          className={`aboutPicture ${pictureWidth}`} alt={props.alt} />
 
         {
           this.state.showDescription ?
-          <div ref={this.descriptionRef}
-          style={{top: this.state.descriptionOffsetTop + 'px',
-                  left: this.state.descriptionOffsetLeft + 'px'}}
-            className="colorCharcoal zIndex1000 fontFamilyRalewayB
+            <div ref={this.descriptionRef}
+              style={{
+                top: this.state.descriptionOffsetTop + 'px',
+                left: this.state.descriptionOffsetLeft + 'px'
+              }}
+              className="colorCharcoal zIndex1000 fontFamilyRalewayB
             textAlignCenter aboutPictureDescription fontSize20px">
               <div className="fontSize18px">{props.eventName}</div>
               <div className="fontSize30px marginTop25px">{props.eventDate}</div>
-          </div> : null
+            </div> : null
         }
       </div>
     )

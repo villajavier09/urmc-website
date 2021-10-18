@@ -2,7 +2,7 @@
 import React from 'react';
 
 // CSS Files
-import '../styles/Main.css';
+import '../styles/main.css';
 import '../styles/Join.css';
 
 // Components
@@ -116,7 +116,7 @@ const Join = (props) => {
           <div className="colorGold marginTop15px">
             <a className="alumniButton fitWidth verticalPadding8px fontFamilyRalewayB colorWhite fontSize13px borderRadius5px" href="https://docs.google.com/forms/d/1FMHMJnXLrYXLFnZqWzgK9mXtQjUeEKSJji-XBJWpPm8/edit#responses" target="_blank">
               Interest Form
-              </a>
+            </a>
           </div>
         </div>
 

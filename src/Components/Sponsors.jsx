@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../styles/Main.css';
+import '../styles/main.css';
 import '../styles/Sponsors.css';
 
 import PageTitle from './Common/PageTitle';
@@ -24,6 +24,12 @@ const hubspot = require('../assets/corporate/hubspot.png');
 const microsoft = require('../assets/corporate/microsoft.png');
 const twoSigma = require('../assets/corporate/two-sigma.png');
 const workday = require('../assets/corporate/workday.png');
+const janestreet = require('../assets/corporate/janestreet.png')
+const thoughtworks = require('../assets/corporate/thoughtworks.png')
+const oracle = require('../assets/corporate/oracle.png')
+const uber = require('../assets/corporate/uber.png')
+const yext = require('../assets/corporate/yext.png')
+const figma = require('../assets/corporate/figma.png')
 
 const Sponsors = (props) => {
 
@@ -42,18 +48,18 @@ const Sponsors = (props) => {
               <Link to='/join' onClick={() => props.updateCurrentPage('Getting Involved')}
                 className="linkColor fontFamilyRalewayB noDecoration">
                 Getting Involved
-            </Link>
+              </Link>
             </span> page.
           </div>
         </div>
       </div>
 
-      <SponsorLevel level="Gold" logos={[google]} />
-      <SponsorLevel level="Silver" logos={[bloomberg, blackrock, capitalOne, duolingo,
-        facebook, goldman, lyft, palantir, serviceNow]} />
-      <SponsorLevel level="Bronze" logos={[apt, hubspot, microsoft, twoSigma, workday]} />
+      <SponsorLevel level="Gold" logos={[thoughtworks, janestreet]} />
+      <SponsorLevel level="Silver" logos={[bloomberg, capitalOne,
+        facebook, oracle, uber, yext]} />
+      <SponsorLevel level="Bronze" logos={[palantir, duolingo, figma]} />
     </div>
   )
 }
 
-export default withScreenSize(Sponsors); 
+export default withScreenSize(Sponsors);

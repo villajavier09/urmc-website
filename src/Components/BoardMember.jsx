@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/Main.css';
+import '../styles/main.css';
 import '../styles/Misc.css';
 
 import withScreenSize from './HOC/ScreenSize';
@@ -82,4 +82,4 @@ class BoardMember extends React.Component {
   };
 };
 
-export default withScreenSize(BoardMember); 
+export default withScreenSize(BoardMember);

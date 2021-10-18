@@ -6,7 +6,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../styles/Main.css';
+import '../styles/main.css';
 import '../styles/Home.css';
 
 
@@ -65,7 +65,7 @@ const Home = (props) => {
             <HomeButton buttonTitle='Join the Listserv' link='/join' pageTitle='Getting Involved' {...props} />
             <HomeButton buttonTitle='Learn More' link='/about' pageTitle='About Us' {...props} />
           </div>
-          
+
         </div>
       </div>
       <DesktopAndTablet>

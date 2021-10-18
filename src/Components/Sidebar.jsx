@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../styles/Main.css';
+import '../styles/main.css';
 import '../styles/Sidebar.css';
 
 const whiteX = require('../assets/white-x-icon.png');
@@ -34,8 +34,8 @@ const Sidebar = (props) => {
   return (
     <div className='fullHeight' onClick={(e) => props.closeSidebar(e)}>
       <div className="flexSpaceBetween marginAuto width75P maxWidth75P marginTop25px marginBottom10px">
-        <img src={whiteX} className="whiteXIcon visibilityHidden" alt="White X Icon"/>
-          <img src={whiteX} className="whiteXIcon pointer" onClick={(e) => props.closeSidebar(e, true)} alt="White X Icon"/>
+        <img src={whiteX} className="whiteXIcon visibilityHidden" alt="White X Icon" />
+        <img src={whiteX} className="whiteXIcon pointer" onClick={(e) => props.closeSidebar(e, true)} alt="White X Icon" />
       </div>
 
       <div className="fullHeight flexSpaceBetween flexColumn">
@@ -48,8 +48,8 @@ const Sidebar = (props) => {
           <SidebarLink title="Getting Involved" to="/join" {...props} />
 
           <a href="https://securelb.imodules.com/s/1717/alumni/index.aspx?sid=1717&gid=2&pgid=3052&cid=7311&dids=702.87&sort=1&bledit=1#"
-          className="noDecoration colorWhite fontFamilyRalewayB textUppercase verticalMargin15px width75P maxWidth75P marginAuto"
-          target="_blank" rel="noopener noreferrer">
+            className="noDecoration colorWhite fontFamilyRalewayB textUppercase verticalMargin15px width75P maxWidth75P marginAuto"
+            target="_blank" rel="noopener noreferrer">
             Donate
           </a>
         </div>
@@ -59,9 +59,9 @@ const Sidebar = (props) => {
           <SocialMediaIcon icon={facebookIcon} href="https://www.facebook.com/pg/cornellurmc/about" alt="Facebook Icon" />
           <SocialMediaIcon icon={linkedinIcon} href="https://www.linkedin.com/company/19012674" alt="LinkedIn Icon" />
         </div>
-      </div>        
+      </div>
     </div >
   )
 }
 
-export default Sidebar; 
+export default Sidebar;

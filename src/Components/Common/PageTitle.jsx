@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../styles/Main.css';
+import '../../styles/main.css';
 
 const PageTitle = React.forwardRef((props, ref) => {
   return (
