@@ -36,7 +36,7 @@ const Sponsors = (props) => {
   return (
     <div className="marginBottom50px">
       <div className="textAlignCenter fontFamilyRalewayB marginBottom25px">
-        <PageTitle title="2019-2020 Corporate Sponsors" />
+        <PageTitle title="2021-2022 Corporate Sponsors" />
 
         <div className='width90P marginAuto'>
           <div className="fontSize14px fontFamilyRaleway marginTop-15px textAlignCenter">
