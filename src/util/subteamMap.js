@@ -9,6 +9,6 @@ const subteamMap = new Map([['Co-President', 'Presidents'],
 ['Co-Corporate Chair', 'Corporate'], ['Operations Chair', 'Operations'],
 ['Secretary', 'Secretary'], ['Co-Mentorship Chair', 'Mentorship'],
 ['CS Academic Chair', 'Academic'], ['IS Academic Chair', 'Academic'],
-['Co-PR and Alumni Chair', 'PR & Alumni'], ['Floater', 'Floater']])
+['Co-PR and Alumni Chair', 'PR & Alumni'], ['Floater', 'Floater'], ['Freshman Representative', 'Freshman Representative']])
 
 module.exports = subteamMap;
