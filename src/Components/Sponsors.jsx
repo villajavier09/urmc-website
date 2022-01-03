@@ -9,21 +9,11 @@ import SponsorLevel from './SponsorLevel';
 import withScreenSize from './HOC/ScreenSize';
 
 // Corporate Logos
-const google = require('../assets/corporate/google.png');
 const bloomberg = require('../assets/corporate/bloomberg.png');
-const blackrock = require('../assets/corporate/blackrock.png');
 const capitalOne = require('../assets/corporate/capital-one.png');
 const duolingo = require('../assets/corporate/duolingo.png');
 const facebook = require('../assets/corporate/facebook.png');
-const goldman = require('../assets/corporate/goldman.png');
-const lyft = require('../assets/corporate/lyft.png');
 const palantir = require('../assets/corporate/palantir.png');
-const serviceNow = require('../assets/corporate/service-now.png');
-const apt = require('../assets/corporate/apt.png');
-const hubspot = require('../assets/corporate/hubspot.png');
-const microsoft = require('../assets/corporate/microsoft.png');
-const twoSigma = require('../assets/corporate/two-sigma.png');
-const workday = require('../assets/corporate/workday.png');
 const janestreet = require('../assets/corporate/janestreet.png')
 const thoughtworks = require('../assets/corporate/thoughtworks.png')
 const oracle = require('../assets/corporate/oracle.png')

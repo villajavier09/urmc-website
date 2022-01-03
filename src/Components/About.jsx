@@ -15,12 +15,12 @@ import withScreenSize from './HOC/ScreenSize';
 const academicIcon = require('../assets/academic.png');
 const communityIcon = require('../assets/community.png');
 const professionalIcon = require('../assets/professional.png');
-const aboutPictureOne = require('../assets/about/about-1.jpg');
-const aboutPictureTwo = require('../assets/about/about-2.jpg');
-const aboutPictureThree = require('../assets/about/about-3.jpg');
-const aboutPictureFour = require('../assets/about/about-4.jpg');
-const aboutPictureFive = require('../assets/about/about-5.jpg');
-const aboutPictureSix = require('../assets/about/about-6.jpg');
+const firstGbody = require('../assets/about/firstgbodyf21.JPG')
+const firstGbodyOne = require('../assets/about/firstgbodyf211.JPG')
+const secondGbody = require('../assets/about/secondgbodyf21.JPG')
+const bowlingSocial = require('../assets/about/bowlingsocialf21.JPG')
+const finalGbody = require('../assets/about/finalgbodyf21.JPG')
+const finalGbody1 = require('../assets/about/finalgbodyf211.JPG')
 
 /******************************************************************************/
 
@@ -248,12 +248,12 @@ const About = (props) => {
       <QuickFactBar breakpoint={props.breakpoint} />
 
       <div className="flexCenter flexAlignCenter width90P flexWrap marginBottom25px">
-        <AboutPicture picture={aboutPictureOne} eventName="Welcome Back BBQ" eventDate="8.31.19" alt="About #1" {...props} />
-        <AboutPicture picture={aboutPictureTwo} eventName="Career Fair Preparation" eventDate="9.5.19" alt="About #2" {...props} />
-        <AboutPicture picture={aboutPictureThree} eventName="Under the Hood Series: Data Privacy and Security" eventDate="3.22.19" alt="About #3" {...props} />
-        <AboutPicture picture={aboutPictureFour} eventName="Facebook Workshop: A Day in the Life of a Software Engineer" eventDate="4.17.19" alt="About #4" {...props} />
-        <AboutPicture picture={aboutPictureFive} eventName="1st Fall General Body Meeting: Welcome Back" eventDate="9.3.19" alt="About #5" {...props} />
-        <AboutPicture picture={aboutPictureSix} eventName="Final Spring General Body Meeting: Summer Preparation" eventDate="5.7.19" alt="About #6" {...props} />
+        <AboutPicture picture={firstGbody} eventName="1st Fall General Body Meeting" eventDate="9.02.21" alt="About #1" {...props} />
+        <AboutPicture picture={firstGbodyOne} eventName="1st Fall General Body Meeting" eventDate="9.02.21" alt="About #2" {...props} />
+        <AboutPicture picture={secondGbody} eventName="2nd Fall General Body Meeting" eventDate="10.04.21" alt="About #3" {...props} />
+        <AboutPicture picture={bowlingSocial} eventName="Bowling Social Event" eventDate="9.10.21" alt="About #3" {...props} />
+        <AboutPicture picture={finalGbody} eventName="Final Fall General Body Meeting" eventDate="12.4.21" alt="About #3" {...props} />
+        <AboutPicture picture={finalGbody1} eventName="Final Fall General Body Meeting" eventDate="12.4.21" alt="About #3" {...props} />
       </div>
 
     </div>
