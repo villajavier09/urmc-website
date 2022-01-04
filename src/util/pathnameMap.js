@@ -10,7 +10,8 @@ const pathnameMap = {
   '/events': 'Events',
   '/sponsors': 'Sponsors',
   '/join': 'Getting Involved',
-  '/admin': 'Admin'
+  '/admin': 'Admin',
+  '/tadirectory': 'TA Directory',
 }
 
 module.exports = pathnameMap;

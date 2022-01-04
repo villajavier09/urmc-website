@@ -20,6 +20,7 @@ import Leadership from './Components/Leadership';
 import PageMargin from './Components/Common/PageMargin';
 import Sidebar from './Components/Sidebar';
 import Sponsors from './Components/Sponsors';
+import TADirectory from './Components/TADirectory';
 import withScreenSize from './Components/HOC/ScreenSize';
 
 const pathnameMap = require('./util/pathnameMap');
@@ -178,6 +179,8 @@ class App extends React.Component {
               updateCurrentPage={this.updateCurrentPage} />} />
 
             <Route path="/join" exact component={Join} />
+
+            <Route path="/tadirectory" exact component={TADirectory} />
 
             <Route path="/admin" exact render={(props) => <Admin {...props}
               updateCurrentPage={this.updateCurrentPage} toggleOverlay={this.toggleOverlay} />} />

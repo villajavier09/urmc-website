@@ -46,6 +46,7 @@ const Sidebar = (props) => {
           <SidebarLink title="Events" to="/events" {...props} />
           <SidebarLink title="Sponsors" to="/sponsors" {...props} />
           <SidebarLink title="Getting Involved" to="/join" {...props} />
+          <SidebarLink title="TA Directory" to="/tadirectory" {...props} />
 
           <a href="https://securelb.imodules.com/s/1717/alumni/index.aspx?sid=1717&gid=2&pgid=3052&cid=7311&dids=702.87&sort=1&bledit=1#"
             className="noDecoration colorWhite fontFamilyRalewayB textUppercase verticalMargin15px width75P maxWidth75P marginAuto"
