@@ -11,7 +11,7 @@ import '../styles/main.css';
 import '../styles/Misc.css';
 
 
-import BoardMember from './BoardMember';
+import TA from './TA';
 import PageTitle from './Common/PageTitle';
 import withScreenSize from './HOC/ScreenSize';
 
@@ -279,7 +279,7 @@ class TADirectory extends React.Component {
       }
 
       boardMembers.push(
-        <BoardMember person={boardMember} key={i} />
+        <TA person={boardMember} key={i} />
       )
 
       i += 1;

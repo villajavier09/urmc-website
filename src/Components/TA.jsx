@@ -77,4 +77,4 @@ class TA extends React.Component {
   };
 };
 
-export default withScreenSize(BoardMember);
+export default withScreenSize(TA);
