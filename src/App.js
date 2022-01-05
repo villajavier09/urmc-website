@@ -8,7 +8,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './styles/App.css';
-import './styles/main.css';
+import './styles/Main.css';
 
 import About from './Components/About';
 import Admin from './Components/Admin/Admin';

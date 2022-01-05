@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/main.css';
+import '../styles/Main.css';
 import '../styles/Misc.css';
 
 import withScreenSize from './HOC/ScreenSize';

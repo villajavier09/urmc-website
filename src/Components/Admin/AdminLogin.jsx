@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import GoogleLogin from 'react-google-login';
 
-import '../../styles/main.css';
+import '../../styles/Main.css';
 import '../../styles/Admin.css';
 
 const charcoalX = require('../../assets/charcoal-x-icon.png');
