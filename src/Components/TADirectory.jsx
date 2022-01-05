@@ -293,7 +293,7 @@ class TADirectory extends React.Component {
     return (
       <div>
         <PageTitle title="URMC TAs 2021-2022" />
-        <div className={`$textAlignCenter colorCharcoal fontSize14px`}>
+        <div className={`textAlignCenter colorCharcoal fontSize14px`}>
           <TAStatement />
         </div>
 

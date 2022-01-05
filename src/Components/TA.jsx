@@ -8,20 +8,6 @@ import withScreenSize from './HOC/ScreenSize';
 
 const { serverURL } = require('../util/config');
 
-const SocialMediaIcon = (props) => {
-  return (
-    <div>
-      {
-        props.URL ?
-          <a href={props.URL} target="_blank" rel="noopener noreferrer">
-            <img src={props.icon} className="socialMediaIcon horizontalMargin5px pointer" alt="Social Media Icon" />
-          </a>
-          :
-          null
-      }
-    </div>
-  )
-}
 
 class TA extends React.Component {
 
@@ -34,10 +20,6 @@ class TA extends React.Component {
 
   render() {
     var person = this.props.person;
-
-    const instaURL = person.instagram;
-    const facebookURL = person.facebook;
-    const linkedInURL = person.linkedIn;
 
     let marginBottom = this.props.marginBottom;
 
@@ -55,7 +37,7 @@ class TA extends React.Component {
           <img src={`https://urmc-board.s3.us-east-2.amazonaws.com/${person._id}`} alt="Profile Picture" className={`${profilePicSize} verticalMargin5px`} />
           <div className={`fontSize20px textAlignCenter ${nameClasses}`}>{person.name}</div>
           <div className={`fontSize14px verticalMargin5px textAlignCenter ${majorClasses}`}>{person.major} '{person.year}</div>
-          <div className={`fontSize20px textAlignCenter ${emailClasses}`}>{person.email}</div>
+          <div className={`fontSize10px textAlignCenter ${emailClasses}`}>{person.email}</div>
         </div>
 
         <div className="horizontalMargin15px width75P">
