@@ -167,7 +167,7 @@ class Leadership extends React.Component {
     for (let i = 0; i < arrLength; i++) {
       let child = boardMembersRef.children[i];
 
-      #console.log(child);
+      //console.log(child);
 
       let offsetTop;
 
